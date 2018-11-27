@@ -1,0 +1,225 @@
+\documentclass[12pt,a4paper, twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\author{Marco Bertenghi}
+\usepackage{amsthm}
+\usepackage{xcolor}
+\usepackage{mdframed}
+\date{}
+\usepackage{subfiles}
+\usepackage[centering, a4paper]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead[RE]{\rightmark}
+\fancyhead[RO]{}
+\fancyhead[LO]{\leftmark}
+\fancyhead[LE]{}
+
+\newtheorem{lem}{Lemma}[section]
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{cor}{Corollary}[section]
+\newtheorem{defn}{Definition}[section]
+\newtheorem{exe}{Exercise}[section]
+\newtheorem{exmp}{Example}[section]
+\theoremstyle{definition}
+\newtheorem{rem}{Remark}[section]
+
+
+\usepackage{color}  
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=false, %set true if you want colored links
+    linktoc=all,     %set to all if you want both sections and subsections linked
+    linkcolor=blue,  %choose some color if you want links to stand out
+}
+
+\newenvironment{rcases}
+  {\left.\begin{aligned}}
+  {\end{aligned}\right\rbrace}
+  
+\newcommand{\EE}{\mathbb{E}} %expectation
+\newcommand{\PP}{\mathbb{P}} %probability
+\newcommand{\teq}{\overset{\wedge}{=}}
+\newcommand{\simple}{\textbf{\text{b}}\mathcal{E}}
+\newcommand{\verysimple}{\textbf{\text{b}}\mathcal{E}_{\text{det}}}
+\newcommand{\sign}{\text{sign}}
+\newcommand{\MV}{\text{MV}}
+
+
+\begin{document}
+We deal with a generalisation of quadratic variation for RCLL martingales. This appendix is Exercise 2.4. from the course Mathematical Finance, Fall 2018. 
+\\\\
+Let $(\Omega, \mathcal{F}, ( \mathcal{F}_t)_{t \geq 0}, \PP)$ be a filtered probability space satisfying the usual conditions. Set 
+\begin{align*}
+\mathcal{H}^2 &:= \{ \text{RCLL martingales $M$ such that } \sup_{t \geq 0} \EE(M_t^2) < \infty\}, \\
+\mathcal{H}_0^2 &:= \{ M \in \mathcal{H}^2 : M_0 = 0 \}, \\
+\mathcal{H}_0^{2,c} &:= \{ M \in \mathcal{H}_0^2 : M \text{ is continuous}\}, \\
+H_0^{2,d}&:= (H_0^{2,c})^\perp = \{ N \in \mathcal{H}_0^2 : \EE(M_\infty N_\infty) =0,  \ \forall N \in H_0^{2, c}\}.
+\end{align*}
+Recall that $\mathcal{H}^2 $ is a Hilbert space with the inner product $(M,  N)_{\mathcal{H}^2} = \EE(M_\infty N_\infty)$. Obviously,  $\mathcal{H}_0^2, \mathcal{H}_0^{2,c}, \mathcal{H}_0^{2,d}$ are all closed subspaces of $\mathcal{H}^2 $. Hence by Riesz representation theorem each $M \in \mathcal{H}^2 $ has a unique decomposition of the form  $M=M_0 + M^c+M^d$, where $M^c \in \mathcal{H}_0^{2,c}$ and $M^d \in \mathcal{H}_0^{2,d}$. We also use $\mathcal{H}_{0, \text{loc}}^2, \mathcal{H}_{0, \text{loc}}^{2,c}, \mathcal{H}_{0, \text{loc}}^{2,d}$ to denote the space of processes that are locally in $\mathcal{H}_0^2,  \mathcal{H}_0^{2,c}, \mathcal{H}_0^{2,d}$ respectively.  
+\\\\
+The main theorem associated to this setting and the quadratic variation is given below:
+\begin{thm} \label{thmapp1} \
+\begin{enumerate}
+\item For $M \in \mathcal{H}_0^2$, we have $M \in \mathcal{H}_0^{2,d}$ if and only if $\EE(M_\infty^2 ) = \EE ( \sum_{s > 0} ( \Delta M_s)^2 ).$ 
+\item For each $M \in \mathcal{H}_0^2$, there exists a unique adapted, increasing, RCLL process $[M]=([M]_t)_{t \geq 0}$ null at $0$ with $\Delta[M]= (\Delta M)^2$ and such that $M^2- [M]$ is a uniformly integrable martingale, null at $0$.
+\end{enumerate}
+\end{thm}
+Recall that for an RCLL process $X=(X_t)_{t \geq 0}$ we denote its associated jump process by $\Delta X_t := X_t-X_{t-}$ where $X_{t-}:= \lim_{s \nearrow t} X_s$. It is also worthwhile to recall the martingale regularisation theorem:
+\begin{thm}[Martingale regularisation theorem] Let $( \Omega, \mathcal{F}, (\mathcal{F}_t)_{t \geq 0},  \PP)$ be a filtered probability space with filtration $(\mathcal{F}_t)_{t \geq 0}$ satisfying the usual conditions (complete and right-continuous). Let $X=(X_t)_{t \geq 0}$ be a $( \mathcal{F}_t)$-martingale, then there exists a RCLL modification $Y$ of $X$,  such that $Y$ is also a $(\mathcal{F}_t)$-martingale. 
+\end{thm}
+The above theorem states that under the usual conditions (which are reasonable conditions to work with in continuous time models and stochastic integration theory) RCLL martingales are the most general martingales to consider. 
+\newpage
+With the help of Theorem \ref{thmapp1} we now want to prove several properties of the crossvariation in this most general setup. 
+\begin{lem} \label{applem1} For $L,M \in \mathcal{H}_0^2$, define $[L,M]:= \frac{1}{4}([L+M]-[L-M])$. Then $[L,M]$ is the unique (RCLL) process $B$, null at $0$, of finite variation with $\Delta B = \Delta L \Delta M$ and such that $LM-B$ is a uniformly integrable martingale.
+\end{lem}
+\begin{proof}
+Since $L,M \in \mathcal{H}_0^2 $ we have $L+M \in \mathcal{H}_0^2$ and then by Theorem \ref{thmapp1} ii) we know that $(L+M)^2-[L+M]$ and $(L-M)^2 -[L-M]$ are two UI martingales. Thus
+\begin{align*}
+LM-[L,M] = \frac{1}{4}((L+M)^2-[L+M]-((L-M)^2-[L-M]))
+\end{align*}
+is also an UI martingale as a difference of two UI martingales. Moreover, by the definition of $[L,M]$ we have
+\begin{align*}
+[L,M] = \frac{1}{4}( [L+M]-[L-M]),
+\end{align*}
+i.e. $[L,M]$ is a difference of two increasing processes and thus of a finite variation process. The fact that $[L,M]_0=0$ is trivial. Furthermore
+\begin{align*}
+\Delta[L,M]&= \frac{1}{4}( \Delta [L+M]-\Delta[L-M]) \\
+&= \frac{1}{4}( (\Delta(L+M))^2- ( \Delta(L-M))^2)  \\
+& = \frac{1}{4}(( \Delta L + \Delta M)^2- ( \Delta L- \Delta M)^2 )  \\
+& = \frac{1}{4} ( 4 \Delta L \Delta M) = \Delta L \Delta M. 
+\end{align*}
+Where we used Theorem \ref{thmapp1} i). 
+\\\\
+Suppose that $B$ is another process satisfying the characterizing properties. Then
+\begin{align*}
+B-[L,M]=(B-LM)+(LM-[L,M])
+\end{align*}
+is a UI martingale, null at $0$ and of finite variation. Moreover
+\begin{align*}
+\Delta ( B- [L,M]) = \Delta B - \Delta [L,M] = \Delta L \Delta M - \Delta L \Delta M =0.
+\end{align*}
+So, since the associated jumps of our RCLL UI martingale $B-[L,M]$ are zero, it is in fact a \textbf{continuous} martingale and we have already established that it is of finite variation, null at $0$. So this shows that $B$ and $[L,M]$ are indistinguishable.  
+\end{proof}
+\newpage
+\begin{lem} $[ \cdot ,  \cdot]$ is bilinear and symmetric.
+\end{lem}
+\begin{rem} It can be shown that for every stopping time $\tau$, one has $[L,M]^\tau = [L,M^\tau]$. 
+\end{rem}
+\begin{proof}
+The symmetric follows directly from the definition. Suppose now that $L,M,N  \in \mathcal{H}_0^2$. Then as in the proof of Lemma \ref{applem1} we have 
+\begin{align*}
+(L+M)N-[L+M,N] \\ = \frac{1}{4}((L+M+N)^2-[L+M+N]^2-((L+M-N)^2-[L+M-N]))
+\end{align*}
+is a UI martingale as a difference of UI martingales. Moreover we have
+\begin{align*}
+\Delta[L+M,N] = \Delta(L+M) \Delta N = \Delta L \Delta N + \Delta M \Delta N = \Delta [L,N] + \Delta[M,N].
+\end{align*}
+Thanks to Lemma \ref{applem1} we know that for $X,Y \in \mathcal{H}_0^2 $, $[X,Y]$ is the unique process, null at $0$ of finite variation with $\Delta[X,Y]= \Delta X \Delta Y$ and such that $XY-[X,Y]$ is a UI martingale. Thus, by our calculations above and by the uniqueness of $[ \cdot , \cdot]$ we conclude the bilinearity. 
+\end{proof}
+\begin{lem} Suppose $L \in \mathcal{H}_0^{2,c}$ and $M \in \mathcal{H}_0^{2,d} = ( \mathcal{H}_0^{2,c})^\perp$. Then $[L,M] \equiv 0$. 
+\end{lem}
+\begin{proof}
+Recall (source: Jean Jacod, Albert N. Shiryaev, Limit Theorems for Stochastic Processes L1.44) 
+\begin{prop} \label{propjean} Let $X=(X_t)_{t \geq 0}$ be an adapted RCLL process. Then $X$ is a uniformly integrable martingale if and only if for each stopping time $\tau$, the variable $X_\tau$ is integrable and satisfies $\EE(X_\tau)=\EE(X_0).$ 
+\end{prop}
+Let $\tau$ be a stopping time. Clearly $L^\tau \in \mathcal{H}_0^{2,c}$ and $M^\tau \in \mathcal{H}_0^{2,d}$. So we have by definition of the orthogonal complement that 
+\begin{align*}
+\EE(L_\tau M_\tau ) = \EE(L_\infty^\tau M_\infty^\tau)=0.
+\end{align*}
+Thus by Proposition \ref{propjean} $LM$ is a UI martingale. Moreover, we also have $\Delta(L,M)= \Delta L \Delta M=0$, where we used the fact that $L \in \mathcal{H}_0^{2,c}$ is continuous. Thus $[L,M]$ is also continuous.
+\\\\
+Since $LM$ and $LM-[L,M]$ are both UI martingales,  it follows that $[L,M]$ is also a UI martingale. So,  we have shown that $[L,M]$ is a continuous martingale of finite variation and null at $0$,  hence we must have $[L, M] \equiv 0$. 
+\end{proof}
+\newpage
+\begin{lem} \label{lemapp4} Suppse $L,M \in \mathcal{H}_{0, \text{loc}}^2$. Show that 
+\begin{align*}
+[L,M]= \langle L^c,  M^c \rangle + [L^d, M^d] = \langle L^c ,  M^c \rangle + \sum_{0 < s \leq \cdot } \Delta L_s \Delta M_s. 
+\end{align*}
+\end{lem}
+\begin{rem} A small remark on the notation used. Since $L^c,  M^c \in \mathcal{H}_0^{2,c}$ are continuous we use the notation $\langle L^c, M^c \rangle $ which denotes the quadratic variation of the process as discussed in Brownian Motion and stochastic calculus. In the continuous case we have $\langle L^c, M^c \rangle = [L^c,  M^C]$. But in general, if $L, M $ are RCLL, then $[L,M] \neq \langle L, M \rangle$, since by Lemma \ref{applem1} the process $[L,M]$ is RCLL and always has an associated jump process $\Delta[L,M]$ that satisfies $\Delta[L,M] = \Delta L \Delta M$.  
+\end{rem}
+\begin{proof}
+By bilinearity of $[ \cdot , \cdot]$ the first equality follows immediately. Moreover by stopping, we only need to show that if $M \in \mathcal{H}_0^{2,d}$, then 
+\begin{align*}
+[M]= \sum_{0 < s \leq \cdot} ( \Delta M_s)^2.
+\end{align*}
+Denote the process on the RHS by $R$. Let $\tau$ be a stopping time. Then
+\begin{align*}
+\EE( M_\tau^2- R_\tau ) = \EE((M_\infty^\tau)^2- R_\infty^\tau)=0
+\end{align*}
+by Theorem \ref{thmapp1} i). Thus by Proposition \ref{propjean} we conclude that $M^2-R$ is a UI martingale. Since $R$ is clearly an increasing, adapted, RCLL process, by Theorem \ref{thmapp1} ii) it suffices to check the jump property and the claim will then follow by the uniqueness of $[ \cdot]$. Indeed,
+\begin{align*}
+\Delta R_t = \sum_{0 \leq s \leq t} ( \Delta M_s)^2 - \sum_{0 \leq s \leq t-} ( \Delta M_s)^2 = ( \Delta M_t)^2.
+\end{align*}
+So we have verified that $\Delta R= ( \Delta M)^2$, hence by the uniqueness of $[M]$ we must have $[M]=R$.
+\end{proof}
+\newpage
+We will conclude with an exercise:
+\begin{exe} Let $N=(N_t)_{t \geq 0}$ be a \textit{Poisson process} with rate $\lambda >0$ and $(Y_k)_{k \geq 1}$ a sequence of random variables, independent of $N$ and such that $Y_k$ are i.i.d., square-integrable with mean $\mu$, variance $\sigma$ and $\PP(Y_k=0)=0$. Define the compensated compound Poisson process $X=(X_t)_{t \geq 0}$ by 
+\begin{align*}
+X_t:= \sum_{k=1}^{N_t} Y_k - \mu \lambda t,
+\end{align*}
+moreover, assume about the filtration that $X$ is a Lévy process with respect to $( \mathcal{F}_t)_{t \geq 0}$. (This is for instance satisfied if the filtration is generated by $X$). 
+\\\\
+\textbf{Claim}: $X \in \mathcal{H}_{0, \text{loc}}^{2,d}$ and $[X]_t = \sum_{k=1}^{N_t} Y_k^2$. 
+\end{exe}
+\textit{Hint:} For $n \in \mathbb{N}$, denote by $\tau_n := \inf \{ t \geq 0 : N_t = n \}$ the $n$-th jump time of the Poisson process. The elementary theory of Poisson processes shows that $\tau_n$ is Gamma($n,  \lambda$)-distributed. In particular,  $\EE( \tau_n) = \frac{n}{\lambda}$ and Var$( \tau_n) = \frac{n}{\lambda^2}$. 
+\begin{proof}
+Obviously we have $X_0=0 \ \PP$-a.s. By conditioning we get
+\begin{align*}
+\EE (X_t)& = \sum_{n=1}^\infty \EE\left( \sum_{k=1}^n Y_k  \mid N_t = n \right) \PP(N_t=n)- \mu \lambda t \\
+&= \sum_{n=1}^\infty \EE \left( \sum_{k=1}^n Y_k \right) e^{- \lambda t} \frac{\lambda^n t^n}{n!}- \mu \lambda t \tag{$N_t \sim P_o( \lambda) \perp Y_k$} \\
+& =\sum_{n=1}^\infty n \mu e^{- \lambda t} \frac{\lambda^n t^n}{n!}- \mu \lambda t \\ & = \mu \lambda t e^{- \lambda t} \sum_{n=0}^\infty  \frac{\lambda^n t^n}{n!}- \mu  \lambda t =0.
+\end{align*}
+Indeed, the above method can be used to show Wald's equation
+\begin{lem}[Wald's equation] Let $(X_n)_{n \in \mathbb{N}}$ be a sequence of real-valued, i.i.d. distributed random variables and let $N$ be a nonnegative integer-valued random variable that is independent of the sequence $(X_n)_{n \in \mathbb{N}}$. Suppose that $N$ and the $X_n$ have finite expectations, then
+\begin{align*}
+\EE \left( \sum_{n=1}^N X_n \right) = \EE(N)\EE(X_1).
+\end{align*}
+\end{lem}
+Applying Wald's equation to our setup yields indeed that \\ $\EE( \sum_{k=1}^{N_t} Y_k) = \EE( N_t) \EE(Y_1) = \lambda t \mu$, as expected. 
+\newpage
+In order to compute the variance we make use of 
+\begin{lem}[Blackwill-Girshick equation]Let $(X_n)_{n \in \mathbb{N}}$ be a sequence of real-valued, i.i.d. distributed random variables and let $N$ be a nonnegative integer-valued random variable that is independent of the sequence $(X_n)_{n \in \mathbb{N}}$. Suppose that $N$ and the $X_n$ have second moment, then
+\begin{align*}
+\text{Var} \left( \sum_{n=1}^N X_n\right) = \text{Var}(N)(\EE(X_1))^2+ \text{Var}(X_1)\EE(N).
+\end{align*}
+\end{lem}
+We thus get 
+\begin{align*}
+\EE(X_t^2) = \text{Var} \left( \sum_{k=1}^{N_t} Y_k \right) = \text{Var}(Y_k) \EE(N_t) + \EE(Y_k)^2 \text{Var}(N_t)= ( \sigma^2 + \mu^2) \lambda t.
+\end{align*}
+So $X_t$ is square-integrable for each $t \geq 0$. Moreover,  $X$ is a martingale because of the independent and stationary increments (Lévy-Process) and $\EE(X_t)=0$. Furthermore we note that since $Y_k \neq 0 \ \PP$-a.s., $X$ has a jump iff $N$ has a jump. Indeed,
+\begin{align*}
+\Delta X_t = 0 \iff \sum_{k=1}^{N_t} Y_k - \sum_{k=1}^{N_{t-}} Y_k =0 \iff \sum_{k=1}^{N_t} Y_k = \sum_{k=1}^{N_{t-}} Y_k
+\end{align*}
+and since $Y_k \neq 0 \ \PP$-a.s., the two sums on the right most expression agree if and only if $N_t=N_{t-}$ i.e. $\Delta N_t=0$. 
+\\\\
+Define $\tau_n := \inf \{ t \geq 0 : N_t = n \}.$ We know (by the hint) that $\tau_n \sim \text{Gamma}(n, \lambda)$ and so $\EE(\tau_n)=n/\lambda$ and Var$( \tau_n)= n/ \lambda^2$. We observe that $(X^{\tau_n})^2$ is a submartingale. Thus 
+\begin{align*}
+\sup_{t \geq 0 } \EE((X_t^{\tau_n})^2) &\leq \EE(X_\infty^{\tau_n})^2) \\
+&= \EE ( X_{\tau_n}^2)  \\
+&= \EE \left[ \left( \sum_{k=1}^n Y_k - \mu \lambda \tau_n \right)^2 \right] \\
+&= \text{Var} \left( \sum_{k=1}^n Y_k - \mu \lambda \tau_n \right) + \EE \left[ \sum_{k=1}^n Y_k - \mu  \lambda \tau_n \right]^2  \\
+&= n \sigma^2 + \frac{n \mu^2 \lambda^2}{\lambda^2} + (n \mu - n \mu)^2 = n ( \sigma^2 + \mu^2). \tag{*}
+\end{align*}
+\newpage
+To compute $\EE( \sum_{s >0} ( \Delta X_s^{\tau_n})^2)$, we observe that $\Delta X_{\tau_k}$, for $1 \leq k \leq n$ are i.i.d. and $\Delta X_{\tau_k} \overset{d}= Y_k$. So  
+\begin{align*}
+\EE \left[ \sum_{s >0} ( \Delta X_s^{\tau_n})^2 \right] = \EE \left[ \sum_{k=1}^n ( \Delta X_{\tau_k})^2 \right] = \EE \left[ \sum_{k=1}^n Y_k^2 \right] = n( \mu^2 + \sigma^2) \overset{*}= \EE[( X_\infty^{\tau_n})^2].
+\end{align*}
+By Theorem \ref{thmapp1} i) this shows that $X^{\tau_n} \in \mathcal{H}_0^{2,d}$ and thus $X \in \mathcal{H}_{0, \text{loc}}^{2,d}$.
+\\\\
+Finally, by Lemma \ref{lemapp4}, we know that for $X \in \mathcal{H}_{0, \text{loc}}^{2,d}$ we have 
+\begin{align*}
+[X^d ]_t=[X]_t= \sum_{0 < s \leq t} ( \Delta X_s)^2
+\end{align*}
+\end{proof}
+\end{document}
