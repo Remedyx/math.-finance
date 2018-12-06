@@ -2637,7 +2637,7 @@ Suppose that $|f| \leq w$ and $\alpha, \beta$ are both finite. Then we expect $\
 \beta \leq \inf_{Q \in \PP_{e, \sigma}^w} \EE_Q(f) \leq \sup_{Q \in \PP_{e, \sigma}^w}\EE_Q(f) \leq \alpha.
 \end{align*}
 Essentially, this is the same argument as for Lemma \ref{L71}. 
-\begin{thm}[Hedging duality, general form] Suppose $S$ satisfies (NFLVR) and $w$ is a feasible weight function. If $f \geq -w$, then 
+\begin{thm}[Hedging duality, general form] \label{T92} Suppose $S$ satisfies (NFLVR) and $w$ is a feasible weight function. If $f \geq -w$, then 
 \begin{align*} \label{91}
 \alpha = \inf \{ a \in \mathbb{R}: f-a \in \mathcal{G}_w-L_+^0 \} = \sup_{Q \in \PP_{e, \sigma}^w} \EE_Q(f), \tag{9.1}
 \end{align*}
@@ -2669,4 +2669,159 @@ This gives arbitrage-free price bounds. For $\beta= \alpha$, there is a unique p
 \end{enumerate}
 \end{lem}
 \noindent \textbf{Intuition}: We cannot superreplicate $f$ for less than $\alpha$ - but there is some surplus at $T$.  
+\begin{proof}
+By symmetry, we only argue 1). By Theorem \ref{T91} $\alpha \in \Gamma_+$ and so there exists $g_0 \in \mathcal{G}_w$ with $f \leq \alpha + g_0$. Write $g_0 = G_T( \vartheta^0)$ with $\vartheta^0$ $w$-admissible and define \begin{align*}
+\tau := \inf \{ t \in [0,T]: G_t( \vartheta^0) \geq 1 + | \alpha | + \|f\|_\infty \}. 
+\end{align*}
+By RC, $G_\tau ( \vartheta^0) \geq 1 + | \alpha| + \|f\|_\infty \geq \max(0, 1 + f- \alpha)$ on $\{ \tau \leq T\}$. Moreover, set $\vartheta:= \vartheta^0 1_{(\!(0, \tau ]\!]} \in L(S)$ to get 
+\begin{align*}
+G_t( \vartheta) = G_t( \vartheta^0)1_{\{ t < \tau \}} + G_\tau( \vartheta^0)1_{\{ t \geq \tau \}}.
+\end{align*}
+We know that $\vartheta^0$ is $w$-admissible, and $G_\tau ( \vartheta^0) \geq 0 \geq -a \EE_Q(w \mid \mathbb{F})$, for $a>0$ and $Q \in \PP_{e, \sigma}^w$, and so also $\vartheta$ is $w$-admissible.  Next, 
+\begin{align*}
+\alpha + G_T( \vartheta) &= ( \alpha + g_0) 1_{\{ T < \tau\}} + ( \alpha + G_\tau( \vartheta^0))1_{\{ T \geq \tau\}} \\
+& \geq f1_{\{ T < \tau}\} + (1+f)1_{\{ T \geq \tau\}} = f + 1_{\{ T \geq \tau\}}.
+\end{align*}
+So $g:= G_T( \vartheta) \in \mathcal{G}_w$ superreplicates $f$ from initial wealth $\alpha$, and this is already strict if $\PP( T \geq \tau)>0$. 
+\newpage
+What happens if $\PP( T \geq \tau )=0$, i.e. if $\tau > T$ $\PP$-a.s.? \\\\
+In this case, we have $G_\cdot ( \vartheta^0)$ bounded above (by $1 + | \alpha| + \|f\|_\infty$); and because $\vartheta^0$ is $w$-admissible, it is also for each $Q \in \PP_{e, \sigma}^w$ bounded below by some constant multiple of $Q$-martingale $\EE_Q(w \mid \mathbb{F})$. So $G_\cdot( \vartheta^0)$ is a  local $Q$-martingale (by Ansel-Stricker) and then a true $Q$-martingale, for any $Q \in \PP_{e,  \sigma}^w$. So we get 
+\begin{align*}
+\EE_Q(g_0) = \EE_Q( G_T( \vartheta^0))=0, \text{ for all } Q \in \PP_{e, \sigma}^w
+\end{align*}
+and we also have $f \leq \alpha + g_0$ a.s. If we had equality ("$=$") a.s., we should get $\EE_Q(f)= \alpha$ for all $Q \in PP_{e, \sigma}^w$, which gives $\alpha= \beta$, a contradiction. So also in case $\tau > T$ $\PP$-a.s., we get $\PP(f < \alpha + g_0)>0$ and we are done. 
+\end{proof}
+\begin{rem} \
+\begin{enumerate}
+\item Proof crucially exploits that $f$ is bounded. If only $|f| \leq w$, it is not clear what happens.
+\item Assumption $|f| \leq w$ is harmless if $f$ is bounded; indeed, take any feasible weight function $w_0$ and set $w:=w_0( \|f\|_\infty \vee 1)$ to get feasible weight function $w$ with $|f| \leq w$ and $\mathcal{G}_w= \mathcal{G}_{w_0}$. So such $w$ always exists. 
+\end{enumerate}
+\end{rem}
+Now we study those payoffs $f$ for which $\alpha = \beta$ i.e.buyer and seller price agree. Let us first discuss how one might define \textbf{attainability} of a given payoff. 
+\\\\
+\textbf{Recall}: We called $f$ superreplicable at price $a$ if $f-a \in \mathcal{G}_w-L_+^0$, i.e. $f \leq a + g$ i.e. $f \leq a + g$ for some $g \in \mathcal{G}_w$. So we might want to call $f$ attainable at price $c$ if $f=c+g$ for some $g \in \mathcal{G}_w$. Then one could try to define seller price also as inf over such $c$. But there are two problems:
+\begin{enumerate}
+\item It may happen that (even if $\Gamma_+ \neq \emptyset)$, getting $f= c+g$ a.s. is impossible (even if $f \leq c+g$ a.s. works). So trying to have exact replication is too restrictive. 
+\item It could happen that $f=c+g$ a.s. for some $g \in \mathcal{G}_w$, but also $f \leq c+g'$ a.s. for some other $g'\in \mathcal{G}_w$ with $\PP(c+g' > f) >0$. So $\vartheta$ from $G_T( \vartheta)=g$ would exactly replicate $f$ at cost $c$, but strategy $\vartheta'$ from $G_T( \vartheta')=g'$ achieves strictly more than $\vartheta$ at some initial cost $c$. Translated back to $f$, this means that for amount $c$, we can afford payoff $c+g=f;$ but this payoff $f$ is not a good choice because we could also afford, at some price $c$, the better payoff $f'=c+g'$.  
+\end{enumerate}
+In order to avoid issue 2) as described on the above, we recall the following definition of maximality:
+\newpage
+\begin{defn} For a subset $A \subset L^0$, an element $a \in A$ is \textbf{maximal in $A$} if for $a' \in A$ with $a' \geq a$ a.s. implies $a'=a$ a.s. (In particular, $f$ as in issue 2) is not maximal in $c+ \mathcal{G}_w)$
+\end{defn}
+\begin{defn} Let $w$ be a feasible weight function. Then $f \in L^0$ is $w$-hedgeable if $f=c+g$ a.s. with $c \in \mathbb{R}$ and $g \in \mathcal{G}_w$ is maximal in $\mathcal{G}_w$. 
+\end{defn}
+Loosely speaking, non-maximal $g \in \mathcal{G}_w$ means \textbf{stupid trading} - one could do strictly better at same cost. 
+\begin{rem}Having non-maximal $g \in \mathcal{G}_w$ does \textbf{not imply} that there is arbitrage! Indeed: Suppose $g,g' \in \mathcal{G}_w$ with $g' \geq g$ a.s. and $\PP(g'>g)>0$. Would like to buy $g'$ and sell $g$ to generate from $0$ initial wealth final payoff $g'-g \in L_+^0 \setminus \{0\}$. \textbf{But}: these "assets" need not be for sale; and writing $g= G_T( \vartheta), \ g' = G_T( \vartheta')$ and then using $\varphi \teq (v_0=0, \vartheta'-\vartheta)$ has $V_0( \varphi)=v_0=0$ and $V_T( \varphi)  = G_T( \vartheta'-\vartheta) = g'-g \in L_+^0 \setminus \{0\}$, but $\vartheta'-\vartheta$ doesn't have to be $w$-admissible!
+\end{rem}
+Back to our question: what can we say about $f$ if $\alpha(f)= \beta(f)$?
+\begin{prop} \label{P94} Suppose (NFLVR) and $w$ is a feasible weight function. Let $f$ be payoff with $|f| \leq w$. If $\alpha= \beta$ and both are in $\mathbb{R}$, then $f$ is $w$-hedgeable. 
+\end{prop}
+\begin{proof}
+By Theorem \ref{T91} $\alpha \in \Gamma_+$ and $\beta \in \Gamma_-$ so that $f- \alpha$ and $-f+ \beta = -(f- \alpha)$ are both in $\mathcal{G}_w-L_+^0$. So there exists $g_1,g_2 \in \mathcal{G}_w$ with $f \leq \alpha + g_1$ and $-f \leq \alpha + g_2$. Adding these up gives $g_1 + g_2 \geq 0$ a.s. but Lemma \ref{L81} part 1) also gives $\EE_Q(g_1+g_2) \leq 0$ for any $Q \in \PP_{e, \sigma}^w$ so that we get $g_1 + g_2=0$ a.s. or $g_2=-g_1$ a.s. But hten $\alpha + g_1= \alpha -g_2 \leq f \leq \alpha + g_1$ a.s. and thus $f= \alpha + g_1$ a.s. 
+\\\\
+It remains to show that $g_1$ is maximal in $\mathcal{G}_w$. By Theorem \ref{T92} the assumption $\alpha = \beta$ means that 
+\begin{align*}
+\sup_{Q \in \PP_{e, \sigma}^w } \EE_Q(f) = \inf_{Q \in \PP_{e, \sigma}^w } \EE_Q(f)
+\end{align*}
+and thus the mapping $Q \mapsto \EE_Q(f)$ is finite-valued (because $\alpha= \beta \in \mathbb{R})$ and constant, with value $\alpha$. But $f= \alpha + g_1$ a.s. and so we must have $\EE_Q(g_1)=0$ for all $Q \in \PP_{e, \sigma}^w$ and in particular 
+\begin{align*} \label{92}
+\EE_Q(g_1)=0, \text{ for some } Q \in \PP_{e, \sigma}^w. \tag{10.2}
+\end{align*}
+But (\ref{92}) already implies that $g_1$ is maximal in $\mathcal{G}_w$. Indeed: if $g' \in \mathcal{G}_w$ with $g' \geq g_1$ a.s. then we get 
+\begin{align*}
+0 \overset{(\ref{92})}= \EE_Q(g_1) \leq \EE_Q(g') \overset{\text{L } \ref{L81},1}\leq 0  
+\end{align*}
+and therefore $g'=g_1$ a.s. ($Q$ and $\PP$ a.s.). 
+\end{proof}
+\newpage
+Proof of Proposition \ref{P94} shows that $f$ is $w$-hedgeable if it has \textbf{same expectation} under all $Q \in \PP_{e, \sigma}^w$. This is analogous to discrete-time result, and also intuitive: if $f$ has \textbf{unique price}, then it can be hedged. \\\\
+Converse looks even more plausible: if $f$ is $w$-hedgeable, then $f=c+g$ a.s. and $g \in \mathcal{G}_w$ is maximal; so price of $f$ should be $c$, and -as in discrete time- should be computable as $c= \EE_Q(f)$ for any $Q \in \PP_{e, \sigma}^w$. Surprisingly, this is not true! If $f$ is bounded, this is correct (see below); but in general, there can be $g \in \mathcal{G}_w$ with $\EE_Q(g)=0$ for some $Q \in \PP_{e, \sigma}^w$, but $\EE_{Q'}(g) <0$ for some other $Q' \in \PP_{e, \sigma}^w$. See example below. \\
+\\
+Correct extension of Theorem \ref{T62} to general case is as follows:  
+\begin{thm}[Characterisation of $w$-hedgeable payoffs] \label{T95} Suppose (NFLVR) and $w$ is a feasible weight function. For any payoff $f \geq -w$ the following are equivalent:
+\begin{enumerate}
+\item $f$ is $w$-hedgeable.
+\item $f=c+g$ for some $c \in \mathbb{R}$ and some $g \in \mathcal{G}_w$ satisfying $\EE_{Q^*} (g)=0$ for some $Q^* \in \PP_{e, \sigma}^w$. 
+\item[2'.] $f=c+ G_T( \vartheta)$ for some $c \in \mathbb{R}$ and $\vartheta \in \Theta_w$ such that $G_\cdot( \vartheta)$ is a $Q^*$-martingale on $[0,T]$ for some $Q^* \in \PP_{e, \sigma}^w$. 
+\item $\sup_{Q \in \PP_{e, \sigma}^w} \EE_Q(f)$ is finite and attained in some $Q^{**} \in \PP_{e, \sigma}^w$. 
+\end{enumerate}
+\end{thm}
+\begin{rem} If $f$ is $w$-hedgeable and \textbf{bounded}, then in $2')$ stochastic integral process $G_\cdot( \vartheta)$ is $Q^*$-martingale whose final value $f-c$ is bounded. But then $G_\cdot ( \vartheta)$ is bounded, and so it is $Q$-martingale under all $Q \in \PP_{e, \sigma}^w$. In turn, this gives $\EE_Q(g) = \EE_Q(G_T(\vartheta))=0$ for all $Q \in \PP_{e, \sigma}^w$ and so $Q \mapsto \EE_Q(f) \equiv c$ is constant over $\PP_{e, \sigma}^w$ - exactly as in discrete time! 
+\end{rem}
+\begin{proof}
+"$2) \iff 2')$": For any $g \in \mathcal{G}_w$ with $g= G_T( \vartheta)$ and $\vartheta \in \Theta_w$, $G_\cdot( \vartheta)$ is by Lemma \ref{L81} under any $Q \in \PP_{e, \sigma}^w$ a $Q$-supermartingale, null at $0$. \\ So $ 0 = \EE_{Q^*}(g)= \EE_{Q^*}(G_T( \vartheta))$ is equivalent to $G_\cdot( \vartheta)$ being a $Q^*$-martingale. 
+\\\\
+"$2) \implies 3)$": For any $Q \in \PP_{e, \sigma}^w$, part 1) of Lemma \ref{L81} gives $\EE_Q(f) = c + \EE_Q(g) \leq c;$ so if we have equality for $Q^*$, then $Q^{**}:= Q^*$ attains the supremum (and that is also finite). 
+\\\\ 
+"$3) \implies 1)"$: Set $c:= \sup_{Q \in \PP_{e, \sigma}^w} \EE_Q(f)= \EE_{Q^*}(f)$. This is finite, by assumption, and so Theorem \ref{T92} and Theorem \ref{T91} gives that $c \in \Gamma_+$ so that $f \leq c + g$ for some $g \in \mathcal{G}_w$. By Lemma \ref{L81} part 1) we get 
+\begin{align*}
+c= \EE_{Q^*}(f) \overset{f \leq c+g}\leq c + \EE_{Q^*}(g) \overset{\text{L } \ref{L81}}\leq c
+\end{align*}
+and so we must have $f= c+g$ a.s. and $\EE_{Q^*}(g) =0$. This implies that $g$ is maximal in $\mathcal{G}_w$ (see argument after (\ref{92})) and so 1) follows. 
+\\\\
+"$1) \implies 2)$": We need to show existence of some $Q^* \in \PP_{e, \sigma}^w$ with $\EE_{Q^*}(g)=0$, assuming that $g \in \mathcal{G}_w$ is maximal in $\mathcal{G}_w$. \\\\
+\textbf{Idea}: use variant of Kreps-Yan Theorem (see Appendix) for $p= \infty$. But $g$ is not bounded...
+\\
+\textbf{Goal}: find another $w'$ such that $\frac{g}{w} \in L^\infty$ and apply Kreps-Yan theorem to $\frac{g}{w'}.$
+\\\\
+First, $\EE_Q(g) \leq 0$ by Lemma \ref{L81} and so $g^+ \in L^1(Q)$, for any $Q \in \PP_{e, \sigma}^w$. Define $w' := w+g^+$. This is again a feasible weight function and $\PP_{e,  \sigma}^w= \PP_{e, \sigma}^w$. Next, $\mathcal{G}_w \subset \mathcal{G}_{w'}$ and so we do not know if $g$ is also maximal in $\mathcal{G}_{w'}$. But it is: Indeed, if $\widetilde{g} \geq g$ and $\widetilde{g} \in \mathcal{G}_{w'}$, then $\widetilde{g} \geq g \geq -aw$ (as $g \in \mathcal{G}_w$ and so part 4) of Lemma \ref{L81} implies that actually $\widetilde{g} \in \mathcal{G}_{aw} = \mathcal{G}_w$. But now maximality of $g$ in $\mathcal{G}_w$ gives $\widetilde{g} = g$ a.s. and so $g \in \mathcal{G}_w \subset \mathcal{G}_{w'}$ is even maximal in $\mathcal{G}_{w'}$ as claimed. 
+\\\\
+\textbf{Now}: $g \geq -aw$ for some $a \geq 0$, as $g \in \mathcal{G}_w$, and $g \leq g^+$. So $\frac{g}{w'}= \frac{g}{w+g^+}$ is bounded. Moreover, we claim that 
+\begin{align*}
+\left( \mathcal{C}_{w'}- \frac{g}{w'}\right) \bigcap L_+^\infty = \{0\},
+\end{align*}
+because $g$ is maximal in $\mathcal{G}_{w'}$. 
+\\\\
+$\lceil$ If $h \in \mathcal{C}_w - \frac{g}{w'}$, then $h= \frac{1}{w'}( \widetilde{g}- \widetilde{Y})- \frac{g}{w'}$ with $\widetilde{g} \in \mathcal{G}_{w'}, \widetilde{Y} \geq 0.$ If also $h \geq 0$, then we get $\widetilde{g}= hw' + \widetilde{Y}+g \geq g$. By maximality of $g$ in $\mathcal{G}_{w'}$, this yields $\widetilde{g}=g$ a.s., hence $hw' + \widetilde{Y}=0$, and this forces $\widetilde{Y}=0$ and $h=0$. \\  This proves the claim above. \hfill $\rfloor$ \\
+\\
+Next, $\mathcal{C}_{w'}$ is weak* closed in $L^\infty$ by Corollary \ref{C83}. So we can apply modified Kreps-Yan Theorem (Appendix) and get some $Q_0^* \approx \PP$ with $\EE_{Q_0^*} (Y) \leq 0$, for all $Y \in \mathcal{C}_{w'}$, and $\EE_{Q_0^*}( \frac{g}{w'}) =0$. Define probability measure $Q^* \approx \PP$ by $\frac{dQ^*}{dQ_0^*}:= \text{const} \frac{1}{w'}$. Then $\EE_{Q^*}(w') = \text{const} < \infty$, $\EE_{Q^*} (g) =0$ and $\EE_{Q^*}(Yw') \leq 0$ for all $Y \in \mathcal{C}_{w'}$. \\
+\\
+But now, for any $\widetilde{Y} \in \mathcal{G}_{w'} -L_+^0$ such that $\frac{\widetilde{Y}}{w'}$ is bounded, $\widetilde{Y}/w'$ is in $\mathcal{C}_{w'}$, by definition. So $\EE_{Q^*}(\widetilde{Y}) \leq 0$ for all such $\widetilde{Y}$. Now last step of proof of Theorem \ref{T84} shows that therefore $Q^* \in \PP_{e, \sigma}$, and so also $Q^* \in \PP_{e, \sigma}^{w'} = \PP_{e, \sigma}^w$. That is $1) \implies 2)$. 
+\end{proof}
+\newpage
+\begin{exmp} For unbounded $f$, 3) in Theorem \ref{T95} cannot be improved to 
+\begin{enumerate}
+\item[3'.] $Q \mapsto \EE_Q(f)$ is constant over $Q \in \PP_{e, \sigma}^w$
+\end{enumerate}
+We construct model and $g \in \mathcal{G}_w$ with $\EE_{Q'}(g)=0$ for some $Q' \in \PP_{e, \sigma}^w$ (and so $g$ is maximal in $\mathcal{G}_w$, see after (\ref{92})), but $\EE_Q(g) <0$ for some other $Q \in \PP_{e, \sigma}^w $. \textbf{So}: a complete analogy to the discrete-time result of Theorem \ref{T62} is impossible. \\
+\\
+For simplicity,  work on $[0, \infty)$ or $[0, \infty]$. Let $W,W'$ be independent BMs under $\PP$, define $X_t:= \mathcal{E}(W)_t = \exp(W_t- \frac{1}{2}t)$ and $Y:= \mathcal{E}(W')$ and 
+\begin{align*}
+\sigma&:= \inf \{ t \geq 0 : X_t = 1/2\}, \\
+\tau &:= \inf\{ t \geq 0 : Y_t = 2 \}.  
+\end{align*}
+By LLN for BM, $X_t \to 0$ a.s. as $t \to \infty$ so that $\sigma < \infty \ \PP$-a.s. Also $Y_t \to 0$ as $t \to \infty$, but $\PP( \tau = \infty) = 1/2$. \textbf{Indeed}: $Y_\tau = 2$ on $\{ \tau < \infty\}, \ Y_\tau =0$ on $\{ \tau = \infty\}$ and $Y^\tau$ is bounded martingale. So stopping theorem gives
+\begin{align*}
+1 = \EE(Y_0)= \EE( Y_\tau) = 2 \PP( \tau < \infty). 
+\end{align*} 
+Now define $S:= X^{ \tau \wedge \sigma}$ so that $X \in \mathcal{M}_\text{loc}(\PP)$ with $S_0=1$. Then $S_\infty = X_{ \tau \wedge \sigma} = X_\sigma 1_{\{ \tau = \infty\}} + X_{ \tau \wedge \sigma} 1_{\{ \tau < \infty\}}$ and $X_\sigma = 1/2$. But $W,W'$ are independent; so $X$ and $\sigma$ are independent of $\tau$ and $\EE( X_{ \sigma \wedge t})= \EE(X_0)=1$ for any fixed $t$. So we can compute: 
+\begin{align*}
+\EE(S_\infty) &= \frac{1}{2} \PP( \tau = \infty) + \EE[ \underbrace{\EE( X_{ \sigma \wedge \tau} \mid \tau)}_{ \overset{\text{indep.}}= \underbrace{\EE(X_{ \sigma \wedge t})}_{=1} \mid_{t = \tau}} 1_{\{ \tau < \infty\}} ] \\
+&= \frac{1}{2} \PP( \tau = \infty) + 1 \PP( \tau < \infty) = \frac{3}{4}< 1. 
+\end{align*}
+So the payoff $g:= S_\infty - S_0 = \int_0^\infty 1 dS$ is in $\mathcal{G}_1$ because $\int_0^\cdot 1dS = S-S_0 \geq -1$, and $Q:= \PP \in \PP_{e, \text{loc}}^1$, but $\EE_Q(g) < 0$. 
+\\\\
+To find $Q' \in \PP_{e, \text{loc}}^1$ with $\EE_{Q'}(g)=0$ (which means that $S$ is a \textbf{true} $Q'$-martingale) we first define $Z:= Y^{ \tau \wedge \sigma}$. This is a martingale on $[0, \infty)$ and bounded (by $2$) hence of class (D), and so we can define $Q' \ll \PP$ by $\frac{dQ'}{d \PP}:= Z_\infty = Y_{\tau \wedge \sigma}$; but $\sigma < \infty \ \PP$-a.s. and $Y>0$ on $[0, \infty)$ so that $Z_\infty>0$ a.s. and so $Q' \approx \PP$. 
+\\\\
+\textbf{Claim}: $S$ is a $Q'$-martingale on $[0, \infty]$ (which then implies $\EE_{Q'}(g)=0$). By Bayes, it is equivalent to argue that $ZS$ is $\PP$-martingale on $[0, \infty]$. But 
+\begin{align*}
+SZ = (XY)^{ \tau \wedge \sigma} = ( \mathcal{E}(w) \mathcal{E}(W'))^{ \tau \wedge \sigma} = ( \mathcal{E}( W + W'))^{ \tau \wedge \sigma}
+\end{align*}
+is a nonnegative martingale on $[0, \infty)$ and hence a supermartingale on $[0, \infty)$ as well as on $[0, \infty]$. \textbf{So}: We only need to argue that $\EE(S_\infty Z_\infty)=1$. 
+\newpage
+\textbf{Now}: $Y^\tau$ is $\PP$-UI martingale so taht stopping theorem gives $Y_{ \tau \wedge \sigma} = \EE( Y_\tau \mid \mathcal{F}_{\tau \wedge \sigma})$, and $Y_\tau =0$ on $\{ \tau = \infty\}, \ Y_\tau =2$ on $\{ \tau < \infty\}$. Moreover, $\EE( X_{ \tau \wedge \sigma} 1_{\{ \tau < \infty\}} ) = 1/2$ as seen before. \textbf{Hence}:  
+\begin{align*}
+\EE( S_\infty Z_\infty) = \EE( X_{ \tau \wedge \sigma} Y_{ \tau \wedge \sigma}) \overset{ \EE(Y_\tau \mid \mathcal{F}_{ \tau \wedge \sigma})= Y_{ \tau \wedge \sigma}}= \EE( X_{ \tau \wedge \sigma} Y_\tau ) = \EE( X_{ \tau \wedge \sigma} 2 \cdot 1_{\{ \tau < \infty\}}) = 2 \cdot \frac{1}{2}=1. 
+\end{align*}
+This concludes the example. 
+\end{exmp}
+\newpage
+\section{Utility maximisation I: The primal problem}
+\textbf{Goal}: study basic problem of \textbf{optimal portfolio choice} with preferences given by \textbf{expected utility} from terminal wealth.\\
+\\
+\textbf{Setup}: standard model of financial market with $T < \infty$, $( \Omega, \mathcal{F}, \mathbb{F}, \PP)$ with $\mathbb{F}=(\mathcal{F}_t)_{t \in [0,T]}$ (satisfying the usual conditions), bank account $S^0 \equiv 1$ and discounted asset prices given by $\mathbb{R}^d$-valued semimartingale $S=(S_t)_{0 \leq t \leq T}$. Assume $\mathcal{F}_0$ is trivial (i.e. know everything at beginning) and impose absence of arbitrage via $\PP_{e, \sigma} \neq \emptyset$. \\
+\\
+Fix \textbf{initial wealth} $x>0$ and consider self financing strategy $\varphi \teq (x, \vartheta)$ with $\vartheta \in L(S)$ predictable $\mathbb{R}^d$-valued. Resulting \textbf{wealth process} is $V( \varphi)= V(x, \vartheta)= x + G( \vartheta) = x + \int \vartheta dS$ and we want $V( \varphi) \geq 0;$ so strategy $\varphi \teq (x, \vartheta)$ is $0$-admissible and integrand $\vartheta$ is $x$-admissible, $\vartheta \in \Theta_\text{adm}^x$. 
+\\\\
+\textbf{Goal}: find $0$-admissible $(x, \vartheta)$ to \textbf{maximise expected utility} $\EE[U(V_T( x, \vartheta))]$ \textbf{from terminal wealth} (over all $\vartheta \in \Theta_\text{adm}^x)$ where $U$ is utility function.  
 \end{document}
