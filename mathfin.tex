@@ -1543,7 +1543,7 @@ If (NUPBR) fails, then $\mathcal{G}^1$ is not bounded in $L^0$ and so there exis
 is in $\mathcal{G}_\text{adm}$ with $\widetilde{g}_n^- \to 0$ in $L^\infty$ because $\| \widetilde{g}_n \|_{L^\infty} \leq \frac{1}{\gamma_n}$. \\ But we also have $\PP( \widetilde{g}_n \geq 1) = \PP(g_n \geq \gamma_n) \centernot\to 0$, so $\widetilde{g}_n \centernot\to 0$ in $L^0$ and this contradicts 2). 
 \newpage
 In order to continue the proof we need an auxiliary result from probability theory which is extremely useful
-\begin{lem}\label{L44} For any sequence $(X_n)_{n \in \mathbb{N}} \subset L_+^0$, there exists convex combinations $\widetilde{X}_n \in \text{conv}(X_n,X_{n+1}, \dots )$, $n \in \mathbb{N}$ such that $(\widetilde{X}_n)_{n \in \mathbb{N}}$ converges $\PP$-a.s. to some $\widetilde{X}_\infty$ taking values in $[0, + \infty]$. Moreover, if $\PP( X_n \geq \alpha) \geq \delta > 0$ for some $\alpha >0$, then $\PP( \widetilde{X}_\infty >0 ) >0$. If conv($X_1, X_2, \dots )$ is bounded in $L^0$, then $\widetilde{X}_\infty < \infty$ $\PP$-a.s. 
+\begin{lem}[Komlós]\label{L44} For any sequence $(X_n)_{n \in \mathbb{N}} \subset L_+^0$, there exists convex combinations $\widetilde{X}_n \in \text{conv}(X_n,X_{n+1}, \dots )$, $n \in \mathbb{N}$ such that $(\widetilde{X}_n)_{n \in \mathbb{N}}$ converges $\PP$-a.s. to some $\widetilde{X}_\infty$ taking values in $[0, + \infty]$. Moreover, if $\PP( X_n \geq \alpha) \geq \delta > 0$ for some $\alpha >0$, then $\PP( \widetilde{X}_\infty >0 ) >0$. If conv($X_1, X_2, \dots )$ is bounded in $L^0$, then $\widetilde{X}_\infty < \infty$ $\PP$-a.s. 
 \end{lem}
 For a proof of Lemma \ref{L44} see Appendix B.
 \\
@@ -2824,4 +2824,227 @@ This concludes the example.
 Fix \textbf{initial wealth} $x>0$ and consider self financing strategy $\varphi \teq (x, \vartheta)$ with $\vartheta \in L(S)$ predictable $\mathbb{R}^d$-valued. Resulting \textbf{wealth process} is $V( \varphi)= V(x, \vartheta)= x + G( \vartheta) = x + \int \vartheta dS$ and we want $V( \varphi) \geq 0;$ so strategy $\varphi \teq (x, \vartheta)$ is $0$-admissible and integrand $\vartheta$ is $x$-admissible, $\vartheta \in \Theta_\text{adm}^x$. 
 \\\\
 \textbf{Goal}: find $0$-admissible $(x, \vartheta)$ to \textbf{maximise expected utility} $\EE[U(V_T( x, \vartheta))]$ \textbf{from terminal wealth} (over all $\vartheta \in \Theta_\text{adm}^x)$ where $U$ is utility function.  
+\\\\
+\textbf{Notation}: for $x>0$, set 
+\begin{align*}
+\mathcal{V}(x)&:= \left\{ V= V(x, \vartheta) = x + \int \vartheta dS : \vartheta \in L(S) \text{ and } V \geq 0 \right\} \\
+& = \left\{ x + \int \vartheta dS : \vartheta \in \Theta_\text{adm}^x \right\}.
+\end{align*}
+\textbf{Primal optimisation problem}: find $u(x):= \sup_{V \in \mathcal{V}(x)} \EE( U(V_T))$ for $x >0$, where $U$ is a utility function (on $(0, \infty)$). 
+\begin{defn} A \textbf{utility function} (on $(0, \infty))$ is a mapping $U: (0, \infty) \to \mathbb{R}$, strictly increasing, strictly concave, in $C^1$ and satisfying \textbf{Inada conditions}:
+\begin{align*}
+U'(0)&:= \lim_{x \searrow 0} U'(x)= + \infty, \\
+U'( \infty)&:= \lim_{x \to \infty} U'(x) = 0.
+\end{align*}
+\end{defn}
+\noindent \textbf{Interpretation}: $U$ quantifies subjective preferences: monetary amount $z$ is given a surjective utility/level of happiness $U(z)$. Increasing means "more is better" (people are greedy) and concave means "an extra dollar means more increase of happiness for a beggar than for a billionaire". Then \textbf{indirect utility} $u(x)$ is maximal expected utility one can achieve from initial wealth $x$ via trading with $0$-admissible strategy $\varphi \teq (x, \vartheta)$. 
+\newpage
+\begin{rem} \
+\begin{enumerate}
+\item[0.] Having $\varphi$ $0$-admissible matches with dom$U=(0, \infty)$. Having dom$U=(-a, \infty)$ with $a \geq 0$ is easily treated via translation. Allowing dom$U= \mathbb{R}$ becomes more complicated for defining "allowed" strategies, see e.g. Biagini/Frittelli (2005,2008). 
+\item A priori, $U$ is defined only on $(0, \infty)$. But $U(0):= \lim_{x \searrow 0} U(x)$ exists by monotonicity and is in $[- \infty, + \infty)$ and so $U(V_T)$ is well defined on $[- \infty,+ \infty)$. 
+\item For any random variable $f \geq 0$, set $\EE(U(f)):= - \infty$ if $U(f) \notin L^1(\PP)$. This is harmless because we maximize and $\vartheta \equiv 0$ gives $u(x) \geq U(x) > - \infty$. 
+\item If $S$ is not locally bounded, it may happen that $\Theta_\text{adm}^x = \{0\}$ and $\mathcal{V}(x)= \{ x \}$. Then problem is trivial with $u(x)=U(x)$.  
+\item Consider the following:
+\begin{exe} If $S$ allows arbitrage and $U$ is unbounded above, then $u \equiv + \infty$.
+\end{exe}
+So in general, problem only makes sense in arbitrage-free market. 
+\end{enumerate}
+\end{rem} 
+\noindent \textbf{Questions}: 
+\begin{enumerate}[label=(\alph*)]
+\item Does there \textbf{exist} optimal strategy $\vartheta^* \in \Theta_\text{adm}^x$, i.e.
+\begin{align*}
+\EE[ U (V_T(x, \vartheta^*))]= u(x) = \sup_{ \vartheta \in \Theta_\text{adm}^x} \EE[ U(V_T(x, \vartheta))] \ ? 
+\end{align*}
+If yes, how to find or describe it?
+\item How does optimal expected utility $u(x)$ depend on $x?$
+\end{enumerate}
+\begin{exe}[Easy] If $U$ is increasing and concave (not necessarily strictly) then so is $u$. If also $u(x_0) < \infty$ for some $x_0>0$, then $u(x) < \infty$ for all $x>0$. We can stronger properties with (one) extra condition on $U$; see later. 
+\end{exe}
+To make our problem more tractable, generalise: 
+\begin{align*}
+\mathcal{C}(x)&:= \{ f \in L_+^0( \mathcal{F}_T): f \leq V_T \text{ for some } V \in \mathcal{V}(x) \} \\
+&= \{ x + G_T( \vartheta)- Y \geq 0 : \vartheta \in \Theta_\text{adm}^x, Y \geq 0 \ \mathcal{F}_T\text{-measurable}\} \\
+&= (x + G_T( \Theta_\text{adm}^x) - L_+^0) \cap L_+^0( \mathcal{F}_T)  \\
+&= (x + \mathcal{G}_\text{adm}^x-L_+^0) \cap L_+^0 ( \mathcal{F}_T):
+\end{align*}
+space of nonnegative time-$T$ payoffs one can superreplicate from initial wealth $x$ via $0$-admissible self-financing strategy. \newpage
+ Of course, $\mathcal{C}(x) \supset \{ V_T : V \in \mathcal{V}(x)\}$ and we have 
+ \begin{align*}
+ u(x):= \sup_{V \in \mathcal{V}(x)} \EE(U(V_T)) = \sup_{f \in \mathcal{C}(x)} \EE(U(f)).
+ \end{align*}
+$\lceil$ "$\leq$" is clear from the inclusion above. Conversely, if $f \in \mathcal{C}(x)$, then $f \leq V_T$ for some $V \in \mathcal{V}(x)$; and as $U$ is increasing we have $\EE(U(f)) \leq \EE(U(V_T)) \leq u(x)$ \hfill $\rfloor$
+\\\\
+\textbf{Note}: If $f^* \in \mathcal{C}(x)$ is optimal, then $f^* \leq V_T( x, \vartheta^*)$ for some $\vartheta^* \in \Theta_\text{adm}^x$, and then $\vartheta^*$ is optimal for original problem (follows by the equality demonstrated above). 
+\\\\
+The set $\mathcal{C}(x)$ is \textbf{convex} and \textbf{solid}, i.e. $f \in \mathcal{C}(x)$ and $0 \leq f' \leq f$ implies $f' \in \mathcal{C}(x)$. We also have:
+\begin{lem} \label{L101} Assume (NFLVR) and $\mathcal{F}_0$ is trivial. Then $$\mathcal{C}(x) = \{ f \in L_+^0( \mathcal{F}_T) : \EE_Q(f) \leq x, \text{ for all } Q \in \PP_{e, \sigma}\}.$$
+\end{lem}
+\begin{proof} This is a variation of the hedging duality in Theorem \ref{T74}. \\
+For "$\subset$", note that $G( \vartheta) = \int \vartheta dS$ is for any $\vartheta \in \Theta_\text{adm}^x$ and any $Q \in \PP_{e, \sigma}$ a $Q$-supermartingale (Ansel-Stricker). So $f \leq x + G_T( \vartheta)$ gives \begin{align*}
+\EE_Q(f) \leq x + \EE_Q(G_T( \vartheta)) \leq x. 
+\end{align*}
+For "$\supset$", define $U$ as RCLL version of $U_t:= \esssup_{Q \in \PP_{e, \sigma}} \EE_Q(f \mid \mathcal{F}_t)$ for $0 \leq t \leq T$. Note that $U_T=f$ as $f$ is $\mathcal{F}_T$-measurable, and $U_0 = \sup_{Q \in \PP_{e, \sigma}} \EE_Q(f) \leq x$ as $\mathcal{F}_0$ is trivial. Then Proposition \ref{P72} and Theorem \ref{T73} imply that $U= U_0 + \int \vartheta dS -C$ with $\vartheta \in \Theta_\text{adm}$ and $C$ is increasing, null at $0$. So \begin{align*}
+\int \vartheta dS = \underbrace{U}_{ \geq 0}-\underbrace{U_0}_{ \leq x}+\underbrace{C}_{ \geq 0} \geq -x
+\end{align*}
+and $\vartheta \in \Theta_\text{adm}^x$ and 
+\begin{align*}
+f= U_T=U_0 + G_T( \vartheta)-C_T \leq x + G_T( \vartheta), \ \vartheta \in \Theta_\text{adm}^x
+\end{align*}
+so that $f \in \mathcal{C}(x)$. 
+\end{proof}
+In view of Lemma \ref{L101}, we can rewrite the problem as maximise $\EE(U(F))$ over $f \in L_+( \mathcal{F}_T)$ subject to $EE_Q(f) \leq x$, for all $Q \in \PP_{e, \sigma}$. But we cannot simply write Lagrange function, because number of constraints (the for all $Q \in \PP_{e, \sigma}$ part) is in general infinite. 
+\newpage
+It turns out to be useful to generalise E$\sigma$MMs as well. Start with $Q \in \PP_{e, \sigma}$, denote by $Z=Z^{Q;\PP}$ its density process and take any $V \in \mathcal{V}(x)$, so $V= x + \int \vartheta dS$, $\vartheta \in \Theta_\text{adm}^x$. Then $Z>0$ is a $\PP$-martingale with $Z_0=1$ (as $\mathcal{F}_0$ is trivial) and by Bayes and Ansel-Stricker, $ZV$ is a $\PP$-supermartingale. This motivates: 
+\begin{defn} For $z>0$, we call $\mathcal{Z}(z)$ the family of all nonnegative $\mathbb{F}$-adapted RCLL process $Z=(Z_t)_{0 \leq t \leq T}$ with $Z_0=z$ such that $ZV$ is a $\PP$-supermartingale for all $V \in \mathcal{V}(1)$ (or, equivalently, for all $V \in \mathcal{V}(x),$ for all $x >0;$ note that $\mathcal{V}(x) = x  \mathcal{V}(1)$.)
+\end{defn}
+Note that $\vartheta \equiv 0$ gives $V(1,0)=1 \in \mathcal{V}(1)$; so each $Z \in \mathcal{Z}(z)$ is itself $\PP$-supermartingale. Next $Z^{Q; \PP} \in \mathcal{Z}(1)$ for any $Q \in \PP_{e, \sigma}$ and $\mathcal{Z}(z)=z \mathcal{Z}(1)$ for all $z >0$; so $\mathcal{Z}(z) \neq \emptyset$ by (NFLVR). 
+\\\\
+In analogy to $\mathcal{C}(x)$, define for $z>0$ 
+\begin{align*}
+\mathcal{D}(z):= \{ h \in L_+^0: h \leq Z_T \text{ for some } Z \in \mathcal{Z}(z) \}. 
+\end{align*}
+Now take any $V \in \mathcal{V}(x), \ Z \in \mathcal{Z}(z)$. Then $ZV$ is $\PP$-supermartingale starting at $zx$ so that $\EE(Z_TV_T) \leq zx$. Define 
+\begin{align*}
+J(y):= \sup_{x >0} (U(x)-xy), \text{ for } y>0. 
+\end{align*}
+Then $J$ is decreasing and convex as supremum of convex (actually affine) function $\mathcal{C}_x(y)=U(x)-xy$. Then $U(V_T) \leq J(Z_T) + Z_TV_T$ and so $\EE(U(V_T)) \leq \EE(J(Z_T)) + zx$. If we take supremum over $\mathcal{V}(x)$ on LHS, inf over $\mathcal{Z}(z)$ on the RHS, we get $u(x) \leq j(z) + xz$ for all $x>0$, $z>0$, where we set $j(z):= \inf_{Z \in \mathcal{Z}(z)} \EE(J(Z_T)).$ This is called the \textbf{dual problem}.
+\\\\
+\textbf{Note}: primal problem maximizes concave functional, dual problem minimizes convex functional.
+\\\\
+In analogy to primal problem, we also have
+\begin{exe} 
+\begin{align*}
+j(z):= \inf_{Z \in \mathcal{Z}(z)} \EE(J(Z_T)) = \inf_{h \in \mathcal{D}(z)} \EE(J(h)).
+\end{align*}
+\end{exe}
+\noindent Finally we also get $j(z) \geq \sup_{x >0} (u(x)-xz)$ for all $z>0$ and $u(x) \leq \inf_{z >0} (j(z)+zx)$ for all $x>0$. We shall see later that under one extra assumption on $U$, we actually have equalities, and this will have many useful consequences.
+\newpage
+The next result slightly extends Lemma \ref{L101}.
+\begin{lem} \label{L102} Assume (NFLVR) and $\mathcal{F}_0$ is trivial. For any $f \in L_+^0( \mathcal{F}_T)$, we then have 
+\begin{align*}
+f \in \mathcal{C}(x) \iff \sup_{h \in \mathcal{D}(1)} \EE(fh) \leq x.
+\end{align*}
+As a consequence, $\mathcal{C}(x)$ is closed in $L^0$. 
+\end{lem}
+\begin{proof}
+"$\Longleftarrow$" For any $Q \in \PP_{e, \sigma}$, $h:= Z_T^{Q; \PP} = \frac{dQ}{d \PP}$ is in $\mathcal{D}(1)$, so we can use Lemma \ref{L101} to get $f \in \mathcal{C}(x)$. 
+\\
+"$\implies$" $f \leq V_T$ with $V \in \mathcal{V}(x)$, $h \leq Z_T$ with $Z \in \mathcal{Z}(1)$ gives $\EE(fh) \leq \EE(V_TZ_T) \leq x$ because $VZ$ is $\PP$-supermartingale started at $x$. 
+\\\\
+Finally, $f_n \to f$ in $L^0$ for $f_n \in \mathcal{C}(x)$, thus w.l.o.g. $f_n \to f \ \PP$-a.s. (on a subsequence). Then we have
+\begin{align*}
+\EE(fh) \overset{\text{Fatou}}\leq \EE(f_n h) \leq x.
+\end{align*}
+Hence $f \in \mathcal{C}(x)$ and $\mathcal{C}(x)$ is closed in $L^0$.
+\end{proof}
+\newpage
+\section{Utility maximisation II: The dual problem and its use}
+\textbf{Goal}: prove existence of solution to the dual problem and show how this helps to tackle the primal problem. \\
+\\
+Recall that for a utility function $U$ on $(0, \infty)$, we have defined
+\begin{align*}
+J(y):= \sup_{x >0} (U(x)-xy), \text{ for } y>0
+\end{align*}
+(convex, decreasing). This is the \textbf{Legendre transform} or convex conjugate of $-U(- \cdot)$, with convention $U(x):= \infty$ for $x<0$. See Rockafellar, Chapter 12. We collect properties of $J$.
+\begin{lem}\label{L111} If $U$ is a utility function, then $J: (0, \infty) \to \mathbb{R}$ is strictly decreasing, strictly convex, in $C^1$ with $J'(0)= - \infty$, $J'( \infty)= 0$ as well as $J(0)=U( \infty)$, $J( \infty)=U(0).$ Moreover, we have conjugacy relation
+\begin{align*}
+U(x)= \inf_{y >0} (J(y) + xy), \text{ for } x>0.
+\end{align*}
+In addition $J'=-I:= -(U')^{-1}$ is minus inverse of $U'$, and $J(y)=U(I(y))-yI(y).$ 
+\end{lem}
+\begin{exmp} Classical utilities on $(0, \infty)$ are $U(x)= \log x$ with $J(y)= - \log y-1$, and $U(x)= \frac{1}{\gamma}x^\gamma$ with $\gamma <1$, $\gamma \neq 0$, where $J(y)= \frac{1- \gamma}{\gamma} y^{\frac{\gamma}{\gamma-1}}$: \textbf{power}/CRRA utility. Note that for $\gamma <0,$ then $U \leq 0$ is bounded above; for $\gamma >0$, then $U \geq 0$ is unbounded above. For $\gamma \to 0$ (By Bernoulli de L'Hospital) we get $\log$ utility. 
+\end{exmp}
+\noindent \textbf{Goal now}: show that \textbf{dual problem} of finding 
+\begin{align*}
+j(z):= \inf_{h \in \mathcal{D}(z)} \EE(J(h))
+\end{align*}
+has a unique solution $h_z^* \in \mathcal{D}(z)$ if $j(z) < \infty$, i.e. function $F(h):= \EE(J(h))$ attains infimum over over $\mathcal{D}(z)$ in a unique $h_z^*$. 
+\\\\
+\textbf{Classic}: continuous function on compact set has minimum. How? Approximate infimum along a sequence; use compactness to get converging subsequence whose limit is candidate; use continuity of $F$ to compute $F$ in limit and show its minimality. 
+\\\\
+In our settting, use Komlós lemma (Lemma \ref{L44}) to produce candidate; then show that $\mathcal{D}(z)$ is convex and closed in $L^0$ so that it also contains candidate; then show that $F$ is convex and lower semicontinuous on $\mathcal{D}(z)$ to obtain that candidate is minimiser. 
+\newpage
+\begin{prop} \label{P112} For any $z>0$, the set $\mathcal{D}(z)$ is convex, solid and closed in $L^0$. 
+\end{prop}
+\begin{proof}
+Recall $\mathcal{D}(z)= \{ h \in L_+^0: h \leq Z_T \text{ for some } Z \in \mathcal{Z}(z) \}$. So solid is clear and convex holds because $\mathcal{Z}(z)$ is convex. 
+\\\\
+The proof for closedness is a bit more complicated than for Proposition IV 3.2. in IMF because we have time index $t \in [0,T]$. Take $(h_n)_{n \in \mathbb{N}}$ in $\mathcal{D}(z)$ converging to $L^0$ to some $h$, so $h \geq 0$ and $h < \infty \PP$-a.s., i.e. $h \in L_+^0$. W.l.o.g. (take subsequence and call it again $h_n)$, we can assume $h_n \to h$ $\PP$-a.s. Take $Z^n \in \mathcal{Z}(z)$ with $h_n \leq Z_T^n$. As $h_n \geq 0, \ Z^n \geq 0$, we can use Lemma \ref{L44} (Komlós) plus diagonal argument to find convex combinations $\widetilde{h}_n$ and $\widetilde{Z}_r^n$, for all rational $r \in [0,T]$, converging all simultaneously, $\PP$-a.s., to some $h_\infty$ and $Z_r^\infty$, respectively. \\
+\\
+A priori, we might have values $+ \infty$ for $h_\infty$; but $h_n \to h \ \PP$-a.s., $\widetilde{h}_n \in \text{conv}(h_n, h_{n+1}, \dots )$, which gives $\widetilde{h}_\infty = h < \infty \ \PP$-a.s. Moreover, $h_n \leq Z_T^n \ \PP$-a.s., for all $n \in \mathbb{N}$, and we can use same convex combinations for $\widetilde{h}_n$ and all $\widetilde{Z}_r^n$; so also get $h_\infty = h \leq Z_T^\infty$. \\
+\\
+It only remains to show that $Z_T^\infty \leq Z_T$ for some $Z \in \mathcal{Z}(z)$. Each $\widetilde{Z}^n$ is in $\mathcal{Z}(z)$ as $\mathcal{Z}(z)$ is convex, and so $\widetilde{Z}_0^n=z,$ for all $n \in \mathbb{N}$, hence $Z_0^\infty= z$,  and each $\widetilde{Z}^nV$ is $\PP$-supermartingale for each $V \in \mathcal{V}(1)$, and nonnegative. So take rational $r \leq s$ and compute 
+\begin{align*}
+\EE(Z_s^\infty V_S \mid \mathcal{F}_r) \overset{\text{Fatou}}\leq \liminf_{n \to \infty} \EE( \widetilde{Z}_s^n V_s \mid \mathcal{F}_r) \overset{\text{supermg.}}\leq \liminf_{n to \infty} \widetilde{Z}_r^n V_r = Z_r^\infty V_r,
+\end{align*}
+and so $Z^\infty V$ and also $Z^\infty$ itself (take $V \equiv 1)$ are $\PP$-supermartingale on $[0,T] \cap \mathbb{Q}$. But now standard construction in martingale theory (see DM, Theorem IV.2, uses $\mathbb{F}$ is RC) gives existence of an RCLL $\PP$-supermartingale $Z=(Z_t)_{0 \leq t \leq T}$ on $[0,T]$ with $Z_r \leq Z_r^\infty$ for all rational $r$, indeed, can take 
+\begin{align*}
+Z_t:= \lim_{r \searrow \searrow t} Z_r^\infty,
+\end{align*}
+and so we get $Z_0 = Z_0^\infty = z$ and $Z_T= Z_T^\infty$. As above, using construction of $Z$ from $Z^\infty$ and Fatou to conclude that $ZV$ is $\PP$-supermaringale on $[o,T]$, for all $V \in \mathcal{V}(1)$. So $Z \in \mathcal{Z}(z)$ and $h \leq Z_T$ is in $\mathcal{D}(z)$. 
+\end{proof}
+\begin{prop} \label{P113} For each $z >0$, we have 
+\begin{enumerate}
+\item $\mathcal{D}(z)$ is bounded in $L^1(\PP)$, and family $\{(J(h))^- : h \in \mathcal{D}(z)\}$ is $\PP$-UI. 
+\item $F: L_+^0( \PP) \to [- \infty, \infty], \ h \mapsto F(h):= \EE(J(h))$ is lower-semicontinuous on $\mathcal{D}(z)$: if $h_n \to h$ in $L^0$ with $h_n, h \in \mathcal{D}(z)$, then $F(h) \leq \liminf_{n \to \infty} F(h_n)$. 
+\end{enumerate}
+\end{prop}
+\begin{proof}
+See IMF, Proposition IV 3.3. or KS Lemma 3.2.
+\end{proof}
+\newpage
+\begin{thm} \label{T114} Suppose $\PP_{e, \sigma} \neq \emptyset$ so that each $\mathcal{D}(z) \neq \emptyset$. For each $z>0$ with $j(z) < \infty$, there exists a unique solution $h_z^* \in \mathcal{D}(z)$ to the dual problem, i.e. 
+\begin{align*}
+\inf_{h \in \mathcal{D}(z)} \EE(J(h)) = j(z) = \EE(J(h_z^*)). 
+\end{align*}
+\end{thm}
+\begin{proof}
+Uniqueness is clear  from strict convexity of $J$. For existence, take $(h_n)_{n \in \mathbb{N}} \subset \mathcal{D}(z)$ with $F(h_n)= \EE(J(h_n)) \searrow j(z) < \infty$. All $h_n$ are nonnegative, so Lemma \ref{L44} gives $\widetilde{h}_n \in \text{conv}(h_n, h_{n+1}, \dots )$ converging to some $h \ \PP$-a.s. A priori, might have $h= + \infty$ with positive probability. By Proposition \ref{P113}, $\mathcal{D}(z)$ is bounded in $L^1( \PP)$, hence also in $L^0$, and so Lemma \ref{L44} implies that $h < \infty \ \PP$-a.s; so $h \in L_+^0$, $\widetilde{h}_n \to h \ \PP$-a.s. and hence in $L^0$. \\
+\\
+But $\mathcal{D}(z)$ is convex, so $(\widetilde{h}_n)_{n \in \mathbb{N}} \subset \mathcal{D}(z)$, and closed in $L^0$ (by Proposition \ref{P112}) so that also $h \in \mathcal{D}(z)$. By Lemma \ref{L111}, $J$ is convex, so
+\begin{align*}
+F( \widetilde{h}_n) = \EE(J( \widetilde{h}_n)) \leq \sup_{k \geq n} \EE(J(h_n)) = \sup_{k \geq n } F(h_k) = F(h_n),
+\end{align*}
+as $n \mapsto F(h_n)$ is decreasing. So $\widetilde{h}_n \in \mathcal{D}(z)$ gives 
+\begin{align*}
+j(z) \leq F( \widetilde{h}_n) \leq F(h_n) \searrow j(z),
+\end{align*}
+and hence 
+\begin{align*}
+\EE(J(h)) = F(h) \leq \liminf_{n \to \infty} F( \widetilde{h}_n) = j(z),
+\end{align*}
+and so $h_z^* := h$ is optimal. 
+\end{proof}
+Convex analysis gives extra properties of $j$.
+\begin{cor} \label{C115} The function $j$ is decreasing, strictly convex on $\{ z >0: j(z) < \infty\}$ and continuous on interior of $\{j < \infty\}$ (which is an interval from some $a$ to $+ \infty)$.
+\end{cor}
+\begin{proof}
+See IMF C IV 3.5. or KS Lemma 3.3.
+\end{proof}
+Now let us see how to use the dual problem in order to tackle the primal. Fix $x>0$ and take $f \in \mathcal{C}(x)$ so that $f \leq V_T$ for some $V \in \mathcal{V}(x)$. Take $z>0$ and $h \in \mathcal{D}(z)$ so that $h \leq Z_T$ for some $Z \in \mathcal{Z}(z)$. Then 
+\begin{align*}
+\EE(fh) \leq \EE(V_T Z_T) \overset{VZ \text{ supermg}}\leq zx.
+\end{align*}
+By definition of $J$, $U(f) \leq J(h) + fh$, and so $\EE(U(f)) \leq \EE(J(h)) + zx$. Sup over $f \in \mathcal{C}(x)$ gives $u(x);$ inf over $h \in \mathcal{D}(z)$ gives on RHS $j(z) + zx$. But each side also provides a bound for other side, and so we should get optima by making bounds sharp via equality. 
+\newpage
+So aim for equalities everywhere. Maximiser for $J(y)= \sup_{x >0} (U(x)-xy)$ is given via $U'(x)=y$ or $x=I(y)$ so that, as in Lemma \ref{L111}, $J(y)=U(I(y))-yI(y)$. So let us choose, for $h  \in \mathcal{D}(z)$ $f:= I(h)$ to get $U(f)=J(h)+fh$. To get $\EE(fh)=xz,$ we then want next $\EE(hI(h))=xz$. If we have that, then we get for $h \in \mathcal{D}(z)$, 
+\begin{align*}
+\EE[U(I(h))]= \EE(J(h)) + xz \geq j(z) + zx \geq \inf_{z >0} (j(z)+zx) \overset{\text{Sec. 11}}\geq u(x).
+\end{align*}
+First inequality becomes equality for $h:= h_z^*$. The second inequality becomes equality if $z$ is a minimiser for $j/z)+zx$, i.e., b< solving $j'(z)=-x$. 
+\\\\
+\textbf{Reverse engineering} suggests \textbf{recipe}:
+\begin{enumerate}
+\item Start with $x>0$ and define $z=z_x$ via $-j'(z)=x.$
+\item Solve dual problem for $z$ to get $h_z^*$. Then define $f_x^* := I(h_z^*)=I(h_{z_x}^*)$. 
+\item Show that  $\EE(h_{z_x}^*I(h_{z_x}^*))=xz_x$.
+\item Show that $f_x^* \in \mathcal{C}(x)$.
+\end{enumerate}
+If all that can be done, plug into above computation to get 
+\begin{align*}
+\EE(U(f_x^*)) \geq u(x)= \sup_{f \in \mathcal{C}(x)} \EE(U(f))
+\end{align*}
+so that $f_x^*$ is optimal. 
 \end{document}
