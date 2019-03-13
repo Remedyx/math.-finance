@@ -148,7 +148,7 @@ V_t( \varphi) = \varphi_t^0 1 + \sum_{i=1}^d \vartheta_t^i S_t^i = \varphi_t^{\t
 which is the time-$t$ value of time-$t$ portfolio. 
 \begin{rem} \
 \begin{enumerate}
-\item For easy of notation, often think of $d=1$, (i.e. one risky asset), this is usually harmless. 
+\item For ease of notation, often think of $d=1$, (i.e. one risky asset), this is usually harmless. 
 \item In original (tilde) units, value is given by 
 \begin{align*}
 \widetilde{V_t}( \varphi)= \varphi_t^{\text{tr}} \widetilde{S_t} = \varphi_t^0 \widetilde{S_t^0} + \sum_{i=1}^d \vartheta_t^i \widetilde{S_t^i}, \text{ where }  \widetilde{S_t^i}= S_t^i \widetilde{S_t^0}.
@@ -177,7 +177,7 @@ note that then $\widetilde{C}( \varphi) \neq S^0 C( \varphi)$.
 \end{rem}
 In \textbf{discrete time}, $S$ is piecewise constant and the previous integral $\int \vartheta d S$ reduces to a sum. Only condition needed for $\vartheta$ , on economic grounds, is that stock holdings $\vartheta_{k+1}$ on $[k,k+1)$ must be determined at beginning $k$ of interval $[k,k+1)$, so $\vartheta_{k+1}$ must be $\mathcal{F}_k$-measurable for all $k$,  i.e. $\vartheta$ must be predictable (needed to exclude insiders or prophets). No extra conditions on $\varphi^0$, it can be adapted. 
 \\\\
-In \textbf{continuous time}, by analogy,  still impose that $\vartheta$ is predictable and $\varphi^0$ is adapted. But to have $\int \vartheta d S$ well-defined, need that $S$ is a \textbf{semimartingale} and $\vartheta$ is $S$-integrable, we will discuss this in more detail later; if $S$ happens to be a continuous semimartingale, then we know from Brownian Motion and Stochastic Calculus lectures what a sufficient condition for $S$-integrability is. 
+In \textbf{continuous time}, by analogy,  still impose that $\vartheta$ is predictable and $\varphi^0$ is adapted. But to have $\int \vartheta d S$ well-defined, need that $S$ is a \textbf{semimartingale} and $\vartheta$ is $S$-integrable, we will discuss this in more detail later; if $S$ happens to be a \underline{continuous} semimartingale, then we know from Brownian Motion and Stochastic Calculus lectures what a sufficient condition for $S$-integrability is. 
 \begin{rem} $V( \varphi), C( \varphi), \int \vartheta dS$ are always real valued (clear from the interpretation). If $\vartheta$ and $S$ are $\mathbb{R}^d$-valued, then $\int \vartheta dS$ denotes the vector stochastic integral 
 \begin{align*}
 " \int \sum \vartheta^i dS^i ";
@@ -190,7 +190,7 @@ The latter may fail to be well-defined. Here $d>1$ needs technical care.
 \end{rem}
 \begin{defn} A strategy $\varphi = ( \varphi^0, \vartheta)$ is called \textbf{self-financing} if $C( \varphi)\equiv C_0( \varphi)$, i.e. $C_t( \varphi) = C_0( \varphi)$ $\mathbb{P}$-almost surely for all $t$. 
 \end{defn}
-We interpret the above definition as follows: after initial outlay of $C_0( \varphi)= V_0( \varphi)$ trading according to $\varphi$ generates neither expenses nor surplus. 
+We interpret the above definition as follows: after initial outlay of $C_0( \varphi)= V_0( \varphi)$, trading according to $\varphi$ generates neither expenses nor surplus. 
 \newpage
 \begin{lem} \label{L01} \
 \begin{enumerate}
@@ -256,7 +256,7 @@ During our treatise so far we have made many \textbf{implicit assumptions}. Let 
 \end{itemize}
 Self-financing strategies are a reasonable requirement. But one cannot allow \textbf{all} self-financing $\varphi$; some restrictions are needed as the next example demonstrates. 
 \begin{exmp} Take $d=1$, and $S=W$ a standard Brownian motion. For ease of exposition, work on infinite time horizon $[0, \infty)$.
-\begin{exe} Construct similar example on $[0,T]$ and with $S>0$. 
+\begin{exe} \label{ex1} Construct similar example on $[0,T]$ and with $S>0$. 
 \end{exe}
 Define $\tau:= \inf \{ t \geq 0 : W_t=1 \}$. This $\tau$ is a stopping time and (LIL: Law of Iterated Logarithm) $\tau < \infty$ $\PP$-a.s. Define 
 \begin{align*}
@@ -290,7 +290,7 @@ which gives a contradiction, hence $W^\tau = W_{t \wedge \tau}$ is indeed unboun
 We conclude this introduction section by giving an overview of the \textbf{main topics} of this course:
 \begin{enumerate}
 \item \textbf{Arbitrage theory}: give precise mathematical description of idea that money pumps should be impossible, and characterize those models which satisfy this. Other models are not reasonable from economic/financial perspective.
-\item \textbf{Pricing and hedging}: Start with reasonable model $(1,S)$. Fix $H \in L^0( \mathcal{F}_T)$ and view this as a random payoff to make at $T$ (due to financial contract. Can we find a self-financing $\varphi \teq = (v_0 \vartheta)$ with $V_T( \varphi)=H$ (or perhaps $ \geq H$, or close to $H$)? If yes, what is (perhaps minimal) required initial wealth $v_0$?
+\item \textbf{Pricing and hedging}: Start with reasonable model $(1,S)$. Fix $H \in L^0( \mathcal{F}_T)$ and view this as a random payoff to make at $T$ (due to financial contract). Can we find a self-financing $\varphi \teq  (v_0, \vartheta)$ with $V_T( \varphi)=H$ (or perhaps $ \geq H$, or close to $H$)? If yes, what is (perhaps minimal) required initial wealth $v_0$?
 \item \textbf{Optimal investment}: Suppose again that $(1,S)$ is reasonable. Given initial wealth $v_0$, what is best investment strategy, i.e. which self-financing $\varphi \teq (v_0, \vartheta)$ produces "best" final wealth $V_T( \varphi) = v_0 +  \int_0^T \vartheta_u dS_u$? This is a control problem over variable $\vartheta$, and it requires (subject) criterion for comparing final wealths. 
 \end{enumerate}
 \newpage
@@ -312,16 +312,16 @@ V_t( \varphi) = \int_0^t \vartheta_u dS_u = G_t( \vartheta), \ 0 \leq t \leq T.
 \begin{itemize}
 \item For $\varphi \teq (0, \vartheta)$, strategy $\varphi$ is $a$-admissible iff integrand $\vartheta$ is $a$-admissible, meaning that $\int \vartheta dS \geq -a$. Then write 
 \begin{align*}
-\vartheta \in \Theta_{\text{admin}}^a \text{ and } \Theta_{\text{adm}} = \bigcup_{a \geq 0 } \Theta_{\text{adm}}^a.
+\vartheta \in \Theta_{\text{adm}}^a \text{ and } \Theta_{\text{adm}} = \bigcup_{a \geq 0 } \Theta_{\text{adm}}^a.
 \end{align*}
-\item For $\varphi \teq (v_0, \vartheta)$ only clear connection between admissibility for $\varphi$ and admissibility of $\vartheta$ is if $v_0$ is constant. In general, $v_0 \in L^0( \mathcal{F}_0)$ and so one cannot say much, unless $\mathcal{F}_0$ is trivial. 
+\item For general $\varphi \teq (v_0, \vartheta)$ only clear connection between admissibility for $\varphi$ and admissibility of $\vartheta$ is if $v_0$ is constant. In general, $v_0 \in L^0( \mathcal{F}_0)$ and so one cannot say much, unless $\mathcal{F}_0$ is trivial. 
 \end{itemize} 
 \end{rem}
 \begin{defn} We say $\vartheta$ is a \textbf{simple integrand}, denoted by $\vartheta \in \simple$ if it is of the form 
 \begin{align*}
 \vartheta = \sum_{i=1}^n h_i 1_{(\!( \tau_{i-1}, \tau_i ]\!]}, \ n \in \mathbb{N}
 \end{align*}
-with stopping times $0 \leq \tau_0 \leq \tau_1 \leq \tau_n \leq T$ and $H_i \in L^\infty ( \mathcal{F}_{\tau_{i-1}}, \mathbb{R}^d)$, i.e. $h$ is $\mathbb{R}^d$-valued, $ \mathcal{F}_{\tau_{i-1}}$-measurable and bounded. If all $\tau_i$ (but not $h_i)$ are deterministic $t_i$, call $\vartheta$ \textbf{very simple} and write $\vartheta \in \verysimple$. 
+with stopping times $0 \leq \tau_0 \leq \tau_1 \leq \tau_n \leq T$ and $h_i \in L^\infty ( \mathcal{F}_{\tau_{i-1}}, \mathbb{R}^d)$, i.e. $h$ is $\mathbb{R}^d$-valued, $ \mathcal{F}_{\tau_{i-1}}$-measurable and bounded. If all $\tau_i$ (but not $h_i)$ are deterministic $t_i$, call $\vartheta$ \textbf{very simple} and write $\vartheta \in \verysimple$. 
 \end{defn}
 \newpage
 \begin{rem} \
@@ -344,11 +344,11 @@ If $S$ is adapted RCLL, then so is $G( \vartheta)$.
 Let us now come back to our discussion of arbitrage opportunities:
 \begin{itemize}
 \item For \textbf{general $S$, simple arbitrage opportunity} is $\vartheta \in \simple$, admissible, with $G_T( \vartheta) \in L_+^0\setminus \{0 \}$ i.e. $G_T( \vartheta) \geq 0$ $\PP$-a.s. with $\PP( G_T( \vartheta) >0)>0$, start from initial capital $v_0=0$, manage to keep debts bounded, trade via $\varphi \teq (0, \vartheta)$ in self-financing way, end up with final wealth $V_T( \varphi) = G_T( \vartheta) \geq 0$ and even positive $(>0)$ with positive probability. 
-\item For \textbf{semimartingale $S$, (general) arbitrage opportunity} is integrand $\vartheta$ for $S$ ($\mathbb{R}^d$-valued, predictable, $S$-integrable, so that $\int \vartheta dS$ is well-defined) which is admissible, with $G_T( \vartheta) \in L_+^0 \setminus \{0\}$. 
+\item For \textbf{semimartingale $S$, (general) arbitrage opportunity} is integrand $\vartheta$ for $S$ ($\mathbb{R}^d$-valued, predictable, $S$-integrable, so that $\int \vartheta dS$ is well-defined) which is admissible, with $G_T( \vartheta) \in L_+^0 \setminus \{0\}$ i.e. $G_T( \vartheta) \geq 0$ $\PP$-a.s. with $\PP( G_T( \vartheta) >0)>0$. 
 \end{itemize}
 \newpage
 We now give mathematical sound definitions for the absence of arbitrage conditions. Let us introduce the notation $G_T( \Theta):= \{ G_T( \vartheta) : \vartheta \in \Theta\}$.
-\begin{mdframed}[backgroundcolor=yellow!20, topline=true, linewidth=2.0pt] \textbf{Absense of arbitrage conditions:}\\
+\begin{mdframed}[backgroundcolor=yellow!20, topline=true, linewidth=2.0pt] \textbf{Absence of arbitrage conditions:}\\
 \\
 For general $S$ we impose the following conditions:
 \begin{itemize}
@@ -403,7 +403,7 @@ Since $\Delta S_n$ only takes values $\pm \beta_n$, the only way to get $S$ a $Q
 \end{thm}
 (Note: $Q \overset{\text{loc}}\approx \PP$ in the sense that $Q \approx \PP$ on $\mathcal{F}_n$ for all $n \in \mathbb{N}$, thus we need an infinite horizon to create problems.)
 \newpage
-Thus if we choose $(\alpha_n)_{n \in \mathbb{N}}$ such that $\sum_{n=1}^\infty \alpha_n^2 = + \infty$, then there is EMM for $S$. The role of $\beta_n$ so far is not important, if we choose $\sum_{n=1}^\infty \beta_n < \infty$, then $S$ is bounded, and then $S \in \mathcal{M}_{\text{loc}}$ is the same as $S \in \mathcal{M}$. Hence EMM is the same as ELMM, and so there can also \textbf{exist no} ELMM for $S$. \\
+Thus if we choose $(\alpha_n)_{n \in \mathbb{N}}$ such that $\sum_{n=1}^\infty \alpha_n^2 = + \infty$, then there is \textbf{no} EMM for $S$. The role of $\beta_n$ so far is not important, if we choose $\sum_{n=1}^\infty \beta_n < \infty$, then $S$ is bounded, and then $S \in \mathcal{M}_{\text{loc}}$ is the same as $S \in \mathcal{M}$. Hence EMM is the same as ELMM, and so there can also \textbf{exist no} ELMM for $S$. \\
 \\
 \textbf{Claim}: Although $S$ does not admit any ELMM, it still satisfies (NA$_\text{elem}$). 
 \begin{itemize}
@@ -428,7 +428,7 @@ It is \textbf{our goal} to show that if $G_\infty( \vartheta) \geq 0$ $\PP$-a.s.
 \\
 Define for any $m \in \mathbb{N}$ the set $A_m:= \{ \sigma = m, \tau > m \} \in \mathcal{F}_m$. We then have: 
 \begin{align*}
-\sign(G_\infty( \vartheta))= \sign(H(S_\tau-S_\sigma)) = \sign(hY_{m+1}) \text{ on } A_m. 
+\sign(G_\infty( \vartheta))= \sign(h(S_\tau-S_\sigma)) = \sign(hY_{m+1}) \text{ on } A_m. 
 \end{align*}
 So if $G_\infty ( \vartheta) \geq 0 \ \PP$-a.s., we have $1_{A_m} \sign(hY_{m+1}) \geq 0$ for all $m \in \mathbb{N}$. We \textbf{claim} that this implies $h=0$ $\PP$-a.s. and then of course $G_\infty ( \vartheta)=0 \ \PP$-a.s. \\
 \\
@@ -3549,4 +3549,36 @@ N = N_0 + \int H dW \text{ with some } H \in L_\text{loc}^2(W)
 \end{align*}
 and in particular has a continuous version.
 \end{thm}
+\newpage
+\section{Solutions to Exercises}
+\textbf{Exercise} \ref{ex1}: Construct a similar arbitrage strategy as $1_{[\![0, \tau]\!]}$ from the lecture on a finite horizon and with a positive process.
+\begin{proof}
+We start with a geometric Brownian motion with $\mu=0, \ \sigma=1$, so that \begin{align*}
+\widetilde{S}_t= \exp \left( W_t - t/2\right).
+\end{align*}
+Recall from BMSC that the law of large numbers for Brownian motion states that 
+\begin{align*}
+\lim_{t \to \infty} \frac{W_t}{t}=0 \ \PP\text{-a.s.}
+\end{align*}
+Hence we get (as is already known from BMSC) that
+\begin{align*}
+\widetilde{S}_t = \exp \left( t \left[ \frac{W_t}{t}- \frac{1}{2}\right] \right) \to 0 \text{ as } t \to \infty,
+\end{align*}
+since
+\begin{align*}
+\frac{W_t}{t}- \frac{1}{2} \xrightarrow{t \to \infty} - \frac{1}{2}, \text{ so that } t \left[ \frac{W_t}{t} - \frac{1}{2}\right] \xrightarrow{ t \to \infty} - \infty.
+\end{align*}
+So the stopping time $ \widetilde{\tau} := \inf\{ t \geq 0 : \widetilde{S}_t = 1/2\}$ is a.s. finite. Set $\Psi(t):= \tan t$ and define $S_t:= \widetilde{S}_{ \Psi (t)}$ for $t \in [0, \pi/2)$ and $S_{ \pi/2} =0$ (which agrees with $\widetilde{S}_\infty =0$). This yields again a continuous process $S$ and a stopping time $\tau := \Psi^{-1}\circ \widetilde{\tau} \in [0, \pi/2)$ a.s. Thus we can use the predictable, self-financing strategy $\varphi = (v_0=0, \vartheta)$  (i.e. with $v_0=0$) going short on $(\!(0, \tau ]\!]$,  i.e.  \begin{align*}
+\vartheta_t := - 1_{(\!( 0, \tau]\!]} (t)
+\end{align*}
+which is adapted and left-continuous, hence $S$-integrable ($S$ is a continuous martingale). It follows that the value (wealth) process is given by
+\begin{align*}
+V( \varphi)= \int \vartheta dS = -(S^\tau - S_0).
+\end{align*}
+In particular we end up with final value
+\begin{align*}
+V_{ \pi/2} ( \varphi)= S_0 - S_{ \pi/2}^\tau = S_0 -S_\tau = 1- \frac{1}{2}= \frac{1}{2}.
+\end{align*}
+Thus we have $S >0$ (because $\widetilde{S} >0$)  and $\varphi$ starts from $0$, is self-financing and ends up with wealth $1/2$, which is clearly an  arbitrage.
+\end{proof}
 \end{document}
