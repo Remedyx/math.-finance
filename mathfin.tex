@@ -497,7 +497,7 @@ Also we have by assumption $G_T( \vartheta) \geq 0 \ \PP$-a.s. and since $\epsil
 \item $\Theta := m \mathcal{P}:= \{ \vartheta = (\vartheta_k)_{k=1, \dots ,T}, \ \vartheta$ is $\mathbb{R}^d$-valued predictable$\}$.
 \item 
 \begin{align*}
-G_\cdot (\vartheta):= \int_0^\cdot \vartheta dS = \sum_{k=1}^\cdot \vartheta_k^\text{tr} \delta S_k = \sum_{k=1}^\cdot \vartheta_k^\text{tr} (S_k-S_{k-1}). 
+G_\cdot (\vartheta):= \int_0^\cdot \vartheta dS = \sum_{k=1}^\cdot \vartheta_k^\text{tr} \Delta S_k = \sum_{k=1}^\cdot \vartheta_k^\text{tr} (S_k-S_{k-1}). 
 \end{align*}
 \item $\mathcal{G}:= G_T( \Theta)= \{ G_T( \vartheta): \vartheta \in \Theta\}$. 
 \item $\Theta_\text{adm} = \{ \vartheta \in \Theta : G_\cdot ( \vartheta) \geq -a \text{ for some } a \geq 0 \}$. 
@@ -570,7 +570,7 @@ Start with $( \Omega, \mathcal{F}, \PP)$, $T \in (0, \infty)$, $\mathbb{F}=(\mat
 \end{defn}
 \begin{rem} $\tau_n \nearrow T$ stationarily means $\tau_n \nearrow T \ \PP$-a.s. and $n \mapsto \tau_n( \omega)$ becomes constant ($\equiv T)$ for $n \geq n_0( \omega)$. Equivalently, $\tau_n \nearrow T \ \PP$-a.s. and $\PP( \tau_n=T) \to 0$ as $n \to \infty$. (For example, $\tau_n := T- \frac{1}{n}$ does not satisfy $\tau_n \nearrow T$ stationarily.) 
 \end{rem}
-\begin{defn} $S=(S_t)_{0 <leq t \leq T}$ is called a \textbf{semimartingale} if $S$ is adapted, RCLL and $S-S_0=M+A$ with $M$ a RCLL local martingale null at $0$ and $A$ adapted RCLL with FV (finite variation) trajectories, null at 0. 
+\begin{defn} $S=(S_t)_{0 \leq t \leq T}$ is called a \textbf{semimartingale} if $S$ is adapted, RCLL and $S-S_0=M+A$ with $M$ a RCLL local martingale null at $0$ and $A$ adapted RCLL with FV (finite variation) trajectories, null at 0. 
 \end{defn}
 \textbf{Recall}: $H \in \simple$ means that $H$ is of the form 
 \begin{align*}
@@ -623,7 +623,7 @@ A_n \nearrow A := \sup_{n \in \mathbb{N}} \inf_{h \in C_n} \|h\|^2 \leq \sup_{m 
 \end{align*}
 For each $n$, choose $h_n \in C_n$ with 
 \begin{align*}
-\|h_n\| \leq A_n + \frac{1}{n} \leq A +\frac{1}{n}.
+\|h_n\|^2 \leq A_n + \frac{1}{n} \leq A +\frac{1}{n}.
 \end{align*}
 For $\epsilon>0$, take $n$ large enough so that $A_n \geq A- \epsilon$. Then for $k,m \geq n$, $h_k \in C_k \subset C_n, h_m \in C_m \subset C_n$, so that $\frac{1}{2}(h_k+h_m) \in C_n$ (as a convex combination of elements of $C_n$) and hence (by definition of $A_n= \inf_{h \in C_n} \|h\|^2)$
 \begin{align*}
@@ -632,7 +632,7 @@ For $\epsilon>0$, take $n$ large enough so that $A_n \geq A- \epsilon$. Then for
 So for $k,m \geq n$, we get 
 \begin{align*}
 \|h_k-h_m\|^2 &= 2 \|h_k\|^2 + 2 \|h_m\|^2 - \|h_k + h_m\|^2  \\
-& \leq 4 A_n - 4(A- \epsilon) \leq 4\left(A+ \frac{1}{n}\right) -4(A- \epsilon) = 4 \left( \frac{1}{n} + \epsilon \right).
+& \leq 4 \left(A_n + \frac{1}{n}\right) - 4(A- \epsilon) \leq 4\left(A+ \frac{1}{n}\right) -4(A- \epsilon) = 4 \left( \frac{1}{n} + \epsilon \right).
 \end{align*}
 So $(h_n)_{n \in \mathbb{N}}$ is a Cauchy sequence in $L^2$ (which is complete as any $L^p$ space) hence converges in $L^2$ to some limit $h \in L^2$, and we also get $\PP$-a.s. convergence along a subsequence. 
 \\
@@ -659,7 +659,7 @@ H \cdot S &:= \text{stochastic integral process of } H \in \simple. \\
 \end{align*}
 Now $H^n \in \simple$ has $\|H^n\|_\infty \leq 1$ and $I_S(H^n 1_{(\!(0, \rho_n]\!]}) = (H^n \cdot S)_{\rho_n} \geq c-2\|S\|_\infty$ on $\{ \rho_n < T\}$. This implies that $\PP( \rho_n < T) \leq \epsilon$ so that $\PP( \rho_n = T) \geq 1- \epsilon$. Moreover, jumps of $S$ as well of $H^n \cdot S$ are bounded by $2 \|S\|_\infty$ so that definition of $\rho_n$ gives $(H^n \cdot S)_{\rho_n} \leq c$. Using the definition of $H^n$ yields 
 \begin{align*}
-c \geq \mathbb{E}((h^n \cdot S)_{\rho_n}) &= \sum_{t_i \in D_n} \EE (1_{\{t_i < \rho_n\}} | \EE(S_{t_{i+1}}-S_{t_i} \mid \mathcal{F}_{t_i}) | ) \tag{*} \\
+c \geq \mathbb{E}((H^n \cdot S)_{\rho_n}) &= \sum_{t_i \in D_n} \EE (1_{\{t_i < \rho_n\}} | \EE(S_{t_{i+1}}-S_{t_i} \mid \mathcal{F}_{t_i}) | ) \tag{*} \\
 &=: \MV ( S^{\rho_n+}, D_n) \geq \MV(S^{\rho_n}, D_n)
 \end{align*}
 The last inequality ($\geq$) requires an argument: 
@@ -678,7 +678,7 @@ as there is at most one $i$ which gives a non zero summand.
 \\\\
 \textbf{Problem}: $\rho_n$ still depends on $n$ !
 \\\\
-2) Now we get rid of dependence of $\rho_n$ on $n$ via using Lemma \ref{L22} a): For $g_n := 1_{\{ \rho_n = T \}}$ to get convex $\mu_j^n, j= 1 , \dots , N^n$ such that that 
+2) Now we get rid of dependence of $\rho_n$ on $n$ via using Lemma \ref{L22} a): \\ For $g_n := 1_{\{ \rho_n = T \}}$ to get convex $\mu_j^n, j= 1 , \dots , N^n$ such that that 
 \begin{align*}
 h_n = \sum_{j=1}^{N^n} \mu_j^n g_{n_j}
 \end{align*} 
@@ -694,13 +694,13 @@ Each $B^n$ is decreasing, adapted LC with $B_T^n = h_n$ because $1_{[\![0 , \rho
 \begin{align*}
 1_{[\![ 0 , \rho)\!)} \leq 1_{ [\![ 0 , \sigma_n )\!)} \leq 2B_\cdot^n = 2 \sum_{j=1}^{N^n} \mu_j^n 1_{[\![ 0 , \rho_{n_j})\!)} \tag{**}
 \end{align*}
-Moreover, $\PP( \rho = T) \geq 1- 3 \epsilon$ because $\{ \rho = T\} \supset A$, indeed, $\rho < T$ implies that for some $n \geq n_0$ we have $B_t^n < 1/2$ for some $t \in [0,T]$ and then $h_n= B_T^n \leq b_t^n < 1/2$ and we are in the complement of $A$. \\
+Moreover, $\PP( \rho = T) \geq 1- 3 \epsilon$ because $\{ \rho = T\} \supset A$, indeed, $\rho < T$ implies that for some $n \geq n_0$ we have $B_t^n < 1/2$ for some $t \in [0,T]$ and then $h_n= B_T^n \leq B_t^n < 1/2$ and we are in the complement of $A$. \\
 \\
 Now we compute 
 \begin{align*}
 \MV(S^\rho, D_n) -2 \|S\|_\infty \overset{*}\leq \MV(S^{\rho+}, D_n) = \sum_{t_i \in D_n} \EE(1_{\{t_i < \rho\}} | \EE(S_{t_{i+1}}-S_{t_i} \mid \mathcal{F}_{t_i})|) \\
 \overset{**}\leq 2 \sum_{j=1}^{N^n} \sum_{t_i \in D_n} \mu_j^n \EE(1_{\{t_i < \rho_{n_j}\}} | \EE(S_{t_{i+1}}-S_{t_i} \mid \mathcal{F}_{t_i})|) = 2 \sum_{j=1}^{N^n} \mu_j^n \MV(S^{\rho_{n_j}+}, \underbrace{D_n}_{\subset D_{n_j}}) \\
-\leq 2 \sum_{j=1}^{N^n} \mu_j^n \MV(S^{\rho_{n_j}+}, D_{n_j}) \leq 2 c
+\leq 2 \sum_{j=1}^{N^n} \mu_j^n \MV(S^{\rho_{n_j}+}, D_{n_j}) \leq 2 c.
 \end{align*}
 So $\MV(S^\rho)= \lim_{n \to \infty} \MV(S^\rho, D_n) \leq 2 (c + \|S\|_\infty) < \infty$, we conclude that $\rho$ does the job. 
 \end{proof}
