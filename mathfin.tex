@@ -364,12 +364,11 @@ For semimartingale $S$ we only impose:
 \begin{rem} Notice that a better notation for (NA) would be (NA$^\text{adm})$ because we insist on the integrand $\vartheta$ being admissible (i.e. $a$-admissible for some $a \geq 0$). But in literature this is never done, hence we do so here as well. 
 \end{rem}
 Giving a sufficient condition is easy, as described by the Lemma below: 
-\begin{lem} \label{L21} Suppose $S$ is adapted $\mathbb{R}^d$-valued. If there exists a probability measure $Q \approx \PP$ such that $S$ is a local $Q$-martingale, then both (NA$_\text{elem}^\text{adm})$ and (NA) hold. However, (NA$_\text{det}$) (and hence also (NA$_\text{elem}$) can fail. 
+\begin{lem} \label{L21} Suppose $S$ is adapted $\mathbb{R}^d$-valued. If there exists a probability measure $Q \approx \PP$ such that $S$ is a local $Q$-martingale, then both (NA$_\text{elem}^\text{adm})$ and (NA) hold. However, (NA$_\text{det}$) (and hence also (NA$_\text{elem}$)) can fail. 
 \end{lem}
-\begin{proof} \
-\begin{exe} Counterexample for (NA$_\text{det}$). 
+\begin{exe} \label{ex2} Counterexample for (NA$_\text{det}$). 
 \end{exe}
-\noindent Notice that (NA$_\text{elem}^\text{adm})$ follows from (NA), because $\simple \cap \Theta_\text{adm} \subset \Theta_\text{adm}$. \\
+\begin{proof} Notice that (NA$_\text{elem}^\text{adm})$ follows from (NA), because $\simple \cap \Theta_\text{adm} \subset \Theta_\text{adm}$. \\
 \\
 We first show that $S$ is actually a semimartingale under the assumption of the Lemma. Indeed, $S$ is by assumption a $Q$-local martingale, and $Q \approx \PP$, so the claim follows from general \textbf{Girsanov Theorem}. Thus we can talk about (NA) (which is only defined for semimartingales).
 \\\\
@@ -410,7 +409,7 @@ Thus if we choose $(\alpha_n)_{n \in \mathbb{N}}$ such that $\sum_{n=1}^\infty \
 \item Why not look at (NA)? Infinite horizon means that we should look at $G_\infty ( \vartheta)$, this is complicated for it is an infinite sum! For $\vartheta \in \simple$, $G( \vartheta)$ is a finite sum and $G_\infty( \vartheta)$ is no problem. 
 \end{itemize}
 Before we prove the claim, we need:
-\begin{exe} There exists an arbitrage opportunity in $\simple$ if and only if there exists an arbitrage opportunity with $\vartheta$ of the form $\vartheta = h 1_{(\!(\sigma, \tau ]\!]}$ with $\sigma \leq \tau$ stopping times and $h \in L^\infty ( \mathcal{F}_0)$ (no admissibility here). 
+\begin{exe} \label{ex3} There exists an arbitrage opportunity in $\simple$ if and only if there exists an arbitrage opportunity with $\vartheta$ of the form $\vartheta = h 1_{(\!(\sigma, \tau ]\!]}$ with $\sigma \leq \tau$ stopping times and $h \in L^\infty ( \mathcal{F}_0)$ (no admissibility here). 
 \end{exe}
 Now choose $\beta_n = 3^{-n}$ so that for every $m$ we have $\sum_{k=m+1}^\infty \beta_k < \beta_m$. This ensures that for $n >m$ the both conditions below hold:
 \begin{align*}
@@ -568,7 +567,7 @@ Start with $( \Omega, \mathcal{F}, \PP)$, $T \in (0, \infty)$, $\mathbb{F}=(\mat
 \textbf{Generic notations}: $S$ integrator or semimartingale, $H$ integrand, $X$ is a generic process. 
 \begin{defn} A process $X=(X_t)_{0 \leq t \leq T}$ \textbf{satisfies property $\mathcal{E}$ locally} if there exists a sequence of $[0,T]$-valued stopping times $( \tau_n)_{n \in \mathbb{N}}$ with $\tau_n \nearrow T$ stationarily, and such that each $X^{\tau_n}= (X_{t \wedge \tau_n})_{0 \leq t \leq T}$ satisfies property $\mathcal{E}$. We say $\tau_n$ is a localising sequence. 
 \end{defn}
-\begin{rem} $\tau_n \nearrow T$ stationarily means $\tau_n \nearrow T \ \PP$-a.s. and $n \mapsto \tau_n( \omega)$ becomes constant ($\equiv T)$ for $n \geq n_0( \omega)$. Equivalently, $\tau_n \nearrow T \ \PP$-a.s. and $\PP( \tau_n=T) \to 0$ as $n \to \infty$. (For example, $\tau_n := T- \frac{1}{n}$ does not satisfy $\tau_n \nearrow T$ stationarily.) 
+\begin{rem} $\tau_n \nearrow T$ stationarily means $\tau_n \nearrow T \ \PP$-a.s. and $n \mapsto \tau_n( \omega)$ becomes constant ($\equiv T)$ for $n \geq n_0( \omega)$. Equivalently, $\tau_n \nearrow T \ \PP$-a.s. and $\PP( \tau_n=T) \to 1$ as $n \to \infty$. (For example, $\tau_n := T- \frac{1}{n}$ does not satisfy $\tau_n \nearrow T$ stationarily.) 
 \end{rem}
 \begin{defn} $S=(S_t)_{0 \leq t \leq T}$ is called a \textbf{semimartingale} if $S$ is adapted, RCLL and $S-S_0=M+A$ with $M$ a RCLL local martingale null at $0$ and $A$ adapted RCLL with FV (finite variation) trajectories, null at 0. 
 \end{defn}
@@ -603,7 +602,7 @@ Call $X$ \textbf{quasimartingale} if it is in addition adapted RCLL and if $\MV(
 \end{rem}
 \begin{prop} \label{P21} Suppose $S$ is a good integrator and bounded. Then for all $\epsilon >0$ there exists a stopping time $\rho \leq T$ with $\PP( \rho = T) \geq 1-3 \epsilon$ and such that $S^\rho$ is a quasimartingale. 
 \end{prop}
-\begin{rem} Consequentially, $S$ as above is locally a quasimartingale. 
+\begin{rem} Consequentially, $S$ a good integrator and bounded is locally a quasimartingale. 
 \end{rem}
 In order to proof Proposition \ref{P21} we need a $L^2$-version of \textbf{Komlós theorem}: 
 \begin{lem} \label{L22} \
@@ -613,7 +612,7 @@ In order to proof Proposition \ref{P21} we need a $L^2$-version of \textbf{Koml�
 \end{enumerate}
 \end{lem}
 \newpage
-\begin{proof}[Proof of a)] For all $n \in \mathbb{N}, h_n \in C_N$ we have
+\begin{proof}[Proof of a)] For all $n \in \mathbb{N}, h_n \in C_n$ we have
 \begin{align*}
 \|h_n\|^2 \overset{\text{Jensen}}\leq \sup_{m \geq n } \|g_m\|^2 \leq \sup_{m \in \mathbb{N}} \|g_m\|^2 < \infty.
 \end{align*}
@@ -643,7 +642,7 @@ Proof of b) Beiglböck/Siorpaes.
 \begin{align*}
 \lim_{t \searrow s} \EE(X_t-X_s \mid \mathcal{F}_s)=0.
 \end{align*}
-Let us denote the $n$-th dyadic partition by $D_n:= 2^{-n} T \mathbb{N}_0 \cap [0,T]$. Then for any partition $\pi$ of $[0,T]$, we can approximate $\MV(X, \pi)$ by $\MV(X, D_N)$ and because $\MV(X) = \lim_{n \to \infty} \MV(X, D_n)$ it is enough to look at $X$ along $D_n$. 
+Let us denote the $n$-th dyadic partition by $D_n:= 2^{-n} T \mathbb{N}_0 \cap [0,T]$. Then for any partition $\pi$ of $[0,T]$, we can approximate $\MV(X, \pi)$ by $\MV(X, D_n)$ and because $\MV(X) = \lim_{n \to \infty} \MV(X, D_n)$ it is enough to look at $X$ along $D_n$. 
 \\
 \\
 1) $S$ is a good integrator, so $\forall \delta >0, \forall \epsilon>0, \exists \eta_0$ such that if $\|H\|_\infty \leq \eta \leq \eta_0$ implies $\PP(|I_S(H)| \geq \delta) \leq \epsilon$. Fix $\delta >0$ and choose $c:= \delta/ \eta_0 + 2 \|S\|_\infty$. Then for all $H \in \simple$ with $\|H\|_\infty \leq 1$, we get 
@@ -736,7 +735,7 @@ Standard argument, using that $\mathbb{F}$ is RC, allows us to extend $Y,Z$ to R
 \end{thm}
 \begin{proof} \textbf{Uniqueness} (not really needed later): Any FV local martingale which is continuous must be constant (see BMSC), and any local martingale which is predictable must be continuous. Indeed, to see the latter, we make use of the predictable stopping theorem, i.e., let $L$ be a local martingale and $\tau$ a predictable stopping time (i.e. $\{( \omega, t) \in \Omega \times \mathbb{R}_+ : \tau( \omega) >t \} \in \mathcal{P}$), then we have $\EE( \Delta L_\tau \mid \mathcal{F}_{\tau-})=0$. \\
 \\
-For $X$ predictable and $\tau$ and stopping time, $\Delta X_\tau$ is $\mathcal{F}_{\tau-}$-measurable. So if $L \in \mathcal{M}_\text{loc}$ is predictable, then jump times $\tau$ of $L$ are predictable and so 
+For $X$ predictable and $\tau$ a stopping time, $\Delta X_\tau$ is $\mathcal{F}_{\tau-}$-measurable. So if $L \in \mathcal{M}_\text{loc}$ is predictable, then jump times $\tau$ of $L$ are predictable and so 
 \begin{align*}
 \Delta L_\tau = \EE( \Delta L_\tau \mid \mathcal{F}_{\tau-})=0
 \end{align*}
@@ -754,14 +753,14 @@ So $M_T^n = A_T^n -X_0$, and for any stopping time $\tau$ along $D_n$, using sto
 \\\\
 For $c>0$, define along $D_n$ stopping times $\tau_n(c):= \inf \{ t_i \in D_n : A_{t_{i+1}}^n > c \} \wedge T$ so that $A_{\tau_n(c)}^n \leq c$, hence $X_{\tau_n(c)} \geq \EE(A_T^n \mid \mathcal{F}_{\tau_n(c)}) -c$ and $\{ \tau_n(c) < T\} = \{ A_T^n > c\}$. So we get 
 \begin{align*}
-\EE(A_T^n 1_{\{A_T^n > c\}}) = \EE(\EE(A_T^n \mid \mathcal{F}_{\tau_n(c)}) 1_{\{ \tau_n(c) >T\}}) \leq \EE( X_{\tau_n(c)} 1_{\{ \tau_n(c) < T\}}) + c \PP( \tau_n(c) < T)
+\EE(A_T^n 1_{\{A_T^n > c\}}) = \EE(\EE(A_T^n \mid \mathcal{F}_{\tau_n(c)}) 1_{\{ \tau_n(c) <T\}}) \leq \EE( X_{\tau_n(c)} 1_{\{ \tau_n(c) < T\}}) + c \PP( \tau_n(c) < T)
 \end{align*}
-But $\{\tau_n(c) > T\} \subset \{ \tau_n ( \frac{c}{2}) < T\}$ and thus 
+But $\{\tau_n(c) < T\} \subset \{ \tau_n ( \frac{c}{2}) < T\}$ and thus 
 \begin{align*}
 \EE( X_{\tau_n( \frac{c}{2})} 1_{\{ \tau_n ( \frac{c}{2}) < T \}}) =  \EE[( A_T^n -\overbrace{A_{ \tau_n( \frac{c}{2})}^n}^{ \leq c/2}) 1_{\underbrace{\{ \tau_n (c/2) < T\}}_{ \supset \{ \tau_n(c) < T\}}}] \\
-\geq \EE[( A_T^n - A_{\tau_n( \frac{c}{2})}^n) 1_{\{ \tau_n(c) < T\}}) \geq \frac{c}{2} \PP( \tau_n(c) < T)
+\geq \EE[( \overbrace{A_T^n}^{ \geq c} - A_{\tau_n( \frac{c}{2})}^n) 1_{\{ \tau_n(c) < T\}}) \geq \frac{c}{2} \PP( \tau_n(c) < T).
 \end{align*}
-This yields 
+This yields (after mult. by $2$) that $c\PP( \tau_n(c) < T) \leq 2 \EE( X_{\tau_n( \frac{c}{2})} 1_{\{ \tau_n ( \frac{c}{2}) < T \}})$ hence,
 \begin{align*}
 \EE( A_T^n 1_{\{A_T^n >c\}}) \leq \EE( X_{\tau_n(c)} 1_{\{ \tau_n(c) < T\}}) + 2 \EE(X_{\tau_n( \frac{c}{2})} 1_{\{ \tau_n ( \frac{c}{2}) < T\}}) \tag{*}
 \end{align*}
@@ -775,7 +774,7 @@ uniformly in $n \in \mathbb{N}$ (since RHS does not depend on $n$). Because $X$ 
 \end{align*}
 i.e. $(A_T^n)_{n \in \mathbb{N}}$ is UI, and then so is $(M_T^n)_{n \in \mathbb{N}}$ because $M_T^n = A_T^n -X_0$. 
 \\\\
-2) Now we use Lemma \ref{L22} b) to get "limit". More precisely, we get convex weights $\lambda_j^n, j=1, \dots , N$ and $n_j \geq n$ such that 
+2) Now we use Lemma \ref{L22} b) to get "limit". More precisely, we get convex weights $\lambda_j^n, j=1, \dots , N^n$ and $n_j \geq n$ such that 
 \begin{align*}
 L_T^n := \sum_{j=1}^{N^n} \lambda_j^n M_T^{n_j} \to M_T \text{ in } L^1
 \end{align*}
@@ -801,16 +800,16 @@ for a sequence of stopping times. So (**) will follow if we show that
 \begin{align*}
 \limsup_{n \to \infty} B_\tau^n( \omega) = A_\tau ( \omega) \ \PP\text{-a.s. for every stopping time } \tau \tag{***}
 \end{align*}
-We know from above that $\limsup_{n \to \infty} B_\tau^n \leq A_\tau \ \PP$-a.s. and $B_\tau^n \leq B_1^n \to A_1$ in $L^1$. So we get 
+We know from the prev. page that $\limsup_{n \to \infty} B_\tau^n \leq A_\tau \ \PP$-a.s. and $B_\tau^n \leq B_t^n \to A_t$ in $L^1$. So we get 
 \begin{align*}
-\liminf \EE(A_\tau^n) \overset{\text{conv. comb}}\leq \limsup_{n \to \infty} \EE( B_\tau^n) \overset{\text{Fatou}}\leq \EE( \limsup_{n \to \infty} B_\tau^n) \leq \EE(A_\tau)
+\liminf_{n \to \infty} \EE(A_\tau^n) \overset{\text{conv. comb}}\leq \limsup_{n \to \infty} \EE( B_\tau^n) \overset{\text{Fatou}}\leq \EE( \limsup_{n \to \infty} B_\tau^n) \leq \EE(A_\tau)
 \end{align*}
 thus (***) will follow if we can show that $\lim_{n \to \infty} \EE( A_\tau^n)= \EE(A_\tau)$. \\
 \\
 Define $\sigma_n:= \inf \{ t \in D_n : t \geq \tau \}$ so that $\sigma_n \searrow \tau$ and $A_{\sigma_n}^n = A_\tau^n$ by piecewise LCRL-construction of $A^n$. So we  get 
 \begin{align*}
 \EE(A_\tau^n) = \EE(A_{\sigma_n}^n) = \EE( M_{\sigma_n}^n - X_{\sigma_n} + X_0)  \\
-= \EE( X_0 - \underbrace{X_{\sigma_n}}_{ \to X_\tau \text{ a.s. by RC}}) \xrightarrow{X \text{ of class (D)}} \EE(X_0-X_\tau)= \EE(M_\tau-X_\tau + X_0)= \EE( A_\tau) 
+= \EE( X_0 - \underbrace{X_{\sigma_n}}_{ \to X_\tau \text{ a.s. by RC}}) \xrightarrow[n \to \infty]{X \text{ of class (D)}} \EE(X_0-X_\tau)= \EE(M_\tau-X_\tau + X_0)= \EE( A_\tau) 
 \end{align*}
 \end{proof}
 \newpage
@@ -820,11 +819,11 @@ Now we can show:
 \begin{proof}
 For any adapted RCLL $S$ 
 \begin{align*}
-J_\cdot^1 := \sum_{0 < s \leq \cdot } \Delta_s 1_{\{ | \Delta S_s| > 1 \}}
+J_\cdot^1 := \sum_{0 < s \leq \cdot } \Delta S_s 1_{\{ | \Delta S_s| > 1 \}}
 \end{align*}
-is adapted, RCLL and of FV, hence a good integrator and a semimartingale. Next, $S-J$ is adapted RCLL with bounded jumps, hence locally bounded, and like $J^1$ a good integrator if $S$ is. \\
+is adapted, RCLL and of FV, hence a good integrator and a semimartingale. Next, $S-J^1$ is adapted RCLL with bounded jumps, hence locally bounded, and like $J^1$ a good integrator if $S$ is. \\
 \\
-By Proposition \ref{P21}, $S-J$ is locally a quasimartingale and hence by Theorem \ref{T23} locally difference of two supermartingales. But every supermartingale is locally of class (D), indeed let $X=(X_t)_{0 \leq t \leq T}$ be a supermartingale, let $\tau_n := \inf \{ t \in [0,T]: |X_t| > n \} \wedge T$, this gives for every stopping time $\sigma \leq T$, 
+By Proposition \ref{P21}, $S-J^1$ is locally a quasimartingale and hence by Theorem \ref{T23} locally difference of two supermartingales. But every supermartingale is locally of class (D), indeed let $X=(X_t)_{0 \leq t \leq T}$ be a supermartingale, let $\tau_n := \inf \{ t \in [0,T]: |X_t| > n \} \wedge T$, this gives for every stopping time $\sigma \leq T$, 
 \begin{align*}
 |X_\sigma^{\tau_n}| \leq n + |X_{\tau_n}| \in L^1 \tag{*}
 \end{align*}
@@ -838,10 +837,10 @@ The same is then true for $S=S-J^1 + J^1$, and we are done because local semimar
 \end{proof}
 \begin{exe}Local semimartingales are semimartingales.
 \end{exe}
-\begin{rem}Above proof shows us a bit more: any local-bounded semimartingale $S$ can be written as $S-S_0 = M +A$ with $M \in \mathcal{M}_{0, \text{loc}}$ and $A \in FV_=$ is even \textbf{predictable}. As in the proof of Theorem \ref{T24}, one can argue that this decomposition is in fact unique, we call this the \textbf{canonical decomposition of special semimartingales}. For general semimartingales decomposition is not unique and $J$ is not predictable. 
+\begin{rem}Above proof shows us a bit more: any local-bounded semimartingale $S$ can be written as $S-S_0 = M +A$ with $M \in \mathcal{M}_{0, \text{loc}}$ and $A \in FV_0$ is even \textbf{predictable}. As in the proof of Theorem \ref{T24}, one can argue that this decomposition is in fact unique, we call this the \textbf{canonical decomposition of special semimartingales}. For general semimartingales decomposition is not unique and $J$ is not predictable. 
 \end{rem}
 \newpage
-For converse of Theorem \ref{T25} we need an auxiliary result. For $Y$ RCLL, write $Y_t^* := \sup_{0 \leq s \leq T} | Y_s|$, where $ t \in [0,T]$ and for $h \in \simple$, write $H \cdot Y$ for (elementary) stochastic integral process (i.e. $I_Y(H)= H \cdot Y_T$).
+For converse of Theorem \ref{T25} we need an auxiliary result. For $Y$ RCLL, write $Y_t^* := \sup_{0 \leq s \leq t} | Y_s|$, where $ t \in [0,T]$ and for $H \in \simple$, write $H \cdot Y$ for (elementary) stochastic integral process (i.e. $I_Y(H)= H \cdot Y_T$).
 \begin{lem}\label{L26} For any martingale $L$,  $H \in \simple$, $c >0$ we have
 \begin{align*}
 c \PP(  | I_L(H)| \geq c) \overset{(1)}\leq c \PP( ( H \cdot L)_T^* \geq c) \overset{(2)}\leq 34 \|H\|_{L^\infty} \|L_T\|_{L^1}
@@ -858,7 +857,7 @@ For martingale $L$ and $H \in \simple$
 \end{align*}
 For FV process $A$ and $H \in \simple$, 
 \begin{align*}
-|I_A(H)| = \left| \int_0^T H_s dA_s \right| \leq \| H\|_{L^\infty} \underbrace{|A|_T}_{\text{Var of $A$ on $[0,T]$}} \to 0, \text{ even } \PP\text{-a.s. as} \|H\|_{L^\infty} \to 0.
+|I_A(H)| = \left| \int_0^T H_s dA_s \right| \leq \| H\|_{L^\infty} \underbrace{|A|_T}_{\text{Var of $A$ on $[0,T]$}} \to 0, \text{ even } \PP\text{-a.s. as } \|H\|_{L^\infty} \to 0.
 \end{align*}
 \end{proof}
 \begin{rem} A variant of the above argument for martingales may have appeared in BMSC for square integrable martingales:
@@ -866,7 +865,7 @@ For FV process $A$ and $H \in \simple$,
 \| I_M(H)\|_{L^2} \overset{\text{Itô Isom.}} = \|H\|_{L^2(M)} = \left( \EE \left( \int_0 ^T H_u^2 d \langle M \rangle_u \right) \right)^{1/2} \leq \|H\|_{L^\infty} \|M_T\|_{L^2}. 
 \end{align*}
 \end{rem}
-\begin{proof}[Proof of Lemma \ref{L26}] Part (1) is clear. For proving Theorem \ref{T27} we did not use (2), but only that LHS $\leq$ RHS. That can by proved by viewing $L$ as a martingale in discrete time, which makes things simpler. However (2) will be needed later, and this cannot be reduced to discrete-time arguments.
+\begin{proof}[Proof of Lemma \ref{L26}] Part (1) is clear. For proving Theorem \ref{T27} we did not use (2), but only that LHS $\leq$ RHS. That can be proved by viewing $L$ as a martingale in discrete time, which makes things simpler. However (2) will be needed later, and this cannot be reduced to discrete-time arguments.
 \\
 \\
 1) Suppose first that $L \geq 0$. Then $Z:= L \wedge c$ is a bounded, nonnegative supermartingale (since $\wedge$ is convex) and so Theorem \ref{T24} yields $Z=M-A$ with $M$ a martingale with $M_0=Z_0$ and $A$ predictable, increasing integrable RCLL with $A_0=0$. Then $M=Z+A \geq 0$ and we claim that $M$ is square-integrable. Since $M_T^2 \leq 2(Z_T^2 + A_T^2) \leq 2c^2 + A_T^2$ (equivalent to $(a-b)^2 \geq 0)$ and $M$ is a martingale it suffices, by Doobs $L^2$-inequality, to show that $A_T^2$ is integrable. 
@@ -886,7 +885,7 @@ so we get
 & \leq \underbrace{\int_0^T (M_T-M_{s-}) dA_s^n}_{=:Y_T} + cA_T \tag{*}
 \end{align*}
 Now $M \geq 0$ is a martingale and $A^n$ is increasing, predictable, null at $0$, so we have:
-\begin{exe} 
+\begin{exe} \label{ex4} Show that:
 \begin{align*}
 \EE(M_TA_T^n)= \EE \left( \int_0^T M_{s-} dA_s^n \right). 
 \end{align*}
@@ -908,7 +907,7 @@ and then
 \EE(M_T^2) \leq 2( \EE(Z_T^2) + \EE(A_T^2)) \leq 2(c \EE(L_T)+2c \EE(L_T)) = 6c \EE(L_T).
 \end{align*}
 \newpage
-\noindent 2) Now take $H \in \simple$ and w.l.o.g. $\|H\|_\infty =1$- Then use that on $\{ L_T^* \leq c\}$, we have $Z=L$ and so 
+\noindent 2) Now take $H \in \simple$ and w.l.o.g. $\|H\|_\infty \leq 1$. Then use that on $\{ L_T^* \leq c\}$, we have $Z=L$ and so 
 \begin{align*}
 \PP((H \cdot L)_T^* \geq c) \leq \PP(L_T^* > c) + \PP( ( H \cdot Z)_T^* \geq c)
 \end{align*}
@@ -916,7 +915,7 @@ and because $L$ is a martingale, we get
 \begin{align*}
 \PP(L_T^* >c) \overset{\text{Doob}}\leq \frac{1}{c} \EE(L_T).
 \end{align*}
-Next, $Z=M-A$ and $\|H\|_\infty \leq 1$ implies $H \cdot Z = H \cdot M - H \cdot M \leq H \cdot M + A$ and the latter is a submartingale. So we get
+Next, $Z=M-A$ and $\|H\|_\infty \leq 1$ implies $H \cdot Z = H \cdot M - H \cdot A \leq H \cdot M + A$ and the latter is a submartingale. So we get
 \begin{align*}
 \PP((H \cdot Z)_T^* \geq c) \leq \PP((H \cdot M + A)_T^*)^2  \geq c^2 ) &\overset{\text{Doob}}\leq \frac{1}{c^2} \EE((H \cdot M_T + A_T)^2)  \\
 &\leq \frac{2}{c^2} ( \EE((H \cdot M_T)^2 ) + \EE(A_T^2)). 
@@ -933,10 +932,30 @@ Bringing this all together, we find
 3) Any martingale can be written as difference of two nonnegative martingales (\textbf{Krickeberg}). This gives an extra factor $2$ and replaces $\EE(L_T)$ by $\|L_T\|_{L^1}$. 
 \end{proof}
 \newpage
+\subsection{Recap}
+We provide a quick summary of this section. We defined stochastic integrals for the class of integrands $H \in \simple$. That is, for \textbf{any} $\mathbb{R}^d$-valued process $S=(S_t)_{0 \leq t \leq T}$ we defined the stochastic integral as the map $I_S: \simple \to L^0$ by $I_S(H):= H \cdot S_T = \sum_{i=0}^n h_i^\text{tr} (S_{\tau_{i+1}}-S_{\tau_i})$. We then impose on $S$ the condition of being a \textbf{good integrator}, that is for $(H^n)_{n \in \mathbb{N}}, H \in \simple$ we want that if $H^n \to H$ uniformly (in $(\omega,t)$), then $I_S(H^n) \to I_S(H)$ in probability. This condition has the (economic) interpretation that small changes in our self financing strategy $\varphi=(v_0, H)$ also only has small impact on the final wealth given by $v_0 + I_S(H)$. It was then our main goal in this section to establish the \textbf{Bichteler-Dellacherie theorem} which states that good integrators and semimartingales are the same thing. To prove this important result we proceeded as follows:
+\begin{itemize}
+\item We introduced the terminology of \textbf{quasimartingales}, i.e. processes whose variation on average is finite.
+\item We showed that $S$ bounded good integrators are locally quasimartingales.
+\begin{itemize}
+\item Proof of the statement required a $L^2$-version of \textbf{Komlós theorem}.
+\end{itemize}
+\item The \textbf{Theorem of Rao} establishes that every quasimartingale, can be written as a difference of two RCLL, nonnegative supermartingales. 
+\item The general \textbf{Doob-Meyer theorem} shows that every supermartingale $X$ of class $(D)$ can be uniquely decomposed as $X-X_0=M-A$ where $M$ is a RCLL martingale,  null at $0$ and $A$ is RCLL, increasing, integrable and predictable, null at $0$.
+\item Theorem \ref{T25} states that every good integrator is a semimartingale. 
+\begin{itemize}
+\item Since local semimartingales are semimartingales  we can work locally.
+\item $J_.^1:= \sum_{0 < s \leq \cdot} \Delta S_s1_{\{ | \Delta S_s| > 1\}}$ is good integrator and semimartingale. $S-J^1$ has bounded jumps, hence locally bounded and is good integrator whenever $S$ is.
+\item $S-J$ is then locally a quasimartingale and thus by Rao locally the difference of two supermartingales.
+\item Every supermartingale is locally of class $(D)$. Hence by Doob-Meyer can be composed locally as difference of martingale and difference of two predictable, increasing processes. Thus $S-J^1$ is locally sum of martingale and a FV process, hence locally a semimartingale. Then so is $S=S-J^1+J^1$.
+\end{itemize}
+\item Theorem \ref{T27} then establishes that every semimartingale is a good integrator.
+\end{itemize}
+\newpage
 \section{General stochastic integration}
 \textbf{Second main goal}: extend stochastic integration from $\simple$ to a larger class of integrands $H$. 
 \\\\
-\textbf{Setup}: $( \Omega, \mathcal{F}, \PP), \ T \in (0, \infty), \ \mathbb{F}= ( \mathcal{F}_t)_{0 \leq t \leq T}$ with usual conditions. 
+\textbf{Setup}: $( \Omega, \mathcal{F}, \mathbb{F}, \PP), \ T \in (0, \infty), \ \mathbb{F}= ( \mathcal{F}_t)_{0 \leq t \leq T}$ with usual conditions. 
 \\
 \\
 \textbf{Recall}: \
@@ -957,7 +976,7 @@ Introduce spaces $\mathbb{L}$ and $\mathbb{D}$ of $\mathbb{R}^d$-valued adapted 
 d(X^1, X^2):= \EE( 1 \wedge (X^1-X^2)_T^*) = \EE(1 \wedge \sup_{0 \leq t \leq T} |X_t^1-X_t^2|).
 \end{align*}
 This $d$ is a metric, it metrices uniform (in $t$) convergence in probability. One can check that:
-\begin{exe} Both $(\mathbb{L},d)$ and $( \mathbb{D},d)$ are complete metric spaces. (Uses the fact that $\mathbb{F}$ is complete). 
+\begin{exe} \label{ex5} Both $(\mathbb{L},d)$ and $( \mathbb{D},d)$ are complete metric spaces. (Uses the fact that $\mathbb{F}$ is complete). 
 \end{exe}
 Recall the space $\simple$ of simple predictable processes. Add to this all processes of the form $H=h_0 1_{\{0\}}$ with $h_0 \in L^\infty  ( \mathcal{F}_0, \mathbb{R}^d)$ and call the resulting space $\simple_0$ and define for $H$ as above $H \cdot X := h_0^\text{tr}X_0.$ Then define 
 \begin{align*}
@@ -985,13 +1004,13 @@ Next auxiliary result is used to connect $d_E$ and $d_E'$:
 \begin{proof}
 "$\implies$" Take $(H^n)_{n \in \mathbb{N}} \subset \simple_0$, set $Y:= X^n-X$ and write 
 \begin{align*}
-\PP(|H^n \cdot Y_T| \geq \delta) \frac{1}{\delta} \EE(1 \wedge |H^n \cdot Y_T|) \leq \frac{1}{\delta}d_E(Y,0) \leq \frac{1}{\delta}d_E' (Y,0). 
+\PP(|H^n \cdot Y_T| \geq \delta) \leq \frac{1}{\delta} \EE(1 \wedge |H^n \cdot Y_T|) \leq \frac{1}{\delta}d_E(Y,0) \leq \frac{1}{\delta}d_E' (Y,0). 
 \end{align*}
 "$\Longleftarrow$" If $d_E' (X^n,X) \not\to 0$, then we can find $\delta_0>0$ and a sequence $(H^n)_{n \in \mathbb{N}} \subset \simple_0$, with $\|H^n\|_\infty \leq 1$ such that 
 \begin{align*}
 \PP((H^n \cdot (X^n-X))_T^* \geq \delta_0) \geq \delta_0, \text{ for all } n \in \mathbb{N}.
 \end{align*}
-Define $\tau_n:= \inf \{ t \in [0,T] : |H^n \cdot (X^n-X)_t| > \delta_0 \} \wedge T$. and $\tilde{H}^n := H^n 1_{ [\![ 0, \tau_n ]\!]}$.  Then $(\tilde{H}^n)_{n \in \mathbb{N}} \subset \simple_0$ with $\| \tilde{H}^n \|_\infty \leq 1$ and $\tilde{H}^n  \cdot (X^n-X)_T \not \to 0$ in $L^0$ by construction.  
+Define $\tau_n:= \inf \{ t \in [0,T] : |H^n \cdot (X^n-X)_t| > \delta_0 \} \wedge T$, and $\tilde{H}^n := H^n 1_{ [\![ 0, \tau_n ]\!]}$.  Then $(\tilde{H}^n)_{n \in \mathbb{N}} \subset \simple_0$ with $\| \tilde{H}^n \|_\infty \leq 1$ and $\tilde{H}^n  \cdot (X^n-X)_T \not \to 0$ in $L^0$ by construction.  
 \end{proof}
 \begin{cor} \label{C33} For $(X^n)_{n \in \mathbb{N}} \subset \mathbb{D}$, $X \in \mathbb{D}$, we have $d_E'(X^n,X) \to 0$ if and only if $d_E(X^n,X) \to 0$.
 \end{cor}
@@ -1013,7 +1032,7 @@ $\mathcal{S}$ equipped with $d_E$ or $d_E'$ is a metric space (and a topological
 \\\\
 It remains to show that $X \in \mathcal{S}$ and $X^n \to X$ for $d_E$ or $d_E'$ respectively, as these two are equivalent by Corollary \ref{C33}. \\
 \\
-First we argue $d_E(X^m,X) \to 0$ as $m \to \infty$. Since $d(X^n, X) \to 0$ as $n \to \infty$ implies $X_\tau^n \to X_\tau$ in $L^0$ for any stopping time $\tau$ and hence $H \cdot X_T^n \to H \cdot X_T$ in $L^0$ for any $h \in \simple_0$ with $\|H\|_\infty \leq 1$. So for $H \in \simple_0$ with $\|H\|_\infty \leq 1$ we have 
+First we argue $d_E(X^m,X) \to 0$ as $m \to \infty$. Since $d(X^n, X) \to 0$ as $n \to \infty$ implies $X_\tau^n \to X_\tau$ in $L^0$ for any stopping time $\tau$ and hence $H \cdot X_T^n \to H \cdot X_T$ in $L^0$ for any $H \in \simple_0$ with $\|H\|_\infty \leq 1$. So for $H \in \simple_0$ with $\|H\|_\infty \leq 1$ we have 
 \begin{align*}
 \EE(1 \wedge | H \cdot (X^m-X)_T|) &= \lim_{n \to \infty} \EE(1 \wedge |H \cdot (X^m-X^n)_T|) \\ &\leq \limsup_{n \to \infty} d_E(X^m , X^n) \xrightarrow{m \to \infty} 0,
 \end{align*}
@@ -1027,21 +1046,21 @@ To show that even $X \in \mathcal{S}$, we know that it is equivalent to show tha
 \lim_{m \to \infty} \sup_{Y \in \mathcal{X}_{(1)}} \PP( |Y| \geq m)=0
 \end{align*}
 \end{exe}
-To prove taht this indeed holds, write
+To prove that this indeed holds, write
 \begin{align*}
 \PP(|I_X(H)| \geq 2m) &\leq \PP( |I_{X^n}(H)| \geq m) +  \PP( |(H \cdot (X-X^n))_T| \geq m) \\
-& \leq \PP(|I_{X^n}(H) \geq m) + d_E(X^n,X).
+& \leq \PP(|I_{X^n}(H)| \geq m) + d_E(X^n,X).
 \end{align*}
 The second term is smaller than $\epsilon$ for large enough $n$ because $X^n \to X$ w.r.t. $d_E$. Moreover, for fixed $n \in \mathbb{N}$, $X^n$ is a semimartingale, so that $ \mathcal{X}_{(1)}^n$ is bounded in $L^0$. So the first term is also smaller than $\epsilon$ for $m$ large, uniformly over $H \in \simple$ with $\|H\|_\infty \leq 1$. So we get 
 \begin{align*}
 \sup_{\substack{H \in \simple \\ \|H\|_\infty \leq 1}} \PP( |I_X(H)| \geq 2m) \xrightarrow{m \to \infty} 0. 
 \end{align*}
-Thus $\mathcal{H}_{(1)}$ is bounded in $L^0$ (bounded in Probability), hence $X \in \mathcal{S}$ and the proof is complete. 
+Thus $\mathcal{X}_{(1)}$ is bounded in $L^0$ (bounded in Probability), hence $X \in \mathcal{S}$ and the proof is complete. 
 \end{proof}
 We already know that $( \mathbb{L},d)$ is complete. 
-\begin{exe} Any $H \in \mathbb{L}$ is adapted LC, hence locally bounded
+\begin{exe} \label{ex6} Any $H \in \mathbb{L}$ is adapted LC (by def. of $\mathbb{L})$, hence locally bounded
 \end{exe}
-Moreover, any bounded adapted process can be approximated uniformly in $( \omega, t)$ by processes in $\simple_0$ (If $H_0=0$ for $H $ bounded adapted LC, then approximands are in $\simple$; this is w.l.o.g. if $H$ is to be an integrand). \\
+Moreover, any bounded adapted process can be approximated uniformly in $( \omega, t)$ by processes in $\simple_0$ (If $H_0=0$ for $H $ bounded adapted LC, the approximands are in $\simple$; this is w.l.o.g. if $H$ is to be an integrand). For details to this statement compare with model solution of \textbf{Exercise} \ref{ex5}. \\
 \\
 So $\simple_0$ is dense in $\mathbb{L}$ for $d$, and this allows us for each semimartingale $S$ to extend stochastic integration $I_S$ from $( \simple , \| \cdot \|_\infty)$ to $( \mathbb{L},d)$ and resulting mapping $I_S: \mathbb{L} \to L^0$, $H \mapsto I_S(H)=H \cdot S_T$ is continuous with respect to $d$, i.e. $d(H^n,  H) \to 0$ with $H^n, H \in \mathbb{L}$ implies that 
 \begin{align*}
@@ -1062,7 +1081,7 @@ This however does not give any path properties of $t \mapsto H \cdot S_t$. Our n
 \end{rem}
 \newpage
 \begin{proof}
-As $\simple_0$ is dense in $\mathbb{L}$ for $d$, any $H \in \mathbb{L}$ admits $(H^n)_{n \in \mathbb{N}} \subset \simple_0$ with $d(H^n, H) \to 0$. Then $(H^n)_{n \in \mathbb{N}}$ is Cauchy for $d$ (as its convergent w.r.t. $d$), and $X`n := H^n \cdot S = J_S(H^n)$ is in $\mathcal{S}$. If we show that $(X^n)_{n \in \mathbb{N}}$ is Cauchy for $d_E'$, then Theorem \ref{T34} implies that there exists $X \in \mathcal{S}$ with $d_E'(X^n,X) \to 0$ and then we define $J_S(H):= X=: H \cdot S$. That this $J_S$ is continuous for $d$ and $d_E'$ follows by construction.
+As $\simple_0$ is dense in $\mathbb{L}$ for $d$, any $H \in \mathbb{L}$ admits $(H^n)_{n \in \mathbb{N}} \subset \simple_0$ with $d(H^n, H) \to 0$. Then $(H^n)_{n \in \mathbb{N}}$ is Cauchy for $d$ (as its convergent w.r.t. $d$), and $X^n := H^n \cdot S = J_S(H^n)$ is in $\mathcal{S}$. If we show that $(X^n)_{n \in \mathbb{N}}$ is Cauchy for $d_E'$, then Theorem \ref{T34} implies that there exists $X \in \mathcal{S}$ with $d_E'(X^n,X) \to 0$ and then we define $J_S(H):= X=: H \cdot S$. That this $J_S$ is continuous for $d$ and $d_E'$ follows by construction.
 \\\\
 So,  it only remains to show that $X^n = H^n \cdot S$, $n \in \mathbb{N}$ is Cauchy for $d_E'$. 
 \\\\
@@ -1083,7 +1102,7 @@ So we get
 d_E' ( H^k \cdot M, 0 ) &= \sup_{\substack{ K \in \simple_0 \\ \|K\|_\infty \leq 1}} \EE(1 \wedge (K \cdot (H^k \cdot M))_T^*) \\
 & \leq c + \PP((H^k)_T^* > b) + \frac{34b}{c}\|M_T\|_{L^1}.
 \end{align*}
-Due to $d(H^k, 0) \to 0$, the second term 2 goes to $0$ as $k \to \infty$ for and $b$. The terms 1 and 3 can be made arbitrary small by first making $c$, and then $b$ sufficiently small. So $d_E'(H^k \cdot M, 0) \to 0$. 
+Due to $d(H^k, 0) \to 0$, the second term 2 goes to $0$ as $k \to \infty$ for any $b$. The terms 1 and 3 can be made arbitrary small by first making $b$, and then $c$ sufficiently small. So $d_E'(H^k \cdot M, 0) \to 0$. 
 \end{proof}
 \newpage
 To extend class of integrands beyond $\mathbb{L}$, we need a different approximation concept and hence a new idea. One concept needed is known from BMSC, it is redone here for the sake of completeness. 
@@ -1094,7 +1113,7 @@ For a semimartingale $S$, process $S_-$ is adapted LC (hence in $\mathbb{L}$) an
 \end{align*}
 to obtain
 \begin{align*}
-\int S_- dS = \lim_{n \to \infty} \sum_{i=0}^{I^n-1} S_{\tau_i}( S^{\tau_{i+1}}- S^{\tau_i}) \text{ (for $d_E'$)}
+\int S_- dS = \lim_{n \to \infty} \sum_{i=0}^{I^n-1} S_{\tau_i}( S^{\tau_{i+1}}- S^{\tau_i})  \tag{for $d_E'$}
 \end{align*}
 and in particular, this convergence holds uniformly over $t$, in probability (often abbreviated ucp). 
 \begin{defn} For semimartingale $S$, define \textbf{optional quadratic variation}
@@ -1107,16 +1126,16 @@ and in particular, this convergence holds uniformly over $t$, in probability (of
 \begin{lem} \label{L36} $[S]$ is $\PP$-a.s. increasing in $t$. 
 \end{lem}
 \begin{proof}
-Take dyadic partiiton $D_n = 2^{-n} T \mathbb{N}_0 \cap [0,T]$ and write 
+Take dyadic partition $D_n = 2^{-n} T \mathbb{N}_0 \cap [0,T]$ and write 
 \begin{align*}
 \int S_- dS = \lim_{n \to \infty} \sum_{t_i \in D_n} S_{t_i} ( S^{t_{i+1}}-S^{t_i}).
 \end{align*}
 Compute:
 \begin{align*}
-S^2-S_0^2- \sum S_{t_i} (S^{t_{i+1}}-S^{t_i}) &\overset{\text{tel. sum}}= \sum \left[ ((S^{t_{i+1}})^2-(S^{t_i})^2)-2 S_{t_i}(S^{t_{i+1}}-S^{t_i}) \right] \\
+S^2-S_0^2- 2\sum S_{t_i} (S^{t_{i+1}}-S^{t_i}) &\overset{\text{tel. sum}}= \sum \left[ ((S^{t_{i+1}})^2-(S^{t_i})^2)-2 S_{t_i}(S^{t_{i+1}}-S^{t_i}) \right] \\
 & = \sum_{t_i \in D_n} (S^{t_{i+1}}-S^{t_i})^2 =:V^n
 \end{align*}
-and conclude that $[S] = \lim_{n \to \infty} V^n$ ucp. \textbf{But} each $V^n$ is increasing on $D_n$. and so the limit is increasing on $D:= \cup_{n \in \mathbb{N}} D_n$ because $D_n \subset D_{n+1}$. But $D$ is dense in $[0,T]$, so $[S]$ is increasing on $D$ and $[S]$ is RC(LL),  hence $[S]$ is increasing on $[0,T] $ $\PP$-a.s.
+and conclude that $[S] = \lim_{n \to \infty} V^n$ ucp. \textbf{But} each $V^n$ is increasing on $D_n$, and so the limit is increasing on $D:= \cup_{n \in \mathbb{N}} D_n$ because $D_n \subset D_{n+1}$. But $D$ is dense in $[0,T]$, so $[S]$ is increasing on $D$ and $[S]$ is RC(LL),  hence $[S]$ is increasing on $[0,T] $ $\PP$-a.s.
 \end{proof}
 \newpage
 \begin{defn} $\mathcal{H}_0^1:= \{ M \in \mathcal{M}_{0, \text{loc}} : M_T^* = \sup_{0 \leq s \leq T} |M_s| \in L^1\}.$ If we identity indistinguishable processes, then $\mathcal{H}_0^1$ is a Banach space with $\|M\|_{\mathcal{H}_0^1} := \| M_T^*\|_{L^1}$. 
@@ -1169,8 +1188,9 @@ and so $\sup_{0 \leq t \leq T} | \Delta Y_t^{1/2}| \in L^1$. Use discrete time r
 \centering
 \includegraphics[scale=1.2]{conv.pdf}
 \end{figure}
+\\
 \end{proof}
-Because $\mathcal{M}_{0, \text{loc}} = \mathcal{H}_{0, \text{loc}}^1$, we get as a direct consequence of Davis inequality
+\noindent Because $\mathcal{M}_{0, \text{loc}} = \mathcal{H}_{0, \text{loc}}^1$, we get as a direct consequence of Davis inequality
 \begin{cor}\label{C38} If $M \in \mathcal{M}_{0, \text{loc}}$, then $[M]^{1/2}$ is locally integrable. 
 \end{cor}
 \newpage
@@ -1197,7 +1217,7 @@ By Corollary \ref{C38} we can take $\tau_m \nearrow T$ stationarily such that $(
 \begin{align*}
 H^m:= H1_{ [\![ 0, \tau_m]\!]} \to H \text{ in } L^1(M)
 \end{align*}
-and $H^m \in L^1( M^{\tau_m}).$ So w.l.o.g. assume $M \in \mathcal{H}_0^1$ and $H \in L^1(M)$. Then $H^k := h 1_{\{ |H| \leq k \}} \in \pred$ and $H^k \to H$ in $L^1(M)$ (by dominated convergence). \\
+and $H^m \in L^1( M^{\tau_m}).$ So w.l.o.g. assume $M \in \mathcal{H}_0^1$ and $H \in L^1(M)$. Then $H^k := H 1_{\{ |H| \leq k \}} \in \pred$ and $H^k \to H$ in $L^1(M)$ (by dominated convergence). \\
 \\
 Now suppose $M \in \mathcal{H}_0^1$ and $H \in \pred \subset L^1(M)$. Then we can find $H^j = \sum_k \lambda_k^j 1_{D_j^k}$ with $\lambda_k^j \in \mathbb{R}$, $D_j^k \in \mathcal{P}$ such that $\|H^j-H\|_\infty \to 0$ (and hence also in $L^1(M))$. Note however, that $H^j \notin \simple$ because $D_j^k \in \mathcal{P}$ does not need to be rectangular. \\
 \\
@@ -1207,7 +1227,7 @@ But any $H$ of the form $H \lambda 1_D$ for $\lambda \in \mathbb{R}, D \in \math
 \noindent Putting all this together gives the result. 
 \end{proof}
 \newpage
-We could now use Lemma \ref{L39} and completeness of $\mathcal{H}_0^1$ to exntend stochastic integrals for a local martingale, to $H \in L_\text{loc}^1(M)$ and in particular to $\pred_\text{loc}$. We want, however, a stronger continuity property and hence proceed differently. 
+We could now use Lemma \ref{L39} and completeness of $\mathcal{H}_0^1$ to extend stochastic integrals for a local martingale, to $H \in L_\text{loc}^1(M)$ and in particular to $\pred_\text{loc}$. We want, however, a stronger continuity property and hence proceed differently. 
 \begin{lem} \label{L310} Let $(M^n)_{n \in \mathbb{N}}, \ Y$ be martingales with $| \Delta M_\tau^n | \leq | \Delta Y_\tau |$ for all $n \in \mathbb{N}$ and for all stopping times $\tau$. If $\EE(1 \wedge [M^n]_T) \to 0$ i.e. $[M^n]_T \to 0$ in $L^0$, then $d_E' ( M^n,0 ) \to 0$. 
 \end{lem}
 \begin{proof}
@@ -1231,7 +1251,7 @@ and of course $\PP( \tau_m = T) \to 1$ as $m \to \infty$. This implies that $(X^
 \end{proof}
 \begin{cor}\label{C311} Let $M$ be a martingale and $(H^n)_{n \in \mathbb{N}} \subset \simple$ with $\|H^n\|_\infty \leq 1$. If $H^n \to 0$ pointwise, then $d_E' (H^n \cdot M, 0) \to 0$. 
 \end{cor}
-\begin{rem} The Lemma above gives a "nice and strong" convergence with respect to a "rich" topology.
+\begin{rem} The Corollary above gives a "nice and strong" convergence with respect to a "rich" topology.
 \end{rem}
 \begin{proof}
 Let $M^n:= H^n \cdot M$ (which is a martingale) and $Y:= M$ to get $| \Delta M_\tau^n| = | H_\tau^n \Delta M_\tau | \leq | \Delta Y_\tau|$ for all $n \in \mathbb{N}$ and for all stopping times $\tau$. Moreover,
@@ -1252,7 +1272,7 @@ Linearity, uniqueness are clear, and
 \end{align*}
 are easy because $H^n \in \simple.$ The result for $H$ then follows via limits. Dominated convergence property follows from Corollary \ref{C311} (plus its proof) for $M^k:= H^k \cdot M$ and continuity for $( \pred, \| \cdot \|_\infty)$ is then clear.
 \end{proof}
-Next we extend from $\mathcal{H}_0^1$-integrators to semimartingales $S$. If $S=A$ is of RV, we can define $H \cdot A = \int H_s dA_s$, for $H \in \pred \subset L_{\text{var}}(A)$ pathwise as usual Lebesgue-Stieltjes integral and check properties from known results. \\
+Next we extend from $\mathcal{H}_0^1$-integrators to semimartingales $S$. If $S=A$ is of FV, we can define $H \cdot A = \int H_s dA_s$, for $H \in \pred \subset L_{\text{var}}(A)$ pathwise as usual Lebesgue-Stieltjes integral and check properties from known results. \\
 \\
 So we only need to argue for $S= M \in \mathcal{M}_{0, \text{loc}} = \mathcal{H}_{0, \text{loc}}^1$ and this is easy - use the following exercise: 
 \begin{exe} $M^{\tau_m} \in \mathcal{H}_0^1$ for $\tau_m \nearrow T$ stationarily.
@@ -1292,14 +1312,14 @@ Take $(H^n)_{n \in \mathbb{N}} \subset \pred$ with $\|H^n-H\|_\infty \to 0$ and 
 \widetilde{d}_E'(H^n \cdot S^n, H \cdot S) &\leq \widetilde{d}_E'(H^n \cdot S^n , H^n \cdot S) + \widetilde{d}_E'(H^n \cdot S, H \cdot S) \\
 & = \sup_{ \substack{ K \in \pred \\ \|K\|_\infty \leq 1}} \EE(1 \wedge ((KH^n) \cdot (S^n-S))_T^*) + \widetilde{d}_E'((H^n-H) \cdot S, 0).
 \end{align*}
-The second term vanishes by dominated convergence property, and the first time goes to $0$ by definition of $\widetilde{d}_E'$ because $d_E'(S^n-S, 0) \to 0$ as $n \to \infty$ (uses $\|H^\|_\infty \leq 1)$. 
+The second term vanishes by dominated convergence property, and the first term goes to $0$ by definition of $\widetilde{d}_E'$ because $d_E'(S^n-S, 0) \to 0$ as $n \to \infty$ (uses $\|H^\|_\infty \leq 1)$. 
 \end{proof}
 \newpage
 In Theorem \ref{T312} we have $H \cdot M$ for $M \in \mathcal{H}_0^1$ and $H \in \pred$. \textbf{But}: construction as limit in $\mathcal{S}$, so that  
 \begin{align*}
 H \cdot M = \int H dM \text{ is in } \mathcal{S}.
 \end{align*}
-Is $H \cdot M$ a martingale? More subtle than it looks: If $M$ is a martingale and $H$ is bounded, predictable, then $H \cdot M$ is a semimartingale - but it can fail to be a martingale (unlike in discrete time! striking difference here!) Counterexamples in Herdegem/Herrimann, in continuous time. Nevertheless, we have:
+Is $H \cdot M$ a martingale? More subtle than it looks: If $M$ is a martingale and $H$ is bounded, predictable, then $H \cdot M$ is a semimartingale - but it can fail to be a martingale \textbf{(unlike in discrete time! striking difference here!)}. Counterexamples in Herdegem/Herrimann, in continuous time. Nevertheless, we have:
 \begin{prop} \label{P314} If $M \in \mathcal{H}_0^1$ and $H \in \pred$, then $H \cdot M \in \mathcal{H}_0^1$. 
 \end{prop}
 \begin{proof}
@@ -1329,7 +1349,7 @@ The next Proposition gives a characterisation of $\mathcal{L}(S)$.
 \begin{proof}
 "$\implies$" Let $H^n:= H 1_{\{ |H| \leq n\}}$. Then $(H^n \cdot S)_{n \in \mathbb{N}}$ is Cauchy for $\widetilde{d}_E'$ and so 
 \begin{align*}
-\widetilde{d}_E' ((H 1_{\{ |H| > n \}}) \cdot S) = \widetilde{d}_E' (H \cdot S, H^n  \cdot S) \to 0.
+\widetilde{d}_E' ((H 1_{\{ |H| > n \}}) \cdot S,0) = \widetilde{d}_E' (H \cdot S, H^n  \cdot S) \to 0.
 \end{align*}
 In consequence, by remark \ref{rem1}, $\widetilde{d}_E'((K^n 1_{\{ | H| > n\}} ) \cdot S, 0) \to 0$. Take $m \neq n$ and write  
 \begin{align*}
@@ -1366,7 +1386,7 @@ is closed in $L^0$. So we can ask: Is in general $\{ H \cdot S_T : H \in L(S) \}
 This is \textbf{not true} - in general, unlike in finite discrete time, a control on \textbf{final value} $H \cdot S_T$ does not give any control on the process $H \cdot S$, and so we cannot work. 
 \end{rem}
 Before we prove Theorem \ref{T317} we need an auxiliary result:
-\begin{lem}\label{L316} Suppose $( \gamma_k)_{k \in \mathbb{N}} \subset \pred$ satisfy $\sum_{k=1}^\infty d_s( \gamma_k,0) < \infty$ and define $[0,+ \infty]$-valued process $G:= \sum_{k=1}^\infty | \gamma_k|$. Then 
+\begin{lem}\label{L316} Suppose $( \gamma_k)_{k \in \mathbb{N}} \subset \pred$ satisfy $\sum_{k=1}^\infty d_S( \gamma_k,0) < \infty$ and define $[0,+ \infty]$-valued process $G:= \sum_{k=1}^\infty | \gamma_k|$. Then 
 \begin{enumerate}
 \item For each $t \in [0,T]$, $ \{ \int_0^t H_u dS_u : H \in \pred , |H| \leq G \}$ is bounded in $L^0$. 
 \item If $(K^n)_{n \in \mathbb{N}} \subset \pred$ satisfies $K^n \to 0$ pointwise and $|K^n| \leq G$, then \\ $\widetilde{d}_E'( K^n \cdot S,0) \to 0$. 
@@ -3571,7 +3591,7 @@ since
 So the stopping time $ \widetilde{\tau} := \inf\{ t \geq 0 : \widetilde{S}_t = 1/2\}$ is a.s. finite. Set $\Psi(t):= \tan t$ and define $S_t:= \widetilde{S}_{ \Psi (t)}$ for $t \in [0, \pi/2)$ and $S_{ \pi/2} =0$ (which agrees with $\widetilde{S}_\infty =0$). This yields again a continuous process $S$ and a stopping time $\tau := \Psi^{-1}\circ \widetilde{\tau} \in [0, \pi/2)$ a.s. Thus we can use the predictable, self-financing strategy $\varphi = (v_0=0, \vartheta)$  (i.e. with $v_0=0$) going short on $(\!(0, \tau ]\!]$,  i.e.  \begin{align*}
 \vartheta_t := - 1_{(\!( 0, \tau]\!]} (t)
 \end{align*}
-which is adapted and left-continuous, hence $S$-integrable ($S$ is a continuous martingale). It follows that the value (wealth) process is given by
+which is adapted and left-continuous, hence $S$-integrable ($S$ is a continuous local martingale). It follows that the value (wealth) process is given by
 \begin{align*}
 V( \varphi)= \int \vartheta dS = -(S^\tau - S_0).
 \end{align*}
@@ -3580,5 +3600,174 @@ In particular we end up with final value
 V_{ \pi/2} ( \varphi)= S_0 - S_{ \pi/2}^\tau = S_0 -S_\tau = 1- \frac{1}{2}= \frac{1}{2}.
 \end{align*}
 Thus we have $S >0$ (because $\widetilde{S} >0$)  and $\varphi$ starts from $0$, is self-financing and ends up with wealth $1/2$, which is clearly an  arbitrage.
+\end{proof}
+\newpage
+\noindent \textbf{Exercise} \ref{ex2}: Show that even if there exists an ELMM $Q$, NA$_\text{det}$ and hence also NA$_\text{elem}$ can fail. In particular, can you argue directly that $\vartheta$ is not admissible in your example?
+\begin{proof}
+Recall that in Exercise \ref{ex1} (previous Exercise), we've constructed a process
+\begin{align*}
+S_t = \begin{cases} \exp (W_{\tan (t)}- \tan (t)/2), & \text{ for } 0 \leq t < \pi/2 \\ 0, & \text{ for } t= \pi/2.  \end{cases}
+\end{align*}
+Obviously, $S$ is a local martingale on $[0, \pi/2]$, but it is \textbf{not a martingale}. Indeed, assume for contradiction that $S$ is a martingale on $[0, \pi/2]$, then we must have $\EE(S_t)=\EE(S_0)=1$, but clearly (by the law of large numbers for Brownian Motion as $\tan( \pi/2)= + \infty$) $\EE(S_{\pi/2})=0$.\\
+\\
+We now take $\vartheta_t = -1_{(0, \pi/2]}(t)$ which is a very simple integrand i.e. $\vartheta \in \verysimple$ and hence also $\vartheta \in \simple$. Moreover we have 
+\begin{align*}
+G_{ \pi/2}( \vartheta)= - ( S_{ \pi/2}- S_0)=1,
+\end{align*}
+which gives an (deterministic and hence also elementary) arbitrage opportunity (money pump). That is we have shown that
+\begin{align*}
+G_T( \verysimple) \cap L_+^0 =G_{\pi/2}(\verysimple) \cap L_+^0  \neq \{0\}.
+\end{align*}
+Hence if we take $Q=\PP$ as our ELMM (under which $S$ is a local martingale but not a martingale) then NA$_\text{det}$ (and hence also NA$_{\text{elem}})$ can still fail.\\
+\\
+Let us now see if we can argue directly that $\vartheta$ is not admissible in this setup. Assume for contradiction that $\vartheta$ is admissible i.e. we have that $G_t( \vartheta) \geq -a$ $\PP$-a.s. for all $0 \leq t \leq T= \pi/2$ for some $a \geq 0$. But if $G( \vartheta)$ is uniformly bounded from below, then $S$ is bounded from above as
+\begin{align*}
+G( \vartheta)=-(S-S_0)=1-S \geq -a \implies S \leq a-1.
+\end{align*}
+But by the very definition of our process $S=(S_t)_{0 \leq t \leq \pi/2}$ we have that $S \geq 0$, which gives that $S$ is bounded and we know (easy exercise) from BMSC that every bounded local martingale is a (true) martingale. But as we've already argued above, $S$ is not a martingale. 
+\end{proof}
+\newpage
+\noindent \textbf{Exercise} \ref{ex3}: Show that if there exists an (elementary) arbitrage opportunity
+\begin{align*}
+\vartheta = \sum_{k=1}^N h_k 1_{ (\!( \tau_{k-1}, \tau_k ]\!]} \in \simple,
+\end{align*}
+then there also exists a "one-step buy-and-hold" arbitrage opportunity of the form $\vartheta^* = h1_{(\!( \sigma_0, \sigma_1]\!]} \in \simple$.
+\begin{proof}
+Define
+\begin{align*}
+k^*:= \min\{ k \in 1, \dots , N\} : G_{\tau_k} ( \vartheta) \in L_+^0 \setminus \{0\}\},
+\end{align*}
+then $k^*$ is well-defined since we know that for the strategy $\varphi = (0, \vartheta)$ there exists an (elementary, i.e. $\vartheta \in \simple)$ arbitrage opportunity, moreover we observe that $k^*$ is deterministic. We set $\sigma_0 := \tau_{k^*-1}$ and $\sigma_1:= \tau_{k^*}$. Furthermore, we set
+\begin{align*}
+h:= \begin{cases}
+h^{k^*} & \text{if } \PP(G_{\tau_{k^*-1}}( \vartheta)=0)=1, \\
+h^{k^*}1_{\{ G_{ \tau_{k^*-1}}( \vartheta)<0\}} & \text{if } \PP(G_{ \tau_{k^*-1}}( \vartheta)=0)<1.
+ \end{cases}
+\end{align*}
+In words, we wait until $G_.( \vartheta)$ first becomes genuinely positive and then use the single step of $\vartheta$ from the previous $\tau_{k-1}$ on the set where the previous gains were zero (first case) or genuinely negative (second case). We notice that $\PP(G_{\tau_{k^*-1}} ( \vartheta) <0)>0$ in the second case by the definition of $k^*$.
+\\\\
+We claim that $\vartheta^* := h_{ (\!( \sigma_0, \sigma_1]\!]} \in \simple$ is an arbitrage opportunity. Indeed:
+\\
+\\
+$\bullet$ In the first case, i.e. if $G_{\tau_{k^*-1}}( \vartheta)=0$ almost surely:
+\begin{align*}
+G_T( \vartheta^*)= G_{\tau_{k^*}}( \vartheta)- G_{\tau_{k^*-1}}( \vartheta)= G_{\tau_{k^*}}( \vartheta) \in L_+^0 \setminus \{0\}.
+\end{align*}
+$\bullet$ In the second case, i.e. if $\PP( G_{ \tau_{k^*-1}}( \vartheta) <0)>0$ which means the gain at time $\tau_{k^*-1}$ is genuinely negative with positive probability, we get:
+\begin{align*}
+G_T( \vartheta^*)&= \left(  G_{\tau_{k^*}}( \vartheta)- G_{\tau_{k^*-1}}( \vartheta) \right)1_{ \{ G_{\tau_{k^*-1}}( \vartheta)<0\}} \\
+& \geq  - G_{\tau_{k^*-1}}( \vartheta)1_{ \{ G_{\tau_{k^*-1}}( \vartheta)<0\}} \in L_+^0 \setminus \{0\}.
+\end{align*}
+Hence in both cases we have an arbitrage opportunity. 
+\end{proof}
+\newpage
+\noindent \textbf{Exercise \ref{ex4}}: Theorem \ref{T27} tells us that every semimartingale is a good integrator, it is an immediate consequence of Lemma \ref{L26} which has a rather straightforward but technical proof. During the proof of Lemma \ref{L26} we made use of the following identity:
+\begin{align*}
+\EE(M_TA_T^n) = \EE \left( \int_0^T M_{s-}dA_s^n \right),
+\end{align*}
+where $(M_t)_{0 \leq t \leq T}$ is a non-negative bounded martingale and $A^n$ is increasing integrable RCLL, predictable, null at $0$. Verify the above formula.
+\begin{proof}
+For any partition $\pi$ of the interval $[0,T]$, we can write
+\begin{align*}
+M_TA_T= \sum_{i=1}^n M_T(A_{t_i}-A_{t_{i-1}}).
+\end{align*}
+Because $A$ is predictable, $A_{t_i}$ is $\mathcal{F}_{t_i-}$-measurable, and because $M$ is a martingale, we get
+\begin{align*}
+\EE (M_TA_T) = \EE \left[ \sum_{i=1}^n M_{t_i-} (A_{t_i}-A_{t_{i-1}}) \right].
+\end{align*}
+As $| \pi| \to 0$, the sum inside the expectation converges to $\int_0^T M_{s-}dA_s,$ and because $M$ is bounded and $A$ is increasing and integrable, a majorant for all sums is $\| M\|_\infty A_T \in L^1$. So dominated convergences establishes that
+\begin{align*}
+\EE(M_TA_T)&= \lim_{| \pi| \to 0} \EE \left[ \sum_{t_i \in \pi} M_{t_i-} (A_{t_i}-A_{t_{i-1}}) \right] \\
+&= \EE \left[ \lim_{ | \pi| \to 0} \sum_{t_i \in \pi} M_{t_i-} (A_{t_i}-A_{t_{i-1}}) \right] \\
+&= \EE \left[ \int_0^T M_{s-} dA_s \right].
+\end{align*}
+\end{proof}
+\newpage
+\noindent \textbf{Exercise \ref{ex5}}: a) Show that $D_0(Z^1,Z^2):= \EE(1 \wedge |Z^1-Z^2|)$ is a metric on $L^0$ and that $Z_n \to Z$ in probability iff $d_0(Z_n,Z) \to 0$. So $d_0$ metrizes the convergence in probability.
+\begin{proof}
+We start by showing that $d_0=d_{L^0}$ is a metric on $L^0$. Let $Z^1,Z^2,Z^3 \in L^0$ denote arbitrary random variables (i.e. $L^0$ as the space of random variables).  
+\begin{itemize}
+\item $\EE(1 \wedge |Z^1-Z^2|) \geq 0$ is clear.
+\item $\EE(1 \wedge |Z^1 -Z^2|)=0$ holds if and only if $Z^1 =Z^2$ $\PP$-a.s.
+\item $\EE(1 \wedge |Z^1-Z^2 |) = \EE( 1 \wedge |Z^2-Z^1|)$ gives the symmetry.
+\item Finally we have $1 \wedge |Z^1-Z^3| \leq 1 \wedge ( |Z^1-Z^2| + |Z^2-Z^3|) \leq 1 \wedge |Z^1-Z^2|+ 1 \wedge |Z^1-Z^3|$. Taking expectation gives the triangle inequality. 
+\end{itemize} 
+The above shows that $d_0$ is indeed a metric on $L^0$. Let us next show that it metrizes the convergence in probability. Recall the basic estimate for $0 < \delta \leq 1$ given by
+\begin{align*}
+\PP(Z> \delta) \leq \frac{1}{\delta} \EE(1 \wedge Z).
+\end{align*}
+The above then establishes that convergence in $d_0$ implies convergence in probability. Next assume that $Z^n \to Z$ in probability, then $\EE(1 \wedge | Z^n -Z|) \to 0$ by bounded convergence theorem, indeed $1 \wedge |Z^n-Z| \leq 1$. 
+\end{proof}
+\noindent b) Recall from the lecture $\mathbb{L}$ (resp. $\mathbb{D})$ of adapted LCRL (resp. RCLL) processes. Define
+\begin{align*}
+d(X^1,X^2):= \EE(1 \wedge (X^1-X^2)_T^*) = E \left[ 1 \wedge \sup_{0 \leq s \leq T} |X_s^1-X_s^2| \right]
+\end{align*}
+on $\mathbb{L}$ (resp. on $\mathbb{D})$. Assume that the filtration $\mathbb{F}$ is complete (important here!). Show that both $( \mathbb{L},d)$ and $( \mathbb{D},d)$ are complete metric spaces. 
+\begin{proof}
+We only show that $( \mathbb{L},d)$ is a complete metric space. The proof for $( \mathbb{D},d)$ is analogous. The fact that $d$ is a metric can be proved as in part a) and will be skipped here. Now let $(X^n)_{n \mathbb{N}} \subset \mathbb{L}$ be a Cauchy sequence in $d$. Set $n_1=1$. After $n_{k-1}$ is defined we choose $n_k$ such that 
+\begin{align*}
+\PP[( X^n-X^m)_T^* >2^{-k}] <2^{-k} \text{ for all } m, n \geq n_k
+\end{align*}
+In particular, this gives 
+\begin{align*}
+\sum_{k=1}^\infty \PP[( X^n-X^m)_T^* >2^{-k}] < \infty
+\end{align*}
+and by the Borel-Cantelli lemma it follows that $(X^{n_k})_{k \in \mathbb{N}}$ is $\PP$-a.s. Cauchy sequence under the \textbf{uniform} convergence on $[0,T]$. So for each $t \in [0,T]$ the there exists a limit $X_t= \sum_{k \to \infty} X_t^{n_k}$. Since each $X^{n_k}$ is adapted and $\mathbb{F}$ is complete, $X$ will also be adapted. Using the estimate 
+\begin{align*}
+\sup_{s \in [0,T]} |X_{s+}^{n_k}-X_{s+}^{n_l}| \leq \sup_{s \in [0,T]} |X_s^{n_k}-X_s^{n_l}|
+\end{align*}
+establishes that $(X_+^{n_k})_{k \in \mathbb{N}}$ is also Cauchy under uniform convergence on $[0,T]$ and has also a limit $X_+$. Using the uniform convergence on $[0,T]$, we can switch the following limits and obtain
+\begin{align*}
+\lim_{s \nearrow t} X_s &= \lim_{s \nearrow t} \lim_{k \to \infty} X_s^{n_k} = \lim_{k \to \infty} \lim_{s \nearrow t} X_s^{n_k} = X_t, \\
+\lim_{s \searrow t} X_s &= \lim_{s \searrow t} \lim_{k \to \infty} X_s^{n_k}= \lim_{k \to \infty} \lim_{s \searrow t} X_s^{n_k} = X_{t+}.
+\end{align*}
+Since $\mathbb{L}$ is the space of LCRL adapted processes (on $[0,T]$) we get that $X \in \mathbb{L}$. Recall that for adaptedness we had to make use of the fact that $\mathbb{F}$ is complete. \\
+\\
+Finally, we need to show that $(X^n)_{n \in \mathbb{N}}$ converges to $X$ w.r.t. to our norm $d$ for $\mathbb{L}$. Let $\epsilon>0$ be arbitrary. We can find $k$ such that $d(X^{n_k},X) < \epsilon/2$ and $1/2^k < \epsilon/2$. Then for all $n \geq n_k$ we have by the triangle inequality
+\begin{align*}
+d(X^n,X) \overset{\Delta}\leq d(X^n,X^{n_k}) + d(X^{n_k},X) < \epsilon.
+\end{align*}
+This shows that $d(X^n,X) \to 0$ as $n \to \infty$ and hence $( \mathbb{L},d)$ is indeed a complete metric space. 
+\end{proof}
+\noindent c) Show that $\simple_0$ is dense in $\mathbb{L}$ for $d$. 
+\begin{proof}
+Let $X \in \mathbb{L}$, i.e. $X$ is an adapted LCRL process $X=(X_t)_{0 \leq t \leq T}$. Any such process is locally bounded (see Exercise \ref{ex6}), hence by localization we may assume that $X$ is bounded. Set $Y=X_+$, observe that then $Y_-=X$ and consider for $\epsilon>0$ arbitrary $\tau_0^\epsilon:=0$ and iteratively 
+\begin{align*}
+\tau_{n+1}^\epsilon:= \inf \{ t > \tau_n^\epsilon : |Y_t-Y_{\tau_n^\epsilon}| > \epsilon \} \wedge T.
+\end{align*}
+The right continuity of $Y$ implies that the $\tau_n^\epsilon$ are stopping times and $\tau_n^\epsilon \nearrow T$ stationarily. Define
+\begin{align*}
+X^\epsilon= X_0 1_{\{0\}} + \sum_{n=1}^k Y_{ \tau_n^\epsilon} 1_{(\!( \tau_n^\epsilon, \tau_{n+1}^\epsilon ]\!]} \in \simple_0.
+\end{align*}
+By construction we have 
+\begin{align*}
+\PP[(X^\epsilon-X)_T^* > \epsilon] \leq \PP( \tau_m \neq T) + \PP[(X^\epsilon-X^{\tau_m})_T^* > \epsilon].
+\end{align*}
+Since $\tau_m \nearrow T$ stationarily we have $\PP(\tau_m \neq T) \to 0 $ as $m \to \infty$, the second term converges to $0$ as $m \to \infty$ by construction. 
+\end{proof}
+\noindent \textbf{Exercise \ref{ex6}}: Show that every $X \in \mathbb{L}$ is locally bounded. 
+\begin{proof}
+By definition $\mathbb{L}$ is the space of all processes $X=(X_t)_{0 \leq t \leq T}$ which are adapted (i.e. stochastic processes) and LCRL (or caglad), i.e. left continuous with right limits. In order to verify that $X$ is locally bounded, we need by definition find the existence of a sequence of $[0,T]$-valued stopping times $( \tau_n)_{n \in \mathbb{N}}$ with $\tau_n \nearrow T$ stationarily, and such that each $X^{\tau_n}$ is bounded (in particular the bound $c=c_n$ may very well depend on $n$). 
+\\
+\\
+Since $X$ is LCRL, it satisfies for all $t \in [0,T]$:
+\begin{align*}
+\lim_{s \nearrow t} X_s&=X_t. \\
+\lim_{s \searrow t} X_s&= X_{t+} \text{ exists}.
+\end{align*}
+The first property above can also be written as $X_{t-}=X_t$. \\
+ We define $Y=X_+$, that is
+\begin{align*}
+Y_t=X_{t+}= \lim_{s \searrow t} X_s,
+\end{align*} which is well-defined for all $t \in [0,T]$ because RL exists for $X$. We will now show that with this definition $Y$ is a RCLL process. Indeed we need to verify that $Y_{t+}=Y_t$ and $Y_{t-}$ exists, in fact we even have $Y_-=X$.
+\begin{align*}
+\lim_{s \searrow t} Y_s &= \lim_{s \searrow t} \lim_{ h \searrow s} X_h = \lim_{s \searrow t} X_{s} = X_{t+}=Y_t. \tag{RC} \\
+\lim_{s \nearrow t} Y_s& = \lim_{s \nearrow t} \lim_{h \searrow s} X_h = \lim_{s \nearrow t} X_{s+} = X_t.
+\end{align*}
+Where we used in the second assertion that when $s \nearrow t$ and then particular $s+ \nearrow t$ and then the left continuity of $X$. Next we define the stopping times
+\begin{align*}
+\tau_n := \inf \{ t > 0 : |Y_t| > n \} \wedge T = \inf \{t >0 : |X_{t+}| >n \} \wedge T.
+\end{align*}
+since $Y$ is right-continuous, these stopping times are well defined. We have $\tau_n \nearrow T$ stationarily and by definition $|Y^{\tau_n}|=|Y_{ t \wedge \tau_n}| \leq n$, letting now $t \to t-$ and using that $Y_-=X$ we then naturally obtain that $|X_{t \wedge \tau_n}|=|X^{\tau_n}| \leq n$ which proves the assertion.
 \end{proof}
 \end{document}
