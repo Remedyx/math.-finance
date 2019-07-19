@@ -1805,7 +1805,7 @@ This is the space of all wealth processes of self-financing strategies with init
 \mathcal{X}_{++}^1:= \{ X \in \mathcal{X}^1 : X >0 \text{ and } X_- >0 \}
 \end{align*}
 Also recall that by definition $\mathcal{G}^1= G_T( \Theta^1) = \mathcal{H}_T^1-1$ is bounded in $L^0$ iff $S$ satisfies (NUPBR). 
-\begin{defn} \textbf{Equivalent $\sigma$-martingale density} (E$\sigma$DM) for $S$ is a local martingale $Z >0$ with $Z_0 = 1$ such that $ZS$ is a $(\PP$-) $\sigma$-martingale. If ZS is even a local martingale we say that $Z$ is ELMD. 
+\begin{defn} \textbf{Equivalent $\sigma$-martingale density} (E$\sigma$MD) for $S$ is a local martingale $Z >0$ with $Z_0 = 1$ such that $ZS$ is a $(\PP$-) $\sigma$-martingale. If ZS is even a local martingale we say that $Z$ is ELMD. 
 \end{defn}
 \begin{rem} \
 \begin{enumerate}
@@ -2914,7 +2914,7 @@ U'(0)&:= \lim_{x \searrow 0} U'(x)= + \infty, \\
 U'( \infty)&:= \lim_{x \to \infty} U'(x) = 0.
 \end{align*}
 \end{defn}
-\noindent \textbf{Interpretation}: $U$ quantifies subjective preferences: monetary amount $z$ is given a surjective utility/level of happiness $U(z)$. Increasing means "more is better" (people are greedy) and concave means "an extra dollar means more increase of happiness for a beggar than for a billionaire". Then \textbf{indirect utility} $u(x)$ is maximal expected utility one can achieve from initial wealth $x$ via trading with $0$-admissible strategy $\varphi \teq (x, \vartheta)$. 
+\noindent \textbf{Interpretation}: $U$ quantifies subjective preferences: monetary amount $z$ is given a subjective utility/level of happiness $U(z)$. Increasing means \textit{"more is better" (people are greedy)} and concave means \textit{"an extra dollar means more increase of happiness for a beggar than for a billionaire"}. Then \textbf{indirect utility} $u(x)$ is maximal expected utility one can achieve from initial wealth $x$ via trading with $0$-admissible strategy $\varphi \teq (x, \vartheta)$. 
 \newpage
 \begin{rem} \
 \begin{enumerate}
@@ -2937,7 +2937,7 @@ So in general, problem only makes sense in arbitrage-free market.
 If yes, how to find or describe it?
 \item How does optimal expected utility $u(x)$ depend on $x?$
 \end{enumerate}
-\begin{exe}[Easy] If $U$ is increasing and concave (not necessarily strictly) then so is $u$. If also $u(x_0) < \infty$ for some $x_0>0$, then $u(x) < \infty$ for all $x>0$. We can stronger properties with (one) extra condition on $U$; see later. 
+\begin{exe}[Easy] If $U$ is increasing and concave (not necessarily strictly) then so is $u$. If also $u(x_0) < \infty$ for some $x_0>0$, then $u(x) < \infty$ for all $x>0$. We can get stronger properties with (one) extra condition on $U$; see later. 
 \end{exe}
 To make our problem more tractable, generalise: 
 \begin{align*}
@@ -2965,18 +2965,18 @@ For "$\subset$", note that $G( \vartheta) = \int \vartheta dS$ is for any $\vart
 For "$\supset$", define $U$ as RCLL version of $U_t:= \esssup_{Q \in \PP_{e, \sigma}} \EE_Q(f \mid \mathcal{F}_t)$ for $0 \leq t \leq T$. Note that $U_T=f$ as $f$ is $\mathcal{F}_T$-measurable, and $U_0 = \sup_{Q \in \PP_{e, \sigma}} \EE_Q(f) \leq x$ as $\mathcal{F}_0$ is trivial. Then Proposition \ref{P72} and Theorem \ref{T73} imply that $U= U_0 + \int \vartheta dS -C$ with $\vartheta \in \Theta_\text{adm}$ and $C$ is increasing, null at $0$. So \begin{align*}
 \int \vartheta dS = \underbrace{U}_{ \geq 0}-\underbrace{U_0}_{ \leq x}+\underbrace{C}_{ \geq 0} \geq -x
 \end{align*}
-and $\vartheta \in \Theta_\text{adm}^x$ and 
+hence $\vartheta \in \Theta_\text{adm}^x$ and 
 \begin{align*}
 f= U_T=U_0 + G_T( \vartheta)-C_T \leq x + G_T( \vartheta), \ \vartheta \in \Theta_\text{adm}^x
 \end{align*}
 so that $f \in \mathcal{C}(x)$. 
 \end{proof}
-In view of Lemma \ref{L101}, we can rewrite the problem as maximise $\EE(U(F))$ over $f \in L_+( \mathcal{F}_T)$ subject to $EE_Q(f) \leq x$, for all $Q \in \PP_{e, \sigma}$. But we cannot simply write Lagrange function, because number of constraints (the for all $Q \in \PP_{e, \sigma}$ part) is in general infinite. 
+In view of Lemma \ref{L101}, we can rewrite the problem as maximise $\EE(U(F))$ over $f \in L_+( \mathcal{F}_T)$ subject to $\EE_Q(f) \leq x$, for all $Q \in \PP_{e, \sigma}$. But we cannot simply write Lagrange function, because number of constraints (the for all $Q \in \PP_{e, \sigma}$ part) is in general infinite. 
 \newpage
-It turns out to be useful to generalise E$\sigma$MMs as well. Start with $Q \in \PP_{e, \sigma}$, denote by $Z=Z^{Q;\PP}$ its density process and take any $V \in \mathcal{V}(x)$, so $V= x + \int \vartheta dS$, $\vartheta \in \Theta_\text{adm}^x$. Then $Z>0$ is a $\PP$-martingale with $Z_0=1$ (as $\mathcal{F}_0$ is trivial) and by Bayes and Ansel-Stricker, $ZV$ is a $\PP$-supermartingale. This motivates: 
+It turns out to be useful to generalise E$\sigma$MDs as well. Start with $Q \in \PP_{e, \sigma}$, denote by $Z=Z^{Q;\PP}$ its density process and take any $V \in \mathcal{V}(x)$, so $V= x + \int \vartheta dS$, $\vartheta \in \Theta_\text{adm}^x$. Then $Z>0$ is a $\PP$-martingale with $Z_0=1$ (as $\mathcal{F}_0$ is trivial) and by Bayes and Ansel-Stricker, $ZV$ is a $\PP$-supermartingale. This motivates: 
 \begin{defn} For $z>0$, we call $\mathcal{Z}(z)$ the family of all nonnegative $\mathbb{F}$-adapted RCLL process $Z=(Z_t)_{0 \leq t \leq T}$ with $Z_0=z$ such that $ZV$ is a $\PP$-supermartingale for all $V \in \mathcal{V}(1)$ (or, equivalently, for all $V \in \mathcal{V}(x),$ for all $x >0;$ note that $\mathcal{V}(x) = x  \mathcal{V}(1)$.)
 \end{defn}
-Note that $\vartheta \equiv 0$ gives $V(1,0)=1 \in \mathcal{V}(1)$; so each $Z \in \mathcal{Z}(z)$ is itself $\PP$-supermartingale. Next $Z^{Q; \PP} \in \mathcal{Z}(1)$ for any $Q \in \PP_{e, \sigma}$ and $\mathcal{Z}(z)=z \mathcal{Z}(1)$ for all $z >0$; so $\mathcal{Z}(z) \neq \emptyset$ by (NFLVR). 
+Note that $\vartheta \equiv 0$ gives $V(1,0)=1 \in \mathcal{V}(1)$; so each $Z \in \mathcal{Z}(z)$ is itself a $\PP$-supermartingale. Next $Z^{Q; \PP} \in \mathcal{Z}(1)$ for any $Q \in \PP_{e, \sigma}$ and $\mathcal{Z}(z)=z \mathcal{Z}(1)$ for all $z >0$; so $\mathcal{Z}(z) \neq \emptyset$ by (NFLVR). 
 \\\\
 In analogy to $\mathcal{C}(x)$, define for $z>0$ 
 \begin{align*}
