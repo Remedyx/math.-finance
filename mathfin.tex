@@ -2900,14 +2900,14 @@ This concludes the example.
 \\
 Fix \textbf{initial wealth} $x>0$ and consider self financing strategy $\varphi \teq (x, \vartheta)$ with $\vartheta \in L(S)$ predictable $\mathbb{R}^d$-valued. Resulting \textbf{wealth process} is $V( \varphi)= V(x, \vartheta)= x + G( \vartheta) = x + \int \vartheta dS$ and we want $V( \varphi) \geq 0;$ so strategy $\varphi \teq (x, \vartheta)$ is $0$-admissible and integrand $\vartheta$ is $x$-admissible, $\vartheta \in \Theta_\text{adm}^x$. 
 \\\\
-\textbf{Goal}: find $0$-admissible $(x, \vartheta)$ to \textbf{maximise expected utility} $\EE[U(V_T( x, \vartheta))]$ \textbf{from terminal wealth} (over all $\vartheta \in \Theta_\text{adm}^x)$ where $U$ is utility function.  
+\textbf{Goal}: find $0$-admissible strategy $\varphi \teq (x, \vartheta)$ to \textbf{maximise expected utility} $\EE[U(V_T( x, \vartheta))]$ \textbf{from terminal wealth} (over all $\vartheta \in \Theta_\text{adm}^x)$ where $U$ is a  utility function.  
 \\\\
 \textbf{Notation}: for $x>0$, set 
 \begin{align*}
 \mathcal{V}(x)&:= \left\{ V= V(x, \vartheta) = x + \int \vartheta dS : \vartheta \in L(S) \text{ and } V \geq 0 \right\} \\
 & = \left\{ x + \int \vartheta dS : \vartheta \in \Theta_\text{adm}^x \right\}.
 \end{align*}
-\textbf{Primal optimisation problem}: find $u(x):= \sup_{V \in \mathcal{V}(x)} \EE( U(V_T))$ for $x >0$, where $U$ is a utility function (on $(0, \infty)$). 
+\underline{\textbf{Primal optimisation problem}}: find $u(x):= \sup_{V \in \mathcal{V}(x)} \EE( U(V_T))$ for $x >0$, where $U$ is a utility function (on $(0, \infty)$). 
 \begin{defn} A \textbf{utility function} (on $(0, \infty))$ is a mapping $U: (0, \infty) \to \mathbb{R}$, strictly increasing, strictly concave, in $C^1$ and satisfying \textbf{Inada conditions}:
 \begin{align*}
 U'(0)&:= \lim_{x \searrow 0} U'(x)= + \infty, \\
@@ -2923,7 +2923,7 @@ U'( \infty)&:= \lim_{x \to \infty} U'(x) = 0.
 \item For any random variable $f \geq 0$, set $\EE(U(f)):= - \infty$ if $U(f) \notin L^1(\PP)$. This is harmless because we maximize and $\vartheta \equiv 0$ gives $u(x) \geq U(x) > - \infty$. 
 \item If $S$ is not locally bounded, it may happen that $\Theta_\text{adm}^x = \{0\}$ and $\mathcal{V}(x)= \{ x \}$. Then problem is trivial with $u(x)=U(x)$.  
 \item Consider the following:
-\begin{exe} If $S$ allows arbitrage and $U$ is unbounded above, then $u \equiv + \infty$.
+\begin{exe} \label{ex19} If $S$ allows arbitrage and $U$ is unbounded above, then $u \equiv + \infty$.
 \end{exe}
 So in general, problem only makes sense in arbitrage-free market. 
 \end{enumerate}
@@ -2937,7 +2937,7 @@ So in general, problem only makes sense in arbitrage-free market.
 If yes, how to find or describe it?
 \item How does optimal expected utility $u(x)$ depend on $x?$
 \end{enumerate}
-\begin{exe}[Easy] If $U$ is increasing and concave (not necessarily strictly) then so is $u$. If also $u(x_0) < \infty$ for some $x_0>0$, then $u(x) < \infty$ for all $x>0$. We can get stronger properties with (one) extra condition on $U$; see later. 
+\begin{exe}[Easy] \label{ex20} If $U$ is increasing and concave (not necessarily strictly) then so is $u$. If also $u(x_0) < \infty$ for some $x_0>0$, then $u(x) < \infty$ for all $x>0$. We can get stronger properties with (one) extra condition on $U$; see later. 
 \end{exe}
 To make our problem more tractable, generalise: 
 \begin{align*}
@@ -2949,7 +2949,7 @@ To make our problem more tractable, generalise:
 space of nonnegative time-$T$ payoffs one can superreplicate from initial wealth $x$ via $0$-admissible self-financing strategy. \newpage
  Of course, $\mathcal{C}(x) \supset \{ V_T : V \in \mathcal{V}(x)\}$ and we have 
  \begin{align*}
- u(x):= \sup_{V \in \mathcal{V}(x)} \EE(U(V_T)) = \sup_{f \in \mathcal{C}(x)} \EE(U(f)).
+ u(x):= \sup_{V \in \mathcal{V}(x)} \EE(U(V_T)) = \sup_{f \in \mathcal{C}(x)} \EE(U(f)). \tag{$\spadesuit$}
  \end{align*}
 $\lceil$ "$\leq$" is clear from the inclusion above. Conversely, if $f \in \mathcal{C}(x)$, then $f \leq V_T$ for some $V \in \mathcal{V}(x)$; and as $U$ is increasing we have $\EE(U(f)) \leq \EE(U(V_T)) \leq u(x)$ \hfill $\rfloor$
 \\\\
@@ -2971,7 +2971,7 @@ f= U_T=U_0 + G_T( \vartheta)-C_T \leq x + G_T( \vartheta), \ \vartheta \in \Thet
 \end{align*}
 so that $f \in \mathcal{C}(x)$. 
 \end{proof}
-In view of Lemma \ref{L101}, we can rewrite the problem as maximise $\EE(U(F))$ over $f \in L_+( \mathcal{F}_T)$ subject to $\EE_Q(f) \leq x$, for all $Q \in \PP_{e, \sigma}$. But we cannot simply write Lagrange function, because number of constraints (the for all $Q \in \PP_{e, \sigma}$ part) is in general infinite. 
+In view of Lemma \ref{L101} (and the identity $(\spadesuit)$ above), we can rewrite the primal problem as maximise $\EE(U(f))$ over $f \in L_+( \mathcal{F}_T)$ subject to $\EE_Q(f) \leq x$, for all $Q \in \PP_{e, \sigma}$. But we cannot simply write Lagrange function, because number of constraints (the for all $Q \in \PP_{e, \sigma}$ part) is in general infinite. 
 \newpage
 It turns out to be useful to generalise E$\sigma$MDs as well. Start with $Q \in \PP_{e, \sigma}$, denote by $Z=Z^{Q;\PP}$ its density process and take any $V \in \mathcal{V}(x)$, so $V= x + \int \vartheta dS$, $\vartheta \in \Theta_\text{adm}^x$. Then $Z>0$ is a $\PP$-martingale with $Z_0=1$ (as $\mathcal{F}_0$ is trivial) and by Bayes and Ansel-Stricker, $ZV$ is a $\PP$-supermartingale. This motivates: 
 \begin{defn} For $z>0$, we call $\mathcal{Z}(z)$ the family of all nonnegative $\mathbb{F}$-adapted RCLL process $Z=(Z_t)_{0 \leq t \leq T}$ with $Z_0=z$ such that $ZV$ is a $\PP$-supermartingale for all $V \in \mathcal{V}(1)$ (or, equivalently, for all $V \in \mathcal{V}(x),$ for all $x >0;$ note that $\mathcal{V}(x) = x  \mathcal{V}(1)$.)
@@ -2986,7 +2986,8 @@ Now take any $V \in \mathcal{V}(x), \ Z \in \mathcal{Z}(z)$. Then $ZV$ is $\PP$-
 \begin{align*}
 J(y):= \sup_{x >0} (U(x)-xy), \text{ for } y>0. 
 \end{align*}
-Then $J$ is decreasing and convex as supremum of convex (actually affine) function $\mathcal{C}_x(y)=U(x)-xy$. Then $U(V_T) \leq J(Z_T) + Z_TV_T$ and so $\EE(U(V_T)) \leq \EE(J(Z_T)) + zx$. If we take supremum over $\mathcal{V}(x)$ on LHS, inf over $\mathcal{Z}(z)$ on the RHS, we get $u(x) \leq j(z) + xz$ for all $x>0$, $z>0$, where we set $j(z):= \inf_{Z \in \mathcal{Z}(z)} \EE(J(Z_T)).$ This is called the \textbf{dual problem}.
+Then $J$ is \textbf{decreasing} and \textbf{convex} as supremum of convex (actually affine) function $\mathcal{C}_x(y)=U(x)-xy$. Then $U(V_T) \leq J(Z_T) + Z_TV_T$ and so $\EE(U(V_T)) \leq \EE(J(Z_T)) + zx$. If we take supremum over $\mathcal{V}(x)$ on LHS, inf over $\mathcal{Z}(z)$ on the RHS, we get \begin{align*} u(x) \leq j(z) + xz \text{ for all } x>0, \ z>0, 
+\end{align*} where we set $j(z):= \inf_{Z \in \mathcal{Z}(z)} \EE(J(Z_T)).$ This $j$ is called the \textbf{dual problem}.
 \\\\
 \textbf{Note}: primal problem maximizes concave functional, dual problem minimizes convex functional.
 \\\\
@@ -4108,5 +4109,51 @@ But, by Jensen's inequality, since $x \mapsto 1/x$ is (strictly) convex on $(0, 
 1 \overset{(\star)}\geq \EE(1/R_t) \overset{\text{Jensen}}\geq 1/\EE(R_t) \geq 1 \text{ for all } t>0.
 \end{align*}
 The above entails that $\EE(1/R_t)=1$ and $\EE(R_t)=1$ for all $t>0$, but since $x \mapsto 1/x$ is in fact strictly convex on $(0,1)$ this can happen if and only if $R=1$ i.e. $X_t=Y_t$ $\PP$-a.s for all $t \geq 0$. 
+\end{proof}
+\newpage
+\noindent \textbf{Exercise \ref{ex19} and \ref{ex20}}: We summarize the two exercises here as follows: \\
+Let $U: (0, \infty) \to \mathbb{R}$ be concave and increasing. For $x>0$, define $$u(x) := \sup_{V \in \mathcal{V}(x)} \EE[U(V_T)],$$ where $\mathcal{V}(x):= \{ x + \vartheta \cdot S : \vartheta \in \Theta_\text{adm}^x\}$ (see primal problem). 
+\begin{enumerate}
+\item[a)] Show that $u$ is concave and increasing.
+\item[b)] If additionally $u(x_0) < \infty$ for some $x_0>$, show that $u(x) < \infty$ for all $x>0$.
+\item[c)] If $U$ is \textbf{strictly} increasing with $U( \infty) < \infty$ and $S$ satisfies (NFLVR), then $u(x) < U( \infty)$ for all $x>0$. (Compare with Exercise \ref{ex19}, shows that primal problem only makes sense in arbitrage-free market!)
+\end{enumerate}
+\begin{proof}
+a) We first show that $u$ is increasing. Let $x,y \in (0, \infty)$ with $x \leq y$ and $\vartheta \in \Theta_\text{adm}^x$. Clearly we have
+\begin{align*}
+x + \vartheta \cdot S_T \leq y + \vartheta \cdot S_t.
+\end{align*}
+Since $U$ is increasing, and $\Theta_\text{adm}^x \subset \Theta_text{adm}^y$ (which implies that $\mathcal{V}(x) \subset \mathcal{V}(y)$) we have
+\begin{align*}
+\EE(U(V_T( \vartheta)) = \EE[U( x + \vartheta \cdot S_T)] \leq \EE[U ( y + \vartheta \cdot S_T)] \leq u(y).
+\end{align*}
+Taking the supremum over $\mathcal{V}(x)$ on the LHS yields $u(x) \leq u(y)$, hence $u$ is increasing. 
+\\\\
+Now we prove the concavity of $u$. Let $\lambda \in [0,1]$ and $x,y \in (0, \infty)$ with $x \leq y$. If $\vartheta^x \in \Theta_\text{adm}^x$ and $\vartheta^y \in \Theta_\text{adm}^y$, we clearly have $\lambda \vartheta^x + (1- \lambda) \vartheta^y \in \Theta_\text{adm}^{ \lambda x +( 1- \lambda) y}$. Since $U$ is concave, we obtain 
+\begin{align*}
+u( \lambda x + ( 1-\lambda) y) &\geq \EE[ U( \lambda ( x + \vartheta^x \cdot S_T) + (1- \lambda) ( y + \vartheta^y \cdot S_T))] \\
+& \geq \lambda \EE[ U(x + \vartheta^x \cdot S_T)] + ( 1-\lambda) \EE[U(y + \vartheta^y \cdot S_T)]. 
+\end{align*}
+Taking the supremum over $\mathcal{V}(x)$ and $\mathcal{V}(y)$ on the RHS yields $u( \lambda x+(1- \lambda)y) \geq \lambda u(x) + (1- \lambda) u(y)$. Hence $u$ is concave. 
+\\\\
+b) By part a), we only need to prove $u(x) < \infty$ for all $x \in (x_0, \infty)$, since $u$ is increasing. We have $u(x_0) < \infty$ by assumption, clearly we can find $\lambda \in (0,1)$ and $(x_0<)\ x<y$ such that $x_0 = \lambda x + (1-\lambda)y$. By the concavity of $u$, we then have $\lambda u(x) + (1- \lambda )u(y) \leq u(x_0)$, which can be rewritten as 
+\begin{align*}
+u(x) \leq \frac{u(x_0)-(1- \lambda ) u(y)}{ \lambda}< \infty, \text{ for all } x \in (x_0, \infty).
+\end{align*}
+Hence the claim follows.
+\newpage
+\noindent c) Suppose to the contrary that we have $u(x) \geq U( \infty)$ for some $x \in (0, \infty)$. Clearly we have $U(V_T) \leq U( \infty)$ for all $V \in \mathcal{V}(x)$ and hence 
+\begin{align*}
+u(x) = \sup_{V \in \mathcal{V}(x)} \EE[U(V_T)] \leq U( \infty).
+\end{align*}
+This entails that $u(x)= U( \infty),$ hence we can find $(V^n) \subset \mathcal{V}(x)$ be such that $\EE(U(V_T^n)] \nearrow U(\infty)$. By Komlós Lemma (see Appendix), for each $n \in \mathbb{N}$, there exists $\tilde{V}_T^n \in \text{conv}(V_T^n, V_T^{n+1}, \dots)$ such that $\tilde{V}_T^n \to \tilde{V}^\infty \ \PP$-a.s. We know that (NFLVR) = (NA) + (NUPBR), hence by assumption of (NFLVR) and in particular (NUPBR) implies that conv$(V_T^1, V_T^2, \dots)$ is bounded in $L^0$, therefore (again by Komlós Lemma), we know that $\tilde{V}^\infty < \infty \ \PP$-a.s. The concavity of $U$ (together with $U$ being increasing) implies that
+\begin{align*}
+\EE[U(\tilde{V}_T^n)] \overset{U \text{ concave}}\geq \inf_{k \geq n} \EE[U(V_T^k)] \overset{U \text{ incr.}}= \EE[U(V_T^n)]. 
+\end{align*}
+Since $U(\tilde{V}_T^n) \leq U( \infty)$ for all $n \in \mathbb{N}$, applying the reverse Fatou lemma gives
+\begin{align*}
+\EE[U(\tilde{V}^\infty)] \geq \limsup_{n \to \infty} \EE[U( \tilde{V}_T^n)] \geq \liminf_{n \to \infty} \EE[U(\tilde{V}_T^n)] = U( \infty). 
+\end{align*}
+So clearly $\EE[U( \infty)-U(\tilde{V}^\infty)]=0$. But $U$ is strictly increasing and we established that $\tilde{V}^\infty < \infty \ \PP$-a.s., so $U( \infty) - U( \tilde{V}_T^\infty) >0 \ \PP$-a.s. which gives  a contradiction, hence $u(x) < U( \infty)$ for all $x>0$ and we're done. 
 \end{proof}
 \end{document}
