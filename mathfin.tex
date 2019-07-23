@@ -31,6 +31,11 @@
 \theoremstyle{definition}
 \newtheorem{rem}{Remark}[section]
 
+% Bigger Cdot
+\makeatletter
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
 
 \usepackage{color}  
 \usepackage{hyperref}
@@ -3049,19 +3054,19 @@ In our settting, use Komlós lemma (Lemma \ref{L44}) to produce candidate; then 
 \begin{proof}
 Recall $\mathcal{D}(z)= \{ h \in L_+^0: h \leq Z_T \text{ for some } Z \in \mathcal{Z}(z) \}$. So solid is clear and convex holds because $\mathcal{Z}(z)$ is convex. 
 \\\\
-The proof for closedness is a bit more complicated than for Proposition IV 3.2. in IMF because we have time index $t \in [0,T]$. Take $(h_n)_{n \in \mathbb{N}}$ in $\mathcal{D}(z)$ converging to $L^0$ to some $h$, so $h \geq 0$ and $h < \infty \PP$-a.s., i.e. $h \in L_+^0$. W.l.o.g. (take subsequence and call it again $h_n)$, we can assume $h_n \to h$ $\PP$-a.s. Take $Z^n \in \mathcal{Z}(z)$ with $h_n \leq Z_T^n$. As $h_n \geq 0, \ Z^n \geq 0$, we can use Lemma \ref{L44} (Komlós) plus diagonal argument to find convex combinations $\widetilde{h}_n$ and $\widetilde{Z}_r^n$, for all rational $r \in [0,T]$, converging all simultaneously, $\PP$-a.s., to some $h_\infty$ and $Z_r^\infty$, respectively. \\
+The proof for closedness is a bit more complicated than for Proposition IV 3.2. in IMF because we have time index $t \in [0,T]$. Take $(h_n)_{n \in \mathbb{N}}$ in $\mathcal{D}(z)$ converging to $L^0$ to some $h$, so $h \geq 0$ and $h < \infty \ \PP$-a.s., i.e. $h \in L_+^0$. W.l.o.g. (take subsequence and call it again $h_n)$, we can assume $h_n \to h$ $\PP$-a.s. Take $Z^n \in \mathcal{Z}(z)$ with $h_n \leq Z_T^n$. As $h_n \geq 0, \ Z^n \geq 0$, we can use Lemma \ref{L44} (Komlós) plus diagonal argument to find convex combinations $\widetilde{h}_n$ and $\widetilde{Z}_r^n$, for all rational $r \in [0,T]$, converging all simultaneously, $\PP$-a.s., to some $h_\infty$ and $Z_r^\infty$, respectively. \\
 \\
 A priori, we might have values $+ \infty$ for $h_\infty$; but $h_n \to h \ \PP$-a.s., $\widetilde{h}_n \in \text{conv}(h_n, h_{n+1}, \dots )$, which gives $\widetilde{h}_\infty = h < \infty \ \PP$-a.s. Moreover, $h_n \leq Z_T^n \ \PP$-a.s., for all $n \in \mathbb{N}$, and we can use same convex combinations for $\widetilde{h}_n$ and all $\widetilde{Z}_r^n$; so also get $h_\infty = h \leq Z_T^\infty$. \\
 \\
 It only remains to show that $Z_T^\infty \leq Z_T$ for some $Z \in \mathcal{Z}(z)$. Each $\widetilde{Z}^n$ is in $\mathcal{Z}(z)$ as $\mathcal{Z}(z)$ is convex, and so $\widetilde{Z}_0^n=z,$ for all $n \in \mathbb{N}$, hence $Z_0^\infty= z$,  and each $\widetilde{Z}^nV$ is $\PP$-supermartingale for each $V \in \mathcal{V}(1)$, and nonnegative. So take rational $r \leq s$ and compute 
 \begin{align*}
-\EE(Z_s^\infty V_S \mid \mathcal{F}_r) \overset{\text{Fatou}}\leq \liminf_{n \to \infty} \EE( \widetilde{Z}_s^n V_s \mid \mathcal{F}_r) \overset{\text{supermg.}}\leq \liminf_{n to \infty} \widetilde{Z}_r^n V_r = Z_r^\infty V_r,
+\EE(Z_s^\infty V_s \mid \mathcal{F}_r) \overset{\text{Fatou}}\leq \liminf_{n \to \infty} \EE( \widetilde{Z}_s^n V_s \mid \mathcal{F}_r) \overset{\text{supermg.}}\leq \liminf_{n \to \infty} \widetilde{Z}_r^n V_r = Z_r^\infty V_r,
 \end{align*}
-and so $Z^\infty V$ and also $Z^\infty$ itself (take $V \equiv 1)$ are $\PP$-supermartingale on $[0,T] \cap \mathbb{Q}$. But now standard construction in martingale theory (see DM, Theorem IV.2, uses $\mathbb{F}$ is RC) gives existence of an RCLL $\PP$-supermartingale $Z=(Z_t)_{0 \leq t \leq T}$ on $[0,T]$ with $Z_r \leq Z_r^\infty$ for all rational $r$, indeed, can take 
+and so $Z^\infty V$ and also $Z^\infty$ itself (take $V \equiv 1)$ are $\PP$-supermartingales on $[0,T] \cap \mathbb{Q}$. But now standard construction in martingale theory (see DM, Theorem IV.2, uses $\mathbb{F}$ is RC) gives existence of an RCLL $\PP$-supermartingale $Z=(Z_t)_{0 \leq t \leq T}$ on $[0,T]$ with $Z_r \leq Z_r^\infty$ for all rational $r$, indeed, can take 
 \begin{align*}
 Z_t:= \lim_{r \searrow \searrow t} Z_r^\infty,
 \end{align*}
-and so we get $Z_0 = Z_0^\infty = z$ and $Z_T= Z_T^\infty$. As above, using construction of $Z$ from $Z^\infty$ and Fatou to conclude that $ZV$ is $\PP$-supermaringale on $[o,T]$, for all $V \in \mathcal{V}(1)$. So $Z \in \mathcal{Z}(z)$ and $h \leq Z_T$ is in $\mathcal{D}(z)$. 
+and so we get $Z_0 = Z_0^\infty = z$ and $Z_T= Z_T^\infty$. As above, using construction of $Z$ from $Z^\infty$ and Fatou to conclude that $ZV$ is $\PP$-supermaringale on $[0,T]$, for all $V \in \mathcal{V}(1)$. So $Z \in \mathcal{Z}(z)$ and $h \leq Z_T$ is in $\mathcal{D}(z)$. 
 \end{proof}
 \begin{prop} \label{P113} For each $z >0$, we have 
 \begin{enumerate}
@@ -3111,7 +3116,7 @@ So aim for equalities everywhere. Maximiser for $J(y)= \sup_{x >0} (U(x)-xy)$ is
 \begin{align*}
 \EE[U(I(h))]= \EE(J(h)) + xz \geq j(z) + zx \geq \inf_{z >0} (j(z)+zx) \overset{\text{Sec. 11}}\geq u(x).
 \end{align*}
-First inequality becomes equality for $h:= h_z^*$. The second inequality becomes equality if $z$ is a minimiser for $j/z)+zx$, i.e., b< solving $j'(z)=-x$. 
+First inequality becomes equality for $h:= h_z^*$. The second inequality becomes equality if $z$ is a minimiser for $j(z)+zx$, i.e., by solving $j'(z)=-x$. 
 \\\\
 \textbf{Reverse engineering} suggests \textbf{recipe}:
 \begin{enumerate}
@@ -3120,18 +3125,18 @@ First inequality becomes equality for $h:= h_z^*$. The second inequality becomes
 \item Show that  $\EE(h_{z_x}^*I(h_{z_x}^*))=xz_x$.
 \item Show that $f_x^* \in \mathcal{C}(x)$.
 \end{enumerate}
-If all that can be done, then we obtain 
+\underline{\textbf{If}} all that can be done, then we obtain 
 \begin{align*}
 u(x) &\overset{4)}\geq \EE(U(f_x^*))= \EE[U(I(h_{z_x}^*))] \overset{J(y)=U(I(y))-yI(y)}= \EE(J(h_{z_x}^*)) + \EE(h_{z_x}^*I(h_{z_x}^*)) \\
 & \overset{2),3)}= j(z_x) + xz_x \geq \inf_{z >0} (j(z)+xz) \overset{\text{Sect. 11}}\geq u(x) = \sup_{f \in \mathcal{C}(x)} \EE(U(f)).
 \end{align*}
-This shows that $f_x^*$ is optimal and also that $u(x)= \inf_{z >0} (j(z) + xz)$. If we can make this work for all $x>0$, then we get
+Hence we have $\EE[U(f_x^*)]=u(x)=\sup_{f \in \mathcal{C}(x)} \EE[U(f)]$. This shows that $f_x^*$ is optimal and also (still from the calculations above) that $u(x)= \inf_{z >0} (j(z) + xz)$. If we can make this work for all $x>0$, then we get
 \begin{align*}
-j(z_x) \overset{2)}= \EE(J(h_{z_x}^*))= \EE[U(I(h_{z_x}^*))-h_{z_x}^*I(h_{z_x}^*)] \overset{2),3)} \EE(U(f_x^*))-xz_x \overset{4)}=u(x)-xz_x.
+j(z_x) \overset{2)}= \EE(J(h_{z_x}^*))= \EE[U(I(h_{z_x}^*))-h_{z_x}^*I(h_{z_x}^*)] \overset{2),3)}= \EE(U(f_x^*))-xz_x \overset{4)}=u(x)-xz_x.
 \end{align*}
 We also know from Section 11 that for all $z>0$, $j(z) \geq \sup_{x >0} (u(x)-xz).$ If the range of the achieved $z_x$ is $(0, \infty)$, then we also get $j(z)= \sup_{x >0} (u(x)-xz)$ for all $z>0$. This means that value functions $u,j$ satisfy same conjugacy as original $U,J$. 
 \\\\
-So far, just ideas and wishes. Does it really work? The answer to that question is yes, under an extra condition (on $U$), and after quite a bit of auxiliary technical results. 
+So far, just ideas and wishes. Does it really work? The answer to that question is yes, under an extra condition (on $U$), and after quite a bit of auxiliary technical results (see next Section). 
 \newpage
 \section{Utility maximisation III: Auxiliary results}
 \textbf{Goal}: provide auxiliary results in order to show that recipe in $4$ steps actually works. 
@@ -3144,19 +3149,19 @@ To make 1) work, need $j$ to be smooth. As $j(z)= \EE(J(h_z^*)),$ start by looki
 \begin{proof}
 See IMF, L IV 5.1. or KS, L 3.6.
 \end{proof}
-Subsequent results need one extra condition on $U$. 
+Subsequent results need \underline{one} extra condition on $U$. 
 \begin{defn} $U$ has \textbf{reasonable asymptotic elasticity at $+ \infty$}; RAE$_{+ \infty}(U)$, if 
 \begin{align*}
 \text{AE}_{+ \infty}(U):= \limsup_{x \to \infty} \frac{x U'(x)}{U(x)}<1.
 \end{align*}
 \end{defn}
-\noindent \textbf{Intuition}: we look at ratio  $\frac{U'(x)}{U(x)/x}$. \textbf{Marginal utility} $U'(x)=U'(x)1 \overset{\text{Taylor}}\approx U(x+1)-U(x)$ \textbf{measures increase of utility} as wealth increases from $x$ to $x+1$. On the other hand, if $U(0)=0$, then 
+\noindent \textbf{Intuition}: we look at ratio  $\frac{U'(x)}{U(x)/x}$. \textbf{Marginal utility} $U'(x) \overset{\text{Taylor}}\approx U(x+1)-U(x)$ \textbf{measures increase of utility} as wealth increases from $x$ to $x+1$. On the other hand, if $U(0)=0$, then 
 \begin{align*}
 \frac{U(x)}{x} = \frac{1}{x}(U(x)-U(0)) = \frac{1}{x} \sum_{j=1}^x (U(j)-U(j-1))
 \end{align*}
-measures \textbf{average increase of utility} as wealth increases successively from $0$ to $x$. \begin{exe} $U$ is concave, so $U(j)-U(j-1) \geq U'(x)$ for $x \in (j-1,j)$ so that we always get AE$_{+ \infty}(U) \leq 1$.
+measures \textbf{average increase of utility} as wealth increases successively from $0$ to $x$. \begin{exe} \label{ex21} $U$ is concave, so $U(j)-U(j-1) \geq U'(x)$ for $x \in (j-1,j)$ so that we always get AE$_{+ \infty}(U) \leq 1$.
 \end{exe}
-Having equality would mean that for large wealth, marginal and average utility behave in same way, or that $U$ is almost linear for large $x$. From exonomic viewpoint, this looks unreasonable. 
+Having equality would mean that for large wealth, marginal and average utility behave in same way, or that $U$ is almost linear for large $x$. From economic viewpoint, this looks unreasonable. 
 \newpage
 \begin{exmp} \
 \begin{itemize}
@@ -3223,7 +3228,7 @@ Next step is to derive \textbf{smoothness of $j$}.
 \begin{proof}
 See IMF, L IV 3.5. or KS, L 3.8.
 \end{proof}
-Step 1) from recipe asks for solution $z$ of $-j'(z)=x$. As $j$ is continuous and strictly monotonic, uniqueness is clear. For existence, we need to know range of values of $j'$. 
+Step 1) from recipe asks for solution $z$ of $-j'(z)=x$. As $j'$ is continuous and strictly monotonic, uniqueness is clear. For existence, we need to know range of values of $j'$. 
 \begin{lem} \label{L126} We always have $j'( \infty) = \lim_{z \to \infty} j'(z)= 0$. If AE$_{+ \infty}(U) <1$, then also $j'(0)= \lim_{z \searrow 0 } j'(z) = - \infty$. 
 \end{lem}
 \begin{proof}
@@ -3244,12 +3249,12 @@ u(x):= \sup_{f \in \mathcal{C}(x)} \EE(U(f)), \text{ for } x>0.
 \end{align*}
 a) via duality; b) directly. \\
 \\
-\textbf{In Section 12 we obtained the following recipe:}
+\textbf{In Section 12 we obtained the following recipe:} (recall of recipe in \textit{cursive}, mathematically sound explanation after $\Rsh$)
 \begin{enumerate}
-\item Define $z=z_x$ via $-j'(z)=x>0$. By Lemma \ref{L125} and Lemma \ref{L126}, $-j':(0,  \infty) \to (0,  \infty)$ is continuous (as $j \in C^1)$, strictly decreasing and surjective. So 1) is uniquely for any $x>0$ and produces $z_x>0$.
-\item Solve dual problem for $z_x>0$ to get dual optimiser $h_{z_x}^* \in \mathcal{D}(z_x)$. Then set $f_x^*:= I(h_{z_x}^*)$. By Theorem \ref{T124}, using AE$_{+ \infty}(U) <1$, we have $j(z) < \infty$ for all $z>0$; so dual optimiser $h_z^*$ exists, by Theorem \ref{T114}, for any $z>0$ and is unique. 
-\item Show that $\EE(h_{z_x}^*I(h_{z_x}^*)) = xz_x$. By Lemma \ref{L125}, $\EE(h_z^*I(h_z^*))=-zj'(z)$ for any $z>0$. Now plug in $z_x$ and use step 1). 
-\item Show that $f_x^* \in \mathcal{C}(x)$. For that, use Lemma \ref{L102} analogue $\EE(hf_x^*) \leq x$ for any $h \in \mathcal{D}(1)$. But $\mathcal{D}(z)=z \mathcal{D}(1)$ for any $z>0$, so take any $h \in \mathcal{D}(1)$ and set $\widetilde{h}:= z_xh \in \mathcal{D}(z_x)$. Then compute
+\item \textit{Define $z=z_x$ via $-j'(z)=x>0$}. $\Rsh$ By Lemma \ref{L125} and Lemma \ref{L126}, $-j':(0,  \infty) \to (0,  \infty)$ is continuous (as $j \in C^1)$, strictly decreasing and surjective. So 1) is uniquely for any $x>0$ and produces $z_x>0$.
+\item \textit{Solve dual problem for $z_x>0$ to get dual optimiser $h_{z_x}^* \in \mathcal{D}(z_x)$. Then set $f_x^*:= I(h_{z_x}^*)$}. $\Rsh$ By Theorem \ref{T124}, using AE$_{+ \infty}(U) <1$, we have $j(z) < \infty$ for all $z>0$; so dual optimiser $h_z^*$ exists, by Theorem \ref{T114}, for any $z>0$ and is unique. 
+\item \textit{Show that $\EE(h_{z_x}^*I(h_{z_x}^*)) = xz_x$}. $\Rsh$ By Lemma \ref{L125}, $\EE(h_z^*I(h_z^*))=-zj'(z)$ for any $z>0$. Now plug in $z_x$ and use step 1). 
+\item \textit{Show that $f_x^* \in \mathcal{C}(x)$}. $\Rsh$ For that, use Lemma \ref{L102} analogue $\EE(hf_x^*) \leq x$ for any $h \in \mathcal{D}(1)$. But $\mathcal{D}(z)=z \mathcal{D}(1)$ for any $z>0$, so take any $h \in \mathcal{D}(1)$ and set $\widetilde{h}:= z_xh \in \mathcal{D}(z_x)$. Then compute
 \begin{align*}
 \EE(h f_x^*) = \frac{1}{z_x} \EE(\widetilde{h} I(h_{z_x}^*)) \overset{\text{L.} \ref{L127}}\leq \frac{1}{z_x} \EE[ h_{z_x}^* I(h_{z_x}^*)] \overset{3)}=x.
 \end{align*}
@@ -3263,7 +3268,7 @@ By preceding  discussion, construction is feasible and produces candidate $f_x^*
 \begin{align*}
 u(x) \geq \EE[U(f_x^*)] \overset{2)}= \EE[U(I(h_{z_x}^*)] = \EE[J(h_{z_x}^*) + h_{z_x}^*I(h_{z_x}^*)] \overset{2),3)}= j(z_x) + xz_x \\ \geq \inf_{z >0} (j(z) + xz) \overset{\text{Sect. 11}}\geq u(x) = \sup_{f \in \mathcal{C}(x)} \EE[U(f)].
 \end{align*}
-This proves optimality of $f_x^*$. 
+This proves optimality of $f_x^*$. \textit{(Notice that we've already seen the same arguments as in proof above in Section 12, just this time we know that our ideas are mathematically sound)}
 \end{proof}
 \begin{rem} \
 \begin{enumerate}
@@ -3291,19 +3296,19 @@ If $U( \infty) < \infty$, this is clear. Under $(U+)$,  take $p>1$ with $\beta p
 \end{align*}
 and, setting $\widetilde{Z}:= \frac{d \widetilde{Q}}{d \PP}$, we get for $r:= \frac{1}{\beta p}>1$ (conjugate to $s$)
 \begin{align*}
-\EE[f^{\beta p}] = \EE[(f \widetilde{Z})^{ \beta p} ( \widetilde{Z})^{- \beta p}] \overset{\text{Hölder}}\leq ( \EE[f \widetilde{Z}])^{1/r} ( \EE[ ( \widetilde{Z})^{-s \beta p}])^{1/2} = ( \underbrace{\EE_{\widetilde{Q}} [f]}_{ \leq x \ L \ref{L101}})^{\beta p} ( \EE[ \widetilde{Z}^{- s \beta p}])^{1/s} \\
+\EE[f^{\beta p}] = \EE[(f \widetilde{Z})^{ \beta p} ( \widetilde{Z})^{- \beta p}] \overset{\text{Hölder}}\leq ( \EE[f \widetilde{Z}])^{1/r} ( \EE[ ( \widetilde{Z})^{-s \beta p}])^{1/s} = ( \underbrace{\EE_{\widetilde{Q}} [f]}_{ \leq x \ L \ref{L101}})^{\beta p} ( \EE[ \widetilde{Z}^{- s \beta p}])^{1/s} \\
 \leq x^{\beta p} \text{const.}(\widetilde{Q}, s,\beta ,  p) < \infty, \text{ uniformly over } f  \in \mathcal{C}(x).
 \end{align*}
 This is enough.
 \end{proof}
 \begin{rem} How do we verify the assumption?
-\begin{exe} Suppose $S$ is continuous and satisfies (S.C.) (structure condition); so $S= S_0 + M + \int d \langle M \rangle \lambda$. Look at MVT process $K= \int \lambda^\text{tr} d \langle M \rangle \lambda = \langle \int \lambda d M \rangle$. Define $\hat{Z}:= \mathcal{E}( - \int \lambda dM ) >0$ and $$\frac{d \hat{P}}{d \PP}:= \hat{Z}_T.$$ If $K$ is bounded (uniformly in $\omega, ,$ by a constant) then $\hat{P} \in \PP_{e,  \text{loc}}$ and $$\left( \frac{d \hat{P}}{d \PP}\right)^{-1}$$ has moments of all orders. 
+\begin{exe} \label{ex22} Suppose $S$ is continuous and satisfies (S.C.) (structure condition); so $S= S_0 + M + \int d \langle M \rangle \lambda$. Look at MVT process $K= \int \lambda^\text{tr} d \langle M \rangle \lambda = \langle \int \lambda d M \rangle$. Define $\hat{Z}:= \mathcal{E}( - \int \lambda dM ) >0$ and $$\frac{d \hat{P}}{d \PP}:= \hat{Z}_T.$$ If $K$ is bounded (uniformly in $\omega,$ by a constant) then $\hat{P} \in \PP_{e,  \text{loc}}$ and $$\left( \frac{d \hat{P}}{d \PP}\right)^{-1}$$ has moments of all orders. 
 \end{exe}
 \end{rem}
 \begin{prop} \label{P133} Suppose $\mathcal{F}_0$ is trivial,  $u(x_0) < \infty$ for some $x_0 >0$ and either $U( \infty) < \infty$ and $\PP_{e, \sigma} \neq \emptyset$, or that $U$ satisfies $(U+)$ and there exists an E$\sigma$MM $\widetilde{Q}$ s.t. $(d \widetilde{Q} / d \PP)^{-1}$ has moments of all orders. For any $x>0$, there exists then unique solution $f_x^* \in \mathcal{C}(x)$ to primal problem. 
 \end{prop}
 \begin{proof}
-Uniqueness is clear from \textbf{strict} concavity of $U$. Moreover, $u(x) <0$ for all $x>0$ follows from $U$ being concave and increasing (see exercise sheet $8$). For existence,  take $(f_n)_{n \in \mathbb{N}} \subset \mathcal{C}(x)$ with $\EE[U(f_n)] \nearrow u(x) < \infty$, so this can be done. Now all $f_n \geq 0$; so by Lemma \ref{L44} (Komlos) there exists $\widetilde{f}_n \in \text{conv}(f_n, f_{n+1}, \dots )$ with $\widetilde{f}_n \to f_\infty$ $\PP$-a.s. with $f_\infty$ for some $\mathcal{F}_T$-measurable $f_\infty$ with values in $[0, + \infty]$. But by Lemma \ref{L101}, $\mathcal{C}(x)$ is bounded in $L^1(Q)$ for any $Q \in \PP_{e, \sigma} \neq \emptyset$, hence also bounded in $L^0(Q)$, which is the same space for $\PP$,  i.e. $L^0(Q)= L^0(\PP)$ since $Q \approx \PP$. Again by Lemma \ref{L44}, we thus get $f_\infty < \infty \ \PP$-a.s., hence $f_\infty \in L_+^0( \mathcal{F}_T)$ and hence $\widetilde{f}_n \to f_\infty$ in $L^0$. 
+Uniqueness is clear from \textbf{strict} concavity of $U$. Moreover, $u(x) <0$ for all $x>0$ follows from $U$ being concave and increasing (see exercise sheet $8$). For existence,  take $(f_n)_{n \in \mathbb{N}} \subset \mathcal{C}(x)$ with $\EE[U(f_n)] \nearrow u(x) < \infty$, so this can be done. Now all $f_n \geq 0$; so by Lemma \ref{L44} (Komlós) there exists $\widetilde{f}_n \in \text{conv}(f_n, f_{n+1}, \dots )$ with $\widetilde{f}_n \to f_\infty$ $\PP$-a.s. with $f_\infty$ for some $\mathcal{F}_T$-measurable $f_\infty$ with values in $[0, + \infty]$. But by Lemma \ref{L101}, $\mathcal{C}(x)$ is bounded in $L^1(Q)$ for any $Q \in \PP_{e, \sigma} \neq \emptyset$, hence also bounded in $L^0(Q)$, which is the same space for $\PP$,  i.e. $L^0(Q)= L^0(\PP)$ since $Q \approx \PP$. Again by Lemma \ref{L44}, we thus get $f_\infty < \infty \ \PP$-a.s., hence $f_\infty \in L_+^0( \mathcal{F}_T)$ and hence $\widetilde{f}_n \to f_\infty$ in $L^0$. 
 \newpage
 Now $\mathcal{C}(x)$ is convex, so $\widetilde{f}_n \in \mathcal{C}(x)$ for all $n \in \mathbb{N}$, and $\mathcal{C}(x)$ is closed in $L^0$, so that $f_\infty \in \mathcal{C}(x)$. 
 \\\\
@@ -3313,9 +3318,9 @@ We have $U(f_n) \to U(f_\infty)$ $\PP$-a.s. (since $U$ is concave, then continuo
 \begin{align*}
 \EE[U(f_\infty)] \geq \limsup_{n \to \infty} \EE[U( \widetilde{f}_n)].
 \end{align*}
-If we have $(U+)$, then by Lemma \ref{L132} 
+If we have $(U+)$, then by Lemma \ref{L132} (family $\{(U(f))^+: f \in \mathcal{C}(x)\}$ is $\PP$-UI)
 \begin{align*}
-& \EE[U^+(f_\infty)] = \lim_{n \to \infty} \EE[U^+( \widetilde{f}_n)], \\
+& \EE[U^+(f_\infty)] = \lim_{n \to \infty} \EE[U^+( \widetilde{f}_n)], \tag{Lemma \ref{L132}} \\
 & \EE[(U^-( f_\infty)] \overset{U^- \geq 0, \text{ Fatou}} \leq \liminf_{n \to \infty} \EE[U^- ( \widetilde{f}_n)]. 
 \end{align*}
 So by taking differences we get again 
@@ -3343,8 +3348,7 @@ See IMF, T. IV. 7.2. and subsequent remark.
 \newpage
 \section{Appendix}
 \subsection{Appendix A: The Kreps–Yan theorem}
-This section contains an important separation theorem prov
-ed independently by D. Kreps
+This section contains an important separation theorem proved independently by D. Kreps
 and J.-A. Yan around the same time. It is a crucial ingredient
 for proving most versions
 of the fundamental theorem of asset pricing and also comes up
@@ -3361,18 +3365,18 @@ $\bullet$ \ For $p \in [1, \infty)$, the \textit{weak topology} on $L^p$, denote
 \end{align*}
 $\bullet$  For $p \in (1, \infty]$, the \textit{weak* toplogy} on $L^p$, also denoted by $\sigma(L^p, L^q)$, vies $L^p$ as the dual of $L^q$ (which explains why we must take $p>1);$ it is the coarsest topology on $L^p$ which makes all the linear functions $Y \mapsto (Y,Z)$ continuous for all $Z \in L^q$. \\
 \\
-It is clear from the above definitions that for $1<p< \infty$, the weak and the weak* topology coincide. For $p=1$, there is only the weak topology on $L^1$, with $Y_n \to Y$ in $\sigma(L^1, L^\infty)$ if and only if $\lim_{n \to \infty} \EE(Y_n Z) = \EE(YZ)$ for each $Z \in L^\infty$. For $p= \infty$, there is only the weak* topology on $L^\infty$, with $Z_n \to Z$ in $\sigma(L^\infty,  L^1)$ if and only if $\lim_{n \to \infty} \EE(Y Z_n)= \EE(YZ)$ for each $Y \in L^1$. 
+It is clear from the above definitions that for $1<p< \infty$, the weak and the weak* topology coincide. For $p=1$, there is (apart from the norm topology) only the weak topology on $L^1$, with $Y_n \to Y$ in $\sigma(L^1, L^\infty)$ if and only if $\lim_{n \to \infty} \EE(Y_n Z) = \EE(YZ)$ for each $Z \in L^\infty$. For $p= \infty$, there is (apart from the norm topology) only the weak* topology on $L^\infty$, with $Z_n \to Z$ in $\sigma(L^\infty,  L^1)$ if and only if $\lim_{n \to \infty} \EE(Y Z_n)= \EE(YZ)$ for each $Y \in L^1$. 
 \\\\
+Importantly, the dual of $L^\infty$ with the weak* toplogy can be identified with $L^1$ (See Theorem 5.93 Aliprantis/Border 2006). The norm dual of $L^\infty$ is larger than $L^1$, which creates technical problems.
+\\
 Finally, a convex subset of $L^p$, for $p \in [1, \infty)$,  is weakly closed, i.e. closed for the weak topology $\sigma( L^p, L^q)$, if and only if it is (strongly) closed in $L^p$, i.e. for the norm-topology on $L^p$. Note that $p= \infty$ is again not allowed here. 
-\\\\
-After these preliminaries, we are now in a position to formulate and prove the announced separation result. 
 \newpage
 \begin{thm}[Kreps/Yan] Fix conjugate $p,q \in [1, \infty]$ and suppose that $C \subset L^p$ is a convex cone with $C \supset -L_+^p$ and $C \cap L_+^p= \{0 \}$. If $C$ is closed in $\sigma(L^p, L^q)$ (meaning that it is weak* closed if $p= \infty$), then there exists a probability measure $Q \approx \PP$ with $\frac{dQ}{d \PP} \in L^q$ and $\EE_Q(Y) \leq 0$ for all $Y \in C$. 
 \end{thm}
 \begin{proof}
 The proof consists of a combination of a separation argument with an exhaustion argument and goes as follows. \\
 \\
-1) For any fixed $x \in L_+^p \setminus \{0\}$, the assumption gives $x \notin C$. The Hahn-Banach theorem thus allows us to strictly separate $x$ from $C$: i.e. there exists some $z_x \in L^q$ with $(x, z_x) > \alpha$ and $(Y, z_x) \leq \alpha$ for all $Y \in C$. Because $C$ is a cone,  we may take $\alpha = 0$. Choosing $Y:= -1_{\{ z_x < 0\}}$, which is in $C$ because $C \supset -L_+^p$, next gives $- \EE(z_x 1_{\{ z_x < 0\}})=(Y,z_x) \leq 0$ and therefore $z_x \geq 0$, and because the separation is strict,  we must have $z_x \not\equiv 0$ to avoid $(x, z_x)=0$. So we can, and we will, normalise $z_x$ to have $\EE(z_x)=1$, for each $x \in L_+^p \setminus \{0\}$. 
+1) For any fixed $x \in L_+^p \setminus \{0\}$, the assumption gives $x \notin C$. The Hahn-Banach theorem in its separating hyperplane version (see Corollary 5.80 Aliprantis) thus allows us to strictly separate $x$ from $C$: i.e. there exists some $z_x \in L^q$ with $(x, z_x) > \alpha$ and $(Y, z_x) \leq \alpha$ for all $Y \in C$ (Note that for $p= \infty$, it is important here that we use the weak* topology so that the dual is $L^1$). Because $C$ is a cone,  we may take $\alpha = 0$. Choosing $Y:= -1_{\{ z_x < 0\}}$, which is in $C$ because $C \supset -L_+^p$, next gives $- \EE(z_x 1_{\{ z_x < 0\}})=(Y,z_x) \leq 0$ and therefore $z_x \geq 0$, and because the separation is strict,  we must have $z_x \not\equiv 0$ to avoid $(x, z_x)=0$. So we can, and we will, normalise $z_x$ to have $\|z_x\|_{L^q}=1$, for each $x \in L_+^p \setminus \{0\}$. By Jensen's inequality, this implies that $\EE(z_x) \leq 1$.  
 \\\\
 2) Now consider the family $\mathcal{G}$ of all sets $\Gamma_x= \{ z_x >0\} \in \mathcal{F}$, where $x$ runs through $L_+^p \setminus \{0\}$. For any set $A \in \mathcal{F}$ with $\PP(A) >0$, we have $\PP(A \cap \Gamma_x) >0$ for some $\Gamma_x \in \mathcal{G}$; indeed, $1_A \in L_+^p \setminus \{0\}$ and therefore we can take $x= I_A$ and use that 
 \begin{align*}
@@ -3382,13 +3386,13 @@ to conclude that we must have $\PP(A \cap \Gamma_{1_A}) >0$. By the proceeding L
 \begin{align*}
 \PP \left( \bigcup_{n=1}^\infty \Gamma_{x_n} \right) = \PP \left( \bigcup_{n=1}^\infty \{ z_{x_n} >0\} \right) =1.
 \end{align*}
-Defining $z:= \sum_{n=1}^\infty 2^{-n} z_{x_n}$ therefore yields a random variable $z>0$ $\PP$-a.s. which is in $L^q$ like all the $z_{x_n}$, and we also have 
+Defining $z:= \text{const.}\sum_{n=1}^\infty 2^{-n} z_{x_n}$ therefore yields a random variable $z>0$ $\PP$-a.s. which is in $L^q$ because $\|z_{x_n}\|_{L^q} \leq 1$ for all $n$, and we also have 
 \begin{align*}
-\EE(Yz) = \sum_{n=1}^\infty 2^{-n} \EE(Y z_{x_n} ) \leq 0, \text{ for all } Y \in C. 
+\EE(Yz) = \text{const.} \sum_{n=1}^\infty 2^{-n} \EE(Y z_{x_n} ) \leq 0, \text{ for all } Y \in C. 
 \end{align*}
-Finally, monotone integration yields
+Finally, monotone integration yields $\EE(z) = \text{const.} \sum_{n=1}^\infty 2^{-n} \EE(z_{x_n}) =1$ for
 \begin{align*}
-\EE(z) = \sum_{n=1}^\infty 2^{-n} \EE(z_{x_n}) =1
+\text{const.}^{-1}:= \sum_{n=1}^\infty 2^{-n} \EE(z_{x_n})  \leq 1
 \end{align*}
 so that $dQ:= z d \PP$ gives the desires probability measure.
 \end{proof}
@@ -3401,6 +3405,14 @@ Suppose first that $\mathcal{G}$ is closed under countable unions. Then $\sup_{ 
 \\
 \\
 In general, we consider the family $\mathcal{G}'$ formed by all countable unions of sets from $\mathcal{G}$; this family satisfies the same assumptions as $\mathcal{G}$. Applying the above argument to $\mathcal{G}'$ then gives the assertion. 
+\end{proof}
+The following variant of Kreps-Yan theorem will be used during the course.
+\begin{prop} Fix conjugate $p,q \in [1, \infty]$ and suppose that $C \subset L^p$ is a convex convex with $C \supset -L_+^p$ and $C \cap (h + L_+^p) = \{h\}$ for some $h \in L^p$. If $C$ is closed in $\sigma(L^p,L^q$) (meaning that it is weak* closed if $p= \infty)$, then there exists a probability measure $Q \approx \PP$ with $\frac{dQ}{d\PP} \in L^q$ and $\EE_Q(y) \leq 0$ for all $Y \in C$ and $\EE_Q(h) =0$. 
+\end{prop}
+\begin{proof}
+Since $h \in C$, the hypothesis can easily be rewritten as $(C-h) \cap L_+^p = \{0\}$, and $C_h$ is closed like $C$. As in the proof of Kreps/Yan Theorem, we again strictly separate each $x \in L_+^p \setminus \{0\}$ from $C-h$ by $z_x$ to obtain $$\EE(xz_x) \geq \beta > \alpha \geq \EE[(Y-h)z_x]$$ for all $Y \in C$. Since $h \in C$ and $C$ is a cone, using $Y':= nY +h$ and letting $n \to \infty$ shows again that we can also take $\alpha = 0;$ and because $C \supset -L_+^\infty, h \in C$ and $C$ is a cone, we get that $Y':= -I_{\{z_x<0\}} +h$ is in $C$ and we can deduce again that $z_x \geq 0 \ \PP$-a.s.\\
+\\
+ Now we construct $Q$ as before, and since $h \in C$, we already get $\EE_Q(h) \leq 0$. But also $Y \equiv 0$ is in $C$, so $\EE[-hz_x] \leq 0$ for each $x$, and therefore also $\EE_Q(h) \geq 0$. 
 \end{proof}
 \newpage
 \subsection{Appendix B: A Komlós-type lemma from probability theory}
@@ -4156,4 +4168,98 @@ Since $U(\tilde{V}_T^n) \leq U( \infty)$ for all $n \in \mathbb{N}$, applying th
 \end{align*}
 So clearly $\EE[U( \infty)-U(\tilde{V}^\infty)]=0$. But $U$ is strictly increasing and we established that $\tilde{V}^\infty < \infty \ \PP$-a.s., so $U( \infty) - U( \tilde{V}_T^\infty) >0 \ \PP$-a.s. which gives  a contradiction, hence $u(x) < U( \infty)$ for all $x>0$ and we're done. 
 \end{proof}
+\newpage
+\noindent \textbf{Exercise \ref{ex21}}: Let $U$ be a utility function on $(0, \infty)$ satisfying the Inada conditions. Its asymptotic elasticity at $+ \infty$ is defined as
+\begin{align*}
+AE_{+ \infty}(U) = \limsup_{x \to \infty} \frac{xU'(x)}{U(x)}.
+\end{align*}
+Prove that $AE_{+ \infty}(U) \leq 1$. 
+\begin{proof}
+Because $U$ is concave and $C^1$, we have that $U'$ is decreasing (for $C^1$ functions concave if and only if $U'(x) \leq 0$ for all $x$). Fix $x_0 >0$, the mapping 
+\begin{align*}
+x \mapsto \frac{U(x)-U(x_0)}{x-x_0}
+\end{align*}
+is also decreasing and of course $C^1$ (because $U$ is). Hence, by the mean value theorem, we have 
+\begin{align*}
+\frac{U(x)-U(x_0)}{x-x_0}=U'(x')
+\end{align*}
+for some $x' \in [x_0,x]$. Since $U'$ is decreasing we have for all $x_0<x$ that $U'(x_0) \geq U'(x)$ and together with the above we obtain
+\begin{align*}
+\frac{x-x_0}{U(x)-U(x_0)}U'(x)= \frac{U'(x)}{U'(x')}\leq 1. \tag{$\star$}
+\end{align*}
+If $U( \infty) \leq 0$, then clearly $AE_{+ \infty}(U) \leq 0$. So let us assume $U( \infty) >0$ and $U(x_0) >0$. Then for $x_0<x$, we have 
+\begin{align*}
+\frac{x}{U(x)} \leq \frac{x}{U(x)-U(x_0)}.
+\end{align*}
+We then obtain
+\begin{align*}
+\limsup_{x \to \infty} \frac{x U'(x)}{U(x)} & \leq \limsup_{x \to \infty} \frac{x}{U(x)-U(x_0)}U'(x)  
+= \limsup_{x \to \infty} \frac{x \frac{x-x_0}{x-x_0} }{U(x)-U(x_0)} U'(x) \\
+&= \limsup_{x \to \infty} \frac{(x-x_0) \frac{x}{x-x_0} }{U(x)-U(x_0)} U'(x) \\
+&\overset{1)}= \limsup_{x \to \infty} \frac{x-x_0}{U(x)-U(x_0)}U'(x) \overset{(\star)}\leq 1.
+\end{align*}
+1) Where we used that $\frac{x}{x-x_0} \to 1$ as $x \to \infty$. 
+\end{proof}
+\newpage
+\noindent \textbf{Exercise \ref{ex22}}: Let $S$ be a continuous $\mathbb{R}$-valued semimartingale satisfying the structure condition, i.e. of the form 
+\begin{align*}
+S= S_0 + M + \int  \lambda d \langle M \rangle,
+\end{align*}
+where $M$ is a continuous local martingale, null at $0$,  and $\lambda$ a predictable process such that the mean-variance tradeoff (MVT) process $K = \int \lambda_s^2 d \langle M \rangle_s = \langle \lambda \cdot M \rangle$ is bounded. Define $\hat{Z}:= \mathcal{E}(- \lambda \cdot M)$ and 
+\begin{align*}
+\frac{d \hat{P}}{d \PP}:= \hat{Z}_T.
+\end{align*}
+\begin{enumerate}
+\item[a)] Show that $\hat{P} \in \PP_{e, \text{loc}}(S).$
+\item[b)] Show that both $\frac{d \hat{P}}{d \PP}$ and $\frac{d \PP}{d \hat{P}}= \left( \frac{d \hat{P}}{\PP}\right)^{-1}$ have moments of all orders. 
+\end{enumerate}
+\begin{proof}
+a) First we observe that by assumption $K$ is bounded, thus
+\begin{align*}
+\EE\left[ \exp \left( \frac{1}{2} \langle - \lambda \cdot M \rangle_T \right) \right] =  \EE \left[  \exp \left( \frac{1}{2} \langle \lambda \cdot M \rangle_T \right) \right] = \EE\left[ \exp \left( \frac{1}{2} K_T \right) \right] < \infty.
+\end{align*}
+By Novikov's condition we obtain that $\hat{Z}$ is therefore a martingale, strictly positive on $[0,T]$ and hence $\hat{P}$ is an equivalent probability measure. To show that $S$ is a local martingale under $\hat{P}$, we compute
+\begin{align*}
+d( \hat{Z}S) &\overset{\text{Itô}}= \hat{Z}dS + S d \hat{Z}+ d \langle \hat{Z}, S \rangle \\
+&\overset{1)}= \hat{Z}dM + \hat{Z} \lambda d \langle M \rangle - S \hat{Z} \lambda dM - \hat{Z} \lambda d \langle M \rangle \\
+&= ( \hat{Z}- S \hat{Z} \lambda ) dM.
+\end{align*}
+Hence $S$ is a local martingale under $\hat{P}$.\\
+\\
+1) Recall that for a semimartingale $X$, the uniquely determined semimartingale $\mathcal{E}(X):=U=(U_t)_{t \in \mathbb{R}}$ is the  solution to the SDE $dU_t=U_{t-} dX_t$ (with initial condition $U_0=1$), i.e. $d \mathcal{E}(X)_t = \mathcal{E}(X)_{t-} dX_t$. Hence in our case, using the continuity of $M$ (which ensures that $\mathcal{E}$ is also continuous) we get 
+\begin{align*}
+d \hat{Z} = d \mathcal{E}(- \lambda \cdot M) = - \lambda \mathcal{E}( - \lambda \cdot M) dM = - \lambda \hat{Z} d M
+\end{align*}
+Moreover, (using the above) we also get
+\begin{align*}
+\langle \hat{Z}, S \rangle = \langle \hat{Z}, M \rangle = \langle \int - \lambda \hat{Z} dM, M \rangle = \int - \lambda \hat{Z}d \langle M, M \rangle = \int - \lambda \hat{Z}d \langle M \rangle,
+\end{align*}
+or equivalently $d \langle \hat{Z} , S \rangle = - \lambda \hat{Z} d \langle M \rangle$. 
+\newpage
+\noindent b) We compute, for any $p \in \mathbb{R}$,
+\begin{align*}
+\hat{Z}_T^p &= \exp \left( - p \lambda \cdot M_T - \frac{1}{2}p \lambda^2 \cdot \langle M \rangle_T \right) \\
+&= \exp \left( - p \lambda \cdot M_T - \frac{1}{2}p^2 \lambda^2 \cdot \langle M \rangle_T \right) \exp \left( \frac{1}{2}(p^2-p) \lambda^2 \cdot \langle M \rangle_T \right) \\
+&= \exp \left( - p \lambda \cdot M_T - \frac{1}{2}p^2 \lambda^2 \cdot \langle M \rangle_T \right) \exp \left( \frac{1}{2}(p^2-p)  \cdot \langle \lambda \cdot M \rangle_T \right) \\
+&= \mathcal{E}(- p \lambda \cdot M)_T \exp\left( \frac{1}{2}(p^2-p)K_T\right) \\
+& \leq C \mathcal{E}( - p \lambda \cdot M )_T \tag{$K$ bounded}
+\end{align*}
+Since $\mathcal{E}(- p \lambda \cdot M )$ is a supermartingale started from $1$, we obtain that $\EE(\hat{Z}_T^p) \leq C < \infty$ and hence the claim. The same argumentations then work for $1/\hat{Z}_T^p$ (just requires change of sign in the above). 
+\end{proof}
+\newpage
+\section{Exam Questions}
+This section provides a list of \textbf{possible} exam questions. They are taken from the script \textit{"Mathematical finance (extended from lectures of Fall 2012 by Martin Schweizer, transcribed by Peter Gracar and Thomas Hille)"} (see page 86 for the complete list). The lecture back then was given by Josef Teichmann. I have only selected the questions which I could bring in agreement with the lecture taught by Prof. Schweizer in 2018. Moreover, I have added in some questions (highlighted as \textit{Schweizer} in the proceeding list) which Professor Schweizer asked during the oral exam HS 2018 session, the full transcript of said oral exam can be found on the VMP website. 
+\begin{enumerate}
+\item What is a semi-martingale (\textit{Schweizer}: Can you give me two examples?) and a good integrator? What does the Bichteler-Dellacherie theorem tell? (\textit{Schweizer}: Can you sketch some ideas in proving one or the other direction?)
+\item Describe the Emery topology.
+\item What does the Burkholder-Davis-Gundy inequality assert and how does one proof work? How can we use it to construct the stochastic integral for predictable integrands?
+\item What does the FTAP tell us?
+\item What does (NFLVR) mean? Why is the $L^\infty$ case considerably more complicated? Explain in detail (NFLVR) = (NUPBR) + (NA).
+\item Explain the utility optimization problem and its meaning following these lecture notes. Give examples of utility functions.
+\item Explain the primal and dual problem and their relationship as outlined in these lecture notes. 
+\item Explain the strategy to solve the primal problem via solving the dual problem. 
+\item \textit{Schweizer}: What is the structure condition?
+\item \textit{Schweizer}: What is the definition of the stochastic exponential?
+\item \textit{Schweizer}: Can you tell me how to solve the utility maximisation problem directly?
+\end{enumerate} 
 \end{document}
