@@ -377,7 +377,7 @@ Giving a sufficient condition is easy, as described by the Lemma below:
 \\
 We first show that $S$ is actually a semimartingale under the assumption of the Lemma. Indeed, $S$ is by assumption a $Q$-local martingale, and $Q \approx \PP$, so the claim follows from general \textbf{Girsanov Theorem}. Thus we can talk about (NA) (which is only defined for semimartingales).
 \\\\
-From stochastic calculus, if $S$ is a semimartingale and $\vartheta$ is predictable, $S$-integrable, then $G( \vartheta)= \int \vartheta dS$ is well-defined and again a semimartingale. But if $S$ is actually a local martingale,  then $\int \vartheta dS$ must \textbf{not} be a local martingale (counterexample by Emery, uses $S$ with jumps)
+From stochastic calculus, if $S$ is a semimartingale and $\vartheta$ is predictable, $S$-integrable, then $G( \vartheta)= \int \vartheta dS$ is well-defined and again a semimartingale. But if $S$ is actually a local martingale,  then $\int \vartheta dS$ must \textbf{not} be a local martingale (counterexample by Emery, uses $S$ with jumps, see later at Example \ref{exemery})
 \newpage
 However, if $S$ is a local martingale, $\vartheta$ is predictable, $S$-integrable and if $G( \vartheta)= \int \vartheta dS$ is uniformly bounded from below (i.e. if $\vartheta \in \Theta_\text{adm})$, then $\int \vartheta dS$ is again a local martingale (Ansel/Stricker). Then, of course, by Fatou $\int \vartheta dS$ is also a supermartingale. 
 \\\\
@@ -456,7 +456,7 @@ Z_\tau = Z_T=0, & \text{ if } \tau = T
 \end{align*}
 so that by the stopping theorem we get $\EE(Z_\tau) = \EE(Z_0)=1$ which readily implies $\mathbb{P}( \tau < T)=1/2$, because $\EE(Z_\tau)= E(2\cdot 1_{\tau < T} + 0 \cdot 1_{ \tau = T})=1$. Now define $S=(S_t)_{0 \leq t \leq T}$ as 
 \begin{align*}
-S_t = \begin{cases} W_t + \int_0^t k(s) ds, & \text{ for } t \leq \tau \\ S_\tau, & \text{ for } t \geq \tau \end{cases}
+S_t = \begin{cases} W_t + \int_0^t k(s) ds, & \text{ for } t < \tau \\ S_\tau, & \text{ for } t \geq \tau \end{cases}
 \end{align*}
 and take (augmented) filtration $\mathcal{F}_t:= \mathcal{G}_{t \wedge T}$, $0 \leq t \leq T$, so that (up to nullsets) $\mathbb{F}= \mathbb{F}^S = \mathbb{F}^{W^\tau}$. \\
 \\
@@ -1002,7 +1002,7 @@ This $d$ is a metric, it metrices uniform (in $t$) convergence in probability. O
 Recall the space $\simple$ of simple predictable processes. Add to this all processes of the form $H=h_0 1_{\{0\}}$ with $h_0 \in L^\infty  ( \mathcal{F}_0, \mathbb{R}^d)$ and call the resulting space $\simple_0$ and define for $H$ as above $H \bigcdot X := h_0^\text{tr}X_0.$ Then define 
 \begin{align*}
 d_E(X^1,X^2)&:= \sup_{\substack{ H \in \simple_0 \\ \|H\|_\infty \leq 1}} \EE(1 \wedge ( H \bigcdot (X^1-X^2))_T) \\
-&\leq d_E' (X^1,X^2):= \sup_{\substack{ H \in \simple_0  \\ \|H\|_\infty \leq 1}} \EE(1 \wedge (H \bigcdot (X^1-X^2)_T^*))
+&\leq d_E' (X^1,X^2):= \sup_{\substack{ H \in \simple_0  \\ \|H\|_\infty \leq 1}} \EE(1 \wedge (H \bigcdot (X^1-X^2))_T^*)
 \end{align*}
 Both $d_E$ and $d_E' $ are metrics and $d_E' \geq d$. It is sometimes easier to work with $d_E$, and we will now show that $d_E$ still controls $d$ and $d_E, d_E'$ are equivalent. 
 \newpage
@@ -1275,14 +1275,14 @@ and of course $\PP( \tau_m = T) \to 1$ as $m \to \infty$. This implies that $(X^
 \begin{rem} The Corollary above gives a "nice and strong" convergence with respect to a "rich" topology.
 \end{rem}
 \begin{proof}
-Let $M^n:= H^n \bigcdot M$ (which is a martingale) and $Y:= M$ to get $| \Delta M_\tau^n| = | H_\tau^n \Delta M_\tau | \leq | \Delta Y_\tau|$ for all $n \in \mathbb{N}$ and for all stopping times $\tau$. Moreover,
+Let $M^n:= H^n \bigcdot M$ (which is a martingale) and $Y:= M$ to get $| \Delta M_\tau^n| = | H_\tau^n \Delta M_\tau | \leq | \Delta M_\tau|= | \Delta Y_\tau|$ for all $n \in \mathbb{N}$ and for all stopping times $\tau$. Moreover,
 \begin{align*}
 [M^n]_T = \underbrace{\int_0^T \underbrace{( H_s^n)^2}_{ \to 0, \text{ bdd. by $1$}} d[M]_s}_{ \text{bdd. by } [M]_T < \infty \ \PP\text{-a.s.}} \to 0 \ \PP\text{-a.s.}
 \end{align*}
 hence also in $L^0$. So Lemma \ref{L310} gives the desired conclusion.
 \end{proof}
 \newpage
-\begin{thm}\label{T312} For any martingale $M \in \mathcal{H}_0^1$, the mapping $I_M( \simple, \| \cdot \|_\infty) \to ( \mathcal{S},  d_E')$ admits a unique linear extension to $J_M: \pred \to \mathcal{S}$ such that $H \bigcdot M := J_M(H)$ satisfies $[H \bigcdot M] = \int H^2 d [M]$ and $\Delta (H \bigcdot M) = H \Delta M$ and with dominated convergence property, i.e. that $(H^k) \subset \pred$ with $\|H^k\|_\infty \leq 1$ and $H^k \to 0$ pointwise implies $d_E'(H^k \bigcdot M, 0) \to 0$. Moreover, $J_M : ( \pred, \| \cdot \|_\infty) \to ( \mathcal{S}, d_E')$ is continuous. 
+\begin{thm}\label{T312} For any martingale $M \in \mathcal{H}_0^1$, the mapping $I_M:( \simple, \| \cdot \|_\infty) \to ( \mathcal{S},  d_E')$ admits a unique linear extension to $J_M: \pred \to \mathcal{S}$ such that $H \bigcdot M := J_M(H)$ satisfies $[H \bigcdot M] = \int H^2 d [M]$ and $\Delta (H \bigcdot M) = H \Delta M$ and with dominated convergence property, i.e. that $(H^k) \subset \pred$ with $\|H^k\|_\infty \leq 1$ and $H^k \to 0$ pointwise implies $d_E'(H^k \bigcdot M, 0) \to 0$. Moreover, $J_M : ( \pred, \| \cdot \|_\infty) \to ( \mathcal{S}, d_E')$ is continuous. 
 \end{thm}
 \begin{proof}
 Take $H \in \pred \subset L^1(M)$ and use Lemma $\ref{L39}$ to get $(H^n)_{n \in \mathbb{N}} \subset \simple$ with $\|H^n\|_\infty \leq \|H\|_\infty$ and $H^n \to H$ in $L^1(M)$-a.e. Then $H^n-H^m \to 0$ as $m,n \to \infty$ and hence $H^n-H^{m_n} \to 0$ as $n \to \infty$ for any $m_n \geq n$. So $d_E'((H^n-H^{m_n}) \bigcdot M, 0) \to 0$ as by Corollary \ref{C311} and so $d_E'(H^n \bigcdot M, H^m \bigcdot M) \to 0$ as $m,n \to \infty$. So $(H^n \bigcdot M)_{n \in \mathbb{N}}$ is Cauchy in $\mathcal{S}$ for $d_E'$, and so by Theorem \ref{T34} there exists limit in $\mathcal{S}$ for $d_E'$ and we define $H \bigcdot M:= d_E' \lim_{n \to \infty} H^n \bigcdot M$. \\
@@ -1479,7 +1479,7 @@ and so we have found our $H$.
 \subsection{Recap} We provide again a short summary of this rather technical chapter. Our (second) main goal was to extend stochastic integration beyond $\simple$, i.e. to a larger class of integrands $H$. To this extend we introduced the space $\mathbb{L}$ resp. $\mathbb{D}$ of $\mathbb{R}^d$-valued adapted LCRL resp RCLL processes and introduced the metric $d(X^1,X^2):= \EE(1 \wedge (X^1-X^2)_T^*).$ We've seen that both $(\mathbb{L},d)$ and $( \mathbb{D}, d)$ are \textbf{complete} metric spaces (Exercise). We've introduced the space $\simple_0$, which is $\simple$ but all the spaces of the form $H=h_01_{\{0\}}$ with $h_0 \in L^\infty ( \mathcal{F}_0, \mathbb{R}^d)$ added to it, then defined the metrics
 \begin{align*}
 d_E(X^1,X^2)&:= \sup_{H \in \simple_0, \ \|H\|_\infty \leq 1} \EE(1 \wedge (H \bigcdot (X^1-X^2))_T) \\
-& \leq d_E'(X^1,X^2):= \sup_{H \in \simple_0, \ \|H\|_\infty \leq 1} \EE(1 \wedge (H \bigcdot (X^1-X^2)_T^*)).
+& \leq d_E'(X^1,X^2):= \sup_{H \in \simple_0, \ \|H\|_\infty \leq 1} \EE(1 \wedge (H \bigcdot (X^1-X^2))_T^*).
 \end{align*}
 We notice that $d_E' \geq d$ and then showed that $d_E$ controls $d$ (in the sense that convergences of $(X^n)_{n \in \mathbb{N}} \subset \mathbb{D}$ w.r.t $d_E$ implies convergence of the same sequence w.r.t $d$) and then in fact even showed that $d_E'$ and $d_E$ (as defined above) are equivalent. We have then seen that $\mathcal{S} \subset \mathbb{D}$, the space of $\mathbb{R}^d$-valued semimartingales, is a complete metric space with respect to $d_E,d_E'$.
 \\\\
@@ -1500,8 +1500,9 @@ For $M \in \mathcal{M}_{0, \text{loc}}$, we define $\mathcal{L}^1(M)$ to be the 
 \end{align*}
 By identification this then yields the space $L^1(M)$. We also introduce the space $\mathcal{H}_0^1:= \{ M \in \mathcal{M}_{0, \text{loc}}: M_T^* = \sup_{0 \leq s \leq T} |M_s| \in L^1\}.$ For which we have (all Exercises) that every $M \in \mathcal{H}_0^1$ is a (true) martingale and even of class (D) and also we have $\mathcal{M}_{0, \text{loc}}= \mathcal{H}_{0, \text{loc}}^1$ (important). The last statement means that $M \in \mathcal{M}_{0, \text{loc}}$ is locally in $\mathcal{H}_0^1$ and therefore (according to the last statements)  $M \in \mathcal{M}_{0, \text{loc}}$ is after localisation a (true) martingale. After a couple of auxiliary results (which involve the use of the optional quadratic variation) we then arrive at the major theorem:
 \\\\
-\textbf{Theorem \ref{T312}}: For any martingale $M \in \mathcal{H}_0^1$, the mapping $I_M( \simple, \| \cdot \|_\infty) \to ( \mathcal{S},  d_E')$ admits a unique linear extension to $J_M: \pred \to \mathcal{S}$ such that $H \bigcdot M := J_M(H)$ satisfies $[H \bigcdot M] = \int H^2 d [M]$ and $\Delta (H \bigcdot M) = H \Delta M$ and with dominated convergence property, i.e. that $(H^k) \subset \pred$ with $\|H^k\|_\infty \leq 1$ and $H^k \to 0$ pointwise implies $d_E'(H^k \bigcdot M, 0) \to 0$. Moreover, $J_M : ( \pred, \| \cdot \|_\infty) \to ( \mathcal{S}, d_E')$ is continuous. 
+\textbf{Theorem \ref{T312}}: For any martingale $M \in \mathcal{H}_0^1$, the mapping $I_M:( \simple, \| \cdot \|_\infty) \to ( \mathcal{S},  d_E')$ admits a unique linear extension to $J_M: \pred \to \mathcal{S}$ such that $H \bigcdot M := J_M(H)$ satisfies $[H \bigcdot M] = \int H^2 d [M]$ and $\Delta (H \bigcdot M) = H \Delta M$ and with dominated convergence property, i.e. that $(H^k) \subset \pred$ with $\|H^k\|_\infty \leq 1$ and $H^k \to 0$ pointwise implies $d_E'(H^k \bigcdot M, 0) \to 0$. Moreover, $J_M : ( \pred, \| \cdot \|_\infty) \to ( \mathcal{S}, d_E')$ is continuous. 
 \\\\
+Next we extend from $\mathcal{H}_0^1$-integrators to semimartingales $S$. If $S=A$ is of FV, we can define $H \bigcdot A = \int H_s dA_s$, for $H \in \pred \subset L_{\text{var}}(A)$ pathwise as usual Lebesgue-Stieltjes integral and check properties from known results. So we only need to argue for $S= M \in \mathcal{M}_{0, \text{loc}} = \mathcal{H}_{0, \text{loc}}^1$ and this is easy. \\\\
 One more localisation allows us to extend from $\pred$ to $\pred_\text{loc}$, and so $H \bigcdot S= \int H dS$ is well-defined and a semimartingale for any $S \in \mathcal{S}$ and any $H \in \pred_\text{loc}$. We remark that in the setup of the theorem above, i.e. for $M \in \mathcal{H}_0^1$ and $H \in \pred$, we have by construction as limit in $\mathcal{S}$ that $H \bigcdot M \in \mathcal{S}$ is a semimartingale. However, we've seen in class that it is actually a (true) martingale, in fact we have $H \bigcdot M \in \mathcal{H}_0^1$. 
 \\\\
 Next we introduce on $\mathcal{S}$ (space of semimartingales in $\mathbb{R}^d$) two metrics
@@ -1512,7 +1513,7 @@ Next we introduce on $\mathcal{S}$ (space of semimartingales in $\mathbb{R}^d$) 
 One can again argue that these two metrics are equivalent. Moreover, they are also equivalent to $d_E, d_E'$. The "strongest" metric $\widetilde{d}_E'$ is called the \textbf{Emery metric} on $\mathcal{S}$ and the corresponding (metric) topology is called \textbf{Emery topology}. These notions allow us to introduce the final extension of integrands (most general case). 
 \\
 We fix a semimartingale $S$ and define a predictable process $H$ (i.e. $H \in \mathcal{P}$) to be $S$-\textbf{integrable}, denoted as $H \in \mathcal{L}(S)$, if $(H^n \bigcdot S)_{n \in \mathbb{N}}$ is Cauchy in \textbf{Emery topology} (or for $d_E'$), where $H^n:= H1_{\{ |H| \leq n\}} \in \pred$. The Limit in $\mathcal{S}$ (recall that $\mathcal{S}$ is complete) is called $H \bigcdot S$. Moreover we have characterized $\mathcal{L}(S)$; we've seen that $H \in \mathcal{L}(S)$ iff for all sequence $(K^n)_{n \in \mathbb{N}} \subset \pred$ with $|K^n| \leq |H|$ and $K^n \to 0$ pointwise, we have $K^n \bigcdot S \to 0$ w.r.t. $\widetilde{d}_E'$ (i.e. Emery metric). 
-\newpage
+\\\\
 As a final result in this section, we discussed a result that we will need later in the course. Later (to discuss absence of arbitrage) we need for the space of all stochastic integrals $\{H \bigcdot S : H \in \mathcal{L}(S)\}$ a closedness result. 
 \\\\
 For a fixed semimartingale $S \in \mathcal{S}$ and $H,H' \in \mathcal{L}(S)$ we define 
@@ -1583,7 +1584,7 @@ M_{t \wedge \sigma_m}^n \leq m+1 + ( \Delta M_{t \wedge \sigma_m}^n)^+ \leq m+1 
 Moreover, $M_{t \wedge \sigma_m}^n \xrightarrow{n \to \infty} X_{t \wedge \sigma_m}$ in $L^0$, hence in $L^1$ and so $X^{\sigma_m}$ is a martingale because all $(M^n)^{\sigma_m}$ are. 
 \end{proof}
 \newpage
-\begin{proof}[Proof of Proposition \ref{P41}] Since $\mathcal{M}_{0, \text{loc}} = \mathcal{H}_{0, \text{loc}}^1$ allows us by stopping to assume that $M \in \mathcal{H}^1$. Take $\vartheta \in L(M)$ and $\vartheta_\cdot^n := \vartheta_\cdot 1_{\{ | \vartheta \leq n \}}$ and set $M^n:= \int \vartheta^n d M$. By definition, $M^n \to \int \vartheta dM =: X$ for Emery metric $\widetilde{d}_E' \geq d$, and each $M^n \in \mathcal{H}^1$ by Proposition \ref{P314}. Because $X \geq -b$, all assumptions of Lemma \ref{L42} are satisfied and so $X= \int \vartheta dM$ is a local martingale. Moreover, as $X \geq -b$ it is also a supermartingale by Fatou. 
+\begin{proof}[Proof of Proposition \ref{P41}] Since $\mathcal{M}_{0, \text{loc}} = \mathcal{H}_{0, \text{loc}}^1$ allows us by stopping to assume that $M \in \mathcal{H}^1$. Take $\vartheta \in L(M)$ and $\vartheta_\cdot^n := \vartheta_\cdot 1_{\{ | \vartheta | \leq n \}}$ and set $M^n:= \int \vartheta^n d M$. By definition, $M^n \to \int \vartheta dM =: X$ for Emery metric $\widetilde{d}_E' \geq d$, and each $M^n \in \mathcal{H}^1$ by Proposition \ref{P314}. Because $X \geq -b$, all assumptions of Lemma \ref{L42} are satisfied and so $X= \int \vartheta dM$ is a local martingale. Moreover, as $X \geq -b$ it is also a supermartingale by Fatou. 
 \end{proof}
 \begin{rem} From the proof above: conclusion still holds if instead of $\int \vartheta dM \geq -b$, we only have that all large jumps of $\int \vartheta dM$ (say $\geq C$) have lower bounded in $L^1$. 
 \end{rem}
@@ -1645,7 +1646,7 @@ For a proof of Lemma \ref{L44} see Appendix B.
 Now $f_n \leq g_n$ for some $g_n \in \mathcal{G}_\text{adm}$ (by Definition of $\mathcal{C}^\infty$), so $\|g_n^-\|_\infty \leq \|f_n^-\|_\infty \leq \frac{1}{n},$ and due to (NA), $g_n = G_T( \vartheta^n)$ with $\vartheta^n \in \Theta_\text{adm}$ and $g_n \geq - \frac{1}{n}$ implies that $G_\cdot ( \vartheta^n) \geq - \frac{1}{n}$. 
 \begin{exe} \label{ex14} Verify that the statement in the previous paragraph holds.
 \end{exe}
-\noindent This means that $n \vartheta^n$ is $1$-admissible and so $n g_n \in \mathcal{G}^1$. Using Lemma \ref{L44} gives $\widetilde{g}_n \in \text{conv}(g_n, g_{n+1}, \dots )$ with $\widetilde{g}_n \to \widetilde{g}_\infty \ \PP$-a.s., and $g_n \geq f_n$ gives $\widetilde{g}_\infty \geq f$ so that $\PP( \widetilde{g}_\infty > 0)>0$. But now $(n \widetilde{g}_n)_{n \in \mathbb{N}} \subset \mathcal{G}^1$ has $\frac{1}{n}n \widetilde{g}_n = \widetilde{g}_n$ not converging to $0$ in $L^0$. So $\mathcal{G}^1$ is not bounded in $L^0$ and thus (NUPBR) fails. 
+\noindent This means that $n \vartheta^n$ is $1$-admissible and so $n g_n \in \mathcal{G}^1$. Using Lemma \ref{L44} gives $\widetilde{g}_n \in \text{conv}(g_n, g_{n+1}, \dots )$ with $\widetilde{g}_n \to \widetilde{g}_\infty \ \PP$-a.s., and $g_n \geq f_n$ gives $\widetilde{g}_\infty \geq f \in L_+^\infty \setminus \{0\}$ so that $\PP( \widetilde{g}_\infty > 0)>0$. But now $(n \widetilde{g}_n)_{n \in \mathbb{N}} \subset \mathcal{G}^1$ has $\frac{1}{n}n \widetilde{g}_n = \widetilde{g}_n$ not converging to $0$ in $L^0$. So $\mathcal{G}^1$ is not bounded in $L^0$ and thus (NUPBR) fails. 
 \\\\
 "1)$\implies$2)": Take $(g_n)_{n \in \mathbb{N}} \subset \mathcal{G}_\text{adm}$ with $g_n^- \to 0$ in $L^\infty$ and suppose $g_n \centernot\to 0$ in $L^0$. Then along a subsequence, again called $(g_n)_{n \in \mathbb{N}}$, we get $\PP( g_n \geq \alpha) \geq \delta >0$ for some $\alpha >0$. \\\\
 Look at $f_n:= g_n \wedge 1 = g_n-(g_n-g_n \wedge 1) \in \mathcal{G}_\text{adm}-L_+^0$. Then $f_n^- = g_n^- \to 0$ in $L^0$ so that we can assume $f_n \geq - a$ for some $a >0$ (and $a$ can be arbitrarily small). So $f_n \in L^\infty$, hence $f_n \in \mathcal{C}^\infty$. \\
@@ -1684,7 +1685,7 @@ is a local $Q$-martingale and $Q$-supermartingale by Ansel-Stricker.
 \end{enumerate}
 \end{rem}
 \newpage
-\begin{exmp}[Emery] Let $\tau \sim $Exp$(1)$ and $Z$ independent of $\tau$ taking values $\pm 1$ with probability $1/2$ each. Set $M_t:= Z 1_{\{ t \geq \tau\}}$ for $t \geq 0$ and use $\mathbb{F}:= \mathbb{F}^M$. Then $M_t-M_s$ for $t > s$ is different from $0$ iff $s < \tau \leq t$. This implies that for $u \leq s$ and on $\{ \tau >s\}$ we have $M_u = Z 1_{\{u \geq \tau\}}=0$, so $\mathcal{F}_s^M \cap \{ \tau >s \}= \{ A \cap \{ \tau >s\}: A \in \mathcal{F}_s^M\}$ is trivial and so anything $\mathcal{F}_s^M$-measurable must be constant almost surely on $\{ \tau > s\}$. Therefore, for $A \in \mathcal{F}_s^M$ and $t >s$ we have
+\begin{exmp}[Emery] \label{exemery} Let $\tau \sim $Exp$(1)$ and $Z$ independent of $\tau$ taking values $\pm 1$ with probability $1/2$ each. Set $M_t:= Z 1_{\{ t \geq \tau\}}$ for $t \geq 0$ and use $\mathbb{F}:= \mathbb{F}^M$. Then $M_t-M_s$ for $t > s$ is different from $0$ iff $s < \tau \leq t$. This implies that for $u \leq s$ and on $\{ \tau >s\}$ we have $M_u = Z 1_{\{u \geq \tau\}}=0$, so $\mathcal{F}_s^M \cap \{ \tau >s \}= \{ A \cap \{ \tau >s\}: A \in \mathcal{F}_s^M\}$ is trivial and so anything $\mathcal{F}_s^M$-measurable must be constant almost surely on $\{ \tau > s\}$. Therefore, for $A \in \mathcal{F}_s^M$ and $t >s$ we have
 \begin{align*}
 \EE((M_t-M_s)1_A)=\EE(1_{\{s < \tau \leq t\}} Z 1_A) \overset{Z \text{ indep. } \tau}{=} \text{const} \cdot \underbrace{\EE(Z)}_{=0} \PP( s < \tau \leq T) =0, 
 \end{align*}
@@ -1726,7 +1727,7 @@ We now come to our main result (a kind of converse to Lemma \ref{L41}):
 \end{exe}
 \noindent "1)$\implies$2)" is conceptually similar to proof of \ref{T12} (DMW; Dalang-Morton-Willinger). We want to use Kreps-Yan Theorem for $p= \infty$, and so first step (which is hard) shows that if we have (NFLVR), then $\mathcal{C}^\infty \subset L^\infty$ is weak* closed in $L^\infty$. This is both difficult and remarkable,  see later. \\
 \\
-Second step applies Kreps-Yan to $\mathcal{C}^\infty$ to get $Q \approx \PP$ on $\mathcal{F}_T$ with $\EE_Q(Y) \leq 0$, for all $Y \in \mathcal{C}^\infty$. We want $\EE_Q(g) \leq 0$ for all $g= g_T( \vartheta) \in \mathcal{G}_\text{adm}$. For that, take $g \in \mathcal{G}_\text{adm}$ and write 
+Second step applies Kreps-Yan to $\mathcal{C}^\infty$ to get $Q \approx \PP$ on $\mathcal{F}_T$ with $\EE_Q(Y) \leq 0$, for all $Y \in \mathcal{C}^\infty$. We want $\EE_Q(g) \leq 0$ for all $g= G_T( \vartheta) \in \mathcal{G}_\text{adm}$. For that, take $g \in \mathcal{G}_\text{adm}$ and write 
 \begin{align*}
 L^\infty \ni g \wedge n = g-(g-g \wedge n) \in \mathcal{G}_\text{adm}-L_+^0
 \end{align*}
@@ -1755,7 +1756,7 @@ Outline of main steps proving Theorem \ref{T46}.
 \textbf{Step 1}: A result from functional analysis says that a convex set $C \subset L^\infty$ is weak*-closed iff for any uniformly bounded sequence in $C$ which converges $\PP$-a.s, the limit is still in $C$ (Uses the Krein-Smulian theorem).
 \\\\
 \textbf{So}: it is enough to show that any uniformly bounded sequence in $\mathcal{C}_\text{adm}^0$ which converges $\PP$-a.s. has its limit still in $\mathcal{C}_\text{adm}^0.$
-\begin{defn} $A \subset L^0$ is said to be \textbf{Fatou-closed} if any sequence $A$ which is uniformly bounded from below and $\PP$-a.s. convergent has its limit still in $A$. If $A$ is a cone, it is enough to check this for the uniform lower bound $-1$. 
+\begin{defn} $A \subset L^0$ is said to be \textbf{Fatou-closed} if any sequence in $A$ which is uniformly bounded from below and $\PP$-a.s. convergent has its limit still in $A$. If $A$ is a cone, it is enough to check this for the uniform lower bound $-1$. 
 \end{defn}
 \noindent \textbf{Step 2}: \textbf{Goal}: Show that $\mathcal{C}_\text{adm}^0$ is Fatou-closed.  We know that $\mathcal{C}_\text{adm}^0$ is a convex cone. Take $(f_n)_{n \in \mathbb{N}} \subset \mathcal{C}_\text{adm}^0$ with $f_n \geq -1$ and $f_n \to f$ $\PP$-a.s. Then $-1 \leq f_n \leq g_n$ with $g_n = G_T( \vartheta^n)$ where $\vartheta^n \in \Theta_\text{adm}$. \\
 \\
@@ -1868,13 +1869,13 @@ In this section, consider the case where $S=(S_t)_{0 \leq t \leq T}$ is an $\mat
 \end{rem}
 \newpage
 \begin{proof}
-$S= \frac{1}{Z}(ZS)$ and $ZS$ is $\sigma$-martingale, hence a semimartingale and $\frac{1}{Z}$ is a semimartingale by Itô's formula. More carefully: $Z>0$ is local martingale,  hence supermartingale, and so $Z_- >0$ by minimum principle (BMSC). Moreover, can also argue that $\sigma$-martingale $ZS$ is actually local martingale (by Lemma \ref{L42} because $S$ is continuous) hence a semimartingale. As $Z_- >0$, we can use Itô's formula and conclude that $1/Z$ is a semimartingale. 
+$S= \frac{1}{Z}(ZS)$ and $ZS$ is $\sigma$-martingale, hence a semimartingale and $\frac{1}{Z}$ is a semimartingale by Itô's formula. More carefully: $Z>0$ is local martingale,  hence supermartingale, and so $Z_- >0$ by minimum principle (BMSC). Moreover, can also argue that $\sigma$-martingale $ZS$ is actually local martingale (by Lemma \ref{L42} because $S$ is continuous) hence a semimartingale. As $Z_- >0$, we can use Itô's formula and conclude that $1/Z$ is a semimartingale. Hence, by the product rule, $S$ is also a semimartingale.
 \\\\
 Write $S= S_0 + M + A$, $M \in \mathcal{M}_{0, \text{loc}}^c$, $A \in $ cFV$_0$. Now look at local martingale $ZS$. Write $Z = \mathcal{E}(N)$ with 
 \begin{align*}
 N:= \int \frac{1}{Z_-}dZ \in \mathcal{M}_{0, \text{loc}}.
 \end{align*}
-Use generalised version of (Galtchonk-) Kunita-Watanabe decomposition to get 
+Use generalised version of (Galtchouk-) Kunita-Watanabe decomposition to get 
 \begin{align*}
 N= \int \vartheta dM + L
 \end{align*}
@@ -2033,8 +2034,8 @@ where $\widehat{W}$ is by Girsanov's theorem a $\hat{\PP}$-BM. So $dS_t= S_t \si
 \newpage
 Now return to the case of general $( \Omega, \mathcal{F}, \mathbb{F}, \PP)$ and $\mathbb{R}^d$-valued adapted \textbf{continuous} process $S=(S_t)_{0 \leq t \leq T}$. We know: $S$ admits E$\sigma$MD/ELMD iff $S$ satisfies (SC), and in that case $\hat{Z}= \mathcal{E}( - \int \lambda dM)$ is an E$\sigma$MD/ELMD. Using continuity of $S$ and $A= \int d \langle M \rangle \lambda$ by (SC) gives 
 \begin{align*}
-1/ \hat{Z}&= 1/ \mathcal{E} \left( - \int \lambda dM \right) = \exp \left( \int \lambda dM - \frac{1}{2} \langle \int \lambda dM \rangle \right) \\
-&= \exp \Big( \int \lambda dM + \underbrace{\int \lambda^\text{tr}d \langle M \rangle}_{= \int \lambda dA} - \frac{1}{2} \int \lambda^\text{tr} d \underbrace{\langle M \rangle}_{= \langle S \rangle} \lambda \Big) \\
+1/ \hat{Z}&= 1/ \mathcal{E} \left( - \int \lambda dM \right) = \exp \left( \int \lambda dM + \frac{1}{2} \langle \int \lambda dM \rangle \right) \\
+&= \exp \Big( \int \lambda dM + \underbrace{\int \lambda^\text{tr}d \langle M \rangle \lambda}_{= \int \lambda dA} - \frac{1}{2} \int \lambda^\text{tr} d \underbrace{\langle M \rangle }_{= \langle S \rangle} \lambda \Big) \\
 & =\exp \left( \int \lambda dS - \frac{1}{2} \langle \int \lambda dS \rangle \right) = \mathcal{E}\left( \int \lambda dS \right) \\
 &= 1 + \int \mathcal{E} \left( \int \lambda dS \right) \lambda dS.
 \end{align*}
@@ -2347,7 +2348,7 @@ Fix payoff $H \in L_+^0( \mathcal{F}_T)$. If $H$ is "not attainable", then there
 \end{align*}
 \end{lem}
 \begin{proof}
-By convention $\inf \empty = + \infty$ and thus the inequality is trivial in that case. So w.l.o.g., there exists $v_0 \in \mathbb{R}$ and $\vartheta \in \Theta_\text{adm}$ with $v_0 + G_T( \vartheta) \geq H$ a.s. For any $Q \in \PP_{e, \sigma}$, $G( \vartheta) = \int \vartheta dS$ is under $Q$ a supermartingale (usual Ansel-Stricker argument) and so 
+By convention $\inf \emptyset = + \infty$ and thus the inequality is trivial in that case. So w.l.o.g., there exists $v_0 \in \mathbb{R}$ and $\vartheta \in \Theta_\text{adm}$ with $v_0 + G_T( \vartheta) \geq H$ a.s. For any $Q \in \PP_{e, \sigma}$, $G( \vartheta) = \int \vartheta dS$ is under $Q$ a supermartingale (usual Ansel-Stricker argument) and so 
 \begin{align*}
 \EE_Q(H) \leq v_0+ \EE_Q( G_T( \vartheta)) \leq v_0,
 \end{align*}
@@ -2358,7 +2359,7 @@ take $\sup$ over $Q$, $\inf$ over $v_0$ to conclude.
 \\\\
 Fix $H \in L_+^0( \mathcal{F}_T)$ and define adapted "process" with values in $[0, + \infty]$ 
 \begin{align*}
-U_t := \esssup_{Q \in \PP_{e \sigma}} \EE_Q(H \mid \mathcal{F}_t), \ 0 \leq t \leq T.
+U_t := \esssup_{Q \in \PP_{e ,\sigma}} \EE_Q(H \mid \mathcal{F}_t), \ 0 \leq t \leq T.
 \end{align*}
 If $\mathcal{F}_0$ is trivial, then $U_0 = \sup_{Q \in \PP_{e, \sigma}} \EE_Q(H).$
 \begin{prop} \label{P72} Assume (NFLVR) or $\PP_{e, \sigma} \neq \emptyset$ and $H \in L_+^0( \mathcal{F}_T)$. \\ If $\sup_{Q \in \PP_{e, \sigma}} \EE_Q(H) < \infty$, then $U$ is a $Q$-supermartingale, (simultaneously) for all $Q \in \PP_{e, \sigma}$. 
@@ -2543,11 +2544,11 @@ with $M \in \mathcal{M}_{0, \text{loc}}(Q)$ and $\Psi >0$ is in $L(M)$.
 \begin{align*}
 \sup_{0 \leq t \leq T} \left| \int_0^t \zeta_u dS_u \right| = ( \zeta \bigcdot S)_T^* = M_T^* \in L^1(Q).
 \end{align*}
-If $S$ is locally bounded ( and $Q$ an ELMM for $S$), then we can even choose 
+If $S$ is locally bounded (and $Q$ an ELMM for $S$), then we can even choose 
 \begin{align*}
 \zeta = \sum_{n=1}^\infty \gamma_n 1_{(\!( \tau_{n-1}, \tau_n ]\!]}
 \end{align*}
-to get $\zeta >0$ with $( \zeta \bigcdot S)_T^* \leq$const. 
+to get $\zeta >0$ with $( \zeta \bigcdot S)_T^* \leq$ const. 
 \\\\
 The next definition introduces "good random lower bounds".
 \begin{defn} A \textbf{feasible weight function} is a random variable $w \geq 1$ satisfying:
@@ -2618,7 +2619,7 @@ For that, start with $w \geq 1$ satisfying $\EE_Q(w) < \infty$ for some $Q \in \
 \end{align*}
 These are $w$-analogues of $\mathcal{G}_\text{adm}^1, \ \mathcal{G}_\text{adm}, \ \mathcal{C}_\text{adm}^\infty$. 
 \\\\
-\textbf{Interpretation}: elements of $\mathcal{C}_\text{adm}^\infty$ are payoffs which are bounded, $w$-discounted and (after discounting) can be superreplicated by final value of a $w$-admissible self-financing strategy $\varphi \teq (0, \vartheta)$ with zero initial wealth. 
+\textbf{Interpretation}: elements of $\mathcal{C}_w^\infty$ are payoffs which are bounded, $w$-discounted and (after discounting) can be superreplicated by final value of a $w$-admissible self-financing strategy $\varphi \teq (0, \vartheta)$ with zero initial wealth. 
 \\\\
 First (and most difficult) result is analogue of Fatou-closedness of $\mathcal{G}_\text{adm}^1-L_+^0$. 
 \begin{thm} \label{T82} Assume (NFLVR) and take random variable $w \geq 1$ with $\EE_Q(w) < \infty$ for some $Q \in \PP_{e, \sigma}$. Then convex cone $\mathcal{G}_w^1-L_+^0$ is closed in $L^0$. 
@@ -2641,7 +2642,7 @@ f \in \frac{1}{w}( \mathcal{G}_w^1- L_+^0) \subset \frac{1}{w}( \mathcal{G}_w-L_
 \end{align*}
 or $f \in \mathcal{C}_w^\infty$ as desired. 
 \end{proof}
-To attain a duality result, we now want to use the \textbf{bipolar theorem} (see appendix)applied to the convex cone $\mathcal{C}_w^\infty$. \\
+To attain a duality result, we now want to use the \textbf{bipolar theorem} (see appendix) applied to the convex cone $\mathcal{C}_w^\infty$. \\
 \\
 Identify probability measures $R \ll \PP$ with its density $\frac{dR}{d\PP} \in L^1(\PP)$, and so view $\PP_{e, \sigma}$ etc as subset of $L^1( \PP)$. We can use the shorthand 
 \begin{align*}
@@ -2680,7 +2681,7 @@ Because $f \wedge n \to f$ a.s. and also $\mathcal{G}_w^1- L_+^0$ is closed in $
 Corollary \ref{C85} extends basic hedging duality from Theorem \ref{T74} to general $S$ and unbounded payoffs. We discuss this more in detail in section 10. 
 \begin{rem} Suppose $S$ satisfies (NFLVR) and take $w \equiv 1$. If $S$ is locally bounded,  we have seen that this $w$ is then a feasible weight function, and then also $\PP_{e, \sigma}^w = \PP_{e, \sigma}$. We can also take any $w \equiv$const. So for locally bounded $S$, Corollary \ref{C85} says that any payoff $f$, bounded from below,  is superreplicable with an admissible strategy iff $\sup_{Q \in \PP_{e, \sigma}} \EE_Q(f) \leq 0$. 
 \end{rem}
-\begin{proof}[Proof of Theorem \ref{T84}] 1) (\ref{82}) follows from (\ref{81}): Indeed, we know that $w \PP_{e, \sigma}^w$ is $L^1(\PP)$-dense in $w\PP_{a, \sigma}^w$. So RHS says that $f$ is in polar of cone $(w, \PP_{a, \sigma}^w)$. On LHS, $\mathcal{C}_w^\infty$ is convex cone with vertex at $0$ and weak*-closed by Corollary \ref{C83}, so that $\mathcal{C}_w^\infty = ( \mathcal{C}_w^\infty)^{oo} = ( ( \mathcal{C}_w^\infty)^o)^o$ by bipolar theorem (see appendix). SO LHS says that $f$ is in polar of $( \mathcal{C}_w^\infty)^o$, and so (\ref{82}) follows from (\ref{81}). 
+\begin{proof}[Proof of Theorem \ref{T84}] 1) (\ref{82}) follows from (\ref{81}): Indeed, we know that $w \PP_{e, \sigma}^w$ is $L^1(\PP)$-dense in $w\PP_{a, \sigma}^w$. So RHS says that $f$ is in polar of cone $(w, \PP_{a, \sigma}^w)$. On LHS, $\mathcal{C}_w^\infty$ is convex cone with vertex at $0$ and weak*-closed by Corollary \ref{C83}, so that $\mathcal{C}_w^\infty = ( \mathcal{C}_w^\infty)^{oo} = ( ( \mathcal{C}_w^\infty)^o)^o$ by bipolar theorem (see appendix). So LHS says that $f$ is in polar of $( \mathcal{C}_w^\infty)^o$, and so (\ref{82}) follows from (\ref{81}). 
 \\
 \\
 2) Proof of (\ref{81}): "$\supset$" Take any $Q \in \mathbb{P}_{e, \sigma}^w$ and $f \in \mathcal{C}_w^\infty$ so that $w f \in \mathcal{G}_w-L_+^0$. Use Lemma \ref{81} part 3) to get $\EE_Q(wf) \leq 0$, i.e. $\EE_\PP(fw \frac{dQ}{d \PP}) \leq 0 $ for all $f \in \mathcal{C}_w^\infty$. By density, this extends to $Q \in \PP_{a, \sigma}^w$ and so polar of $\mathcal{C}_w^\infty \subset w \PP_{a, \sigma}^w \subset \text{cone}(w \PP_{a, \sigma}^w)$. 
@@ -2997,7 +2998,7 @@ so that $f \in \mathcal{C}(x)$.
 In view of Lemma \ref{L101} (and the identity $(\spadesuit)$ above), we can rewrite the primal problem as maximise $\EE(U(f))$ over $f \in L_+( \mathcal{F}_T)$ subject to $\EE_Q(f) \leq x$, for all $Q \in \PP_{e, \sigma}$. But we cannot simply write Lagrange function, because number of constraints (the for all $Q \in \PP_{e, \sigma}$ part) is in general infinite. 
 \newpage
 It turns out to be useful to generalise E$\sigma$MDs as well. Start with $Q \in \PP_{e, \sigma}$, denote by $Z=Z^{Q;\PP}$ its density process and take any $V \in \mathcal{V}(x)$, so $V= x + \int \vartheta dS$, $\vartheta \in \Theta_\text{adm}^x$. Then $Z>0$ is a $\PP$-martingale with $Z_0=1$ (as $\mathcal{F}_0$ is trivial) and by Bayes and Ansel-Stricker, $ZV$ is a $\PP$-supermartingale. This motivates: 
-\begin{defn} For $z>0$, we call $\mathcal{Z}(z)$ the family of all nonnegative $\mathbb{F}$-adapted RCLL process $Z=(Z_t)_{0 \leq t \leq T}$ with $Z_0=z$ such that $ZV$ is a $\PP$-supermartingale for all $V \in \mathcal{V}(1)$ (or, equivalently, for all $V \in \mathcal{V}(x),$ for all $x >0;$ note that $\mathcal{V}(x) = x  \mathcal{V}(1)$.)
+\begin{defn} For $z>0$, we call $\mathcal{Z}(z)$ the family of all nonnegative $\mathbb{F}$-adapted RCLL processes $Z=(Z_t)_{0 \leq t \leq T}$ with $Z_0=z$ such that $ZV$ is a $\PP$-supermartingale for all $V \in \mathcal{V}(1)$ (or, equivalently, for all $V \in \mathcal{V}(x),$ for all $x >0;$ note that $\mathcal{V}(x) = x  \mathcal{V}(1)$.)
 \end{defn}
 Note that $\vartheta \equiv 0$ gives $V(1,0)=1 \in \mathcal{V}(1)$; so each $Z \in \mathcal{Z}(z)$ is itself a $\PP$-supermartingale. Next $Z^{Q; \PP} \in \mathcal{Z}(1)$ for any $Q \in \PP_{e, \sigma}$ and $\mathcal{Z}(z)=z \mathcal{Z}(1)$ for all $z >0$; so $\mathcal{Z}(z) \neq \emptyset$ by (NFLVR). 
 \\\\
@@ -3112,7 +3113,7 @@ as $n \mapsto F(h_n)$ is decreasing. So $\widetilde{h}_n \in \mathcal{D}(z)$ giv
 \begin{align*}
 j(z) \leq F( \widetilde{h}_n) \leq F(h_n) \searrow j(z),
 \end{align*}
-and hence 
+and hence, by lower-semicontinuity of $F$, we get
 \begin{align*}
 \EE(J(h)) = F(h) \leq \liminf_{n \to \infty} F( \widetilde{h}_n) = j(z),
 \end{align*}
@@ -4046,7 +4047,7 @@ Let now $\vartheta \in \Theta_\text{adm}$, then we obtain by the associativity o
 \begin{align*}
 G( \vartheta) = \vartheta \bigcdot S = \vartheta \bigcdot (\Psi \bigcdot M)= ( \vartheta \psi) \bigcdot M  \geq -a.
 \end{align*}
-\begin{rem} We can also use the heuristic argument (which isn't very rigoros of course), name $dS= \Psi dM$ and hence 
+\begin{rem} We can also use the heuristic argument (which isn't very rigoros of course), namely $dS= \Psi dM$ and hence 
 \begin{align*}
 G( \vartheta) = \int \vartheta dS = \int \vartheta \Psi dM \overset{ \vartheta \in \Theta_\text{adm}} \geq -a
 \end{align*}
