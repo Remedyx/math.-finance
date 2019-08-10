@@ -326,7 +326,7 @@ V_t( \varphi) = \int_0^t \vartheta_u dS_u = G_t( \vartheta), \ 0 \leq t \leq T.
 \begin{align*}
 \vartheta = \sum_{i=1}^n h_i 1_{(\!( \tau_{i-1}, \tau_i ]\!]}, \ n \in \mathbb{N}
 \end{align*}
-with stopping times $0 \leq \tau_0 \leq \tau_1 \leq \tau_n \leq T$ and $h_i \in L^\infty ( \mathcal{F}_{\tau_{i-1}}, \mathbb{R}^d)$, i.e. $h$ is $\mathbb{R}^d$-valued, $ \mathcal{F}_{\tau_{i-1}}$-measurable and bounded. If all $\tau_i$ (but not $h_i)$ are deterministic $t_i$, call $\vartheta$ \textbf{very simple} and write $\vartheta \in \verysimple$. 
+with stopping times $0 \leq \tau_0 \leq \tau_1 \leq \dots \leq \tau_n \leq T$ and $h_i \in L^\infty ( \mathcal{F}_{\tau_{i-1}}, \mathbb{R}^d)$, i.e. $h$ is $\mathbb{R}^d$-valued, $ \mathcal{F}_{\tau_{i-1}}$-measurable and bounded. If all $\tau_i$ (but not $h_i)$ are deterministic $t_i$, call $\vartheta$ \textbf{very simple} and write $\vartheta \in \verysimple$. 
 \end{defn}
 \newpage
 \begin{rem} \
@@ -828,7 +828,7 @@ For any adapted RCLL $S$
 \begin{align*}
 J_\cdot^1 := \sum_{0 < s \leq \cdot } \Delta S_s 1_{\{ | \Delta S_s| > 1 \}}
 \end{align*}
-is adapted, RCLL and of FV, hence a good integrator and a semimartingale. Next, $S-J^1$ is adapted RCLL with bounded jumps, hence locally bounded, and like $J^1$ a good integrator if $S$ is. \\
+is adapted, RCLL. Moreover, since $S$ is RCLL it only has finitely many jumps $\PP$-a.s. and thus is of FV, hence a good integrator (easy to show that FV processes are good integrators) and a semimartingale. Next, $S-J^1$ is adapted RCLL with bounded jumps, hence locally bounded, and like $J^1$ a good integrator if $S$ is. \\
 \\
 By Proposition \ref{P21}, $S-J^1$ is locally a quasimartingale and hence by Theorem \ref{T23} locally difference of two supermartingales. But every supermartingale is locally of class (D), indeed let $X=(X_t)_{0 \leq t \leq T}$ be a supermartingale, let $\tau_n := \inf \{ t \in [0,T]: |X_t| > n \} \wedge T$, this gives for every stopping time $\sigma \leq T$, 
 \begin{align*}
@@ -1798,7 +1798,7 @@ G_T( \widetilde{\vartheta}^*) = 1_{\{ \tau_k = T\}} G_T( \vartheta^{i_k}) + 1_{\
  with $\xi_k = 1_{\{ \tau_k < T\}} ( G_{\tau_k} ( \vartheta^{i_k}) - G_{\tau_k} ( \vartheta^{j_k})) \geq 0$ having $\PP( \xi_k \geq \alpha) \geq \delta > 0$ for all $k \in \mathbb{N}$. Then use Lemma \ref{L44} (Komlos) plus convexity of $\mathcal{G}^1$ to get in $\mathcal{D}_f$ an element $h_0 + \eta$ with $\eta = \lim_{k \to 0} \widetilde{ \xi_k}$ in $L_+^0 \setminus \{0\}$. So $h_0 + \eta$ is in $\mathcal{D}_f$ and $h_0 + \eta \geq h_0$ and $h_0 + \eta \neq h_0$ which contradicts the maximality of $h_0$. 
  \\\\
  To finish the proof, we need a recent result by Cuchiero/Teichmann ($\approx$ 2016):
-\begin{thm}[Cuchiero/Teichmann] \label{T47} Suppose $S$ satisfies (NUPBR). Assume $( \vartheta^n)_{n \in \mathbb{N}} \subset \Theta^1$ is such that $(G_\cdot ( \vartheta^n))_{n \in \mathbb{N}}$ converges for $d$ to some process $X \in \mathbb{D}$ such that $X_T$ is maximal in $\overline{\mathcal{G}}^{L^0}$. Then $(G_\cdot ( \vartheta^n))_{n \in \mathbb{N}} \to X$ for Emery metric $\widetilde{d}_E'$. As a consequence, $X= G( \vartheta)$ for some $\vartheta \in \Theta^1$ and so $X_T \in \mathcal{G}^1$. 
+\begin{thm}[Cuchiero/Teichmann] \label{T47} Suppose $S$ satisfies (NUPBR). Assume $( \vartheta^n)_{n \in \mathbb{N}} \subset \Theta^1$ is such that $(G_\cdot ( \vartheta^n))_{n \in \mathbb{N}}$ converges for $d$ to some process $X \in \mathbb{D}$ such that $X_T$ is maximal in $\overline{\mathcal{G}^1}^{L^0}$. Then $(G_\cdot ( \vartheta^n))_{n \in \mathbb{N}} \to X$ for Emery metric $\widetilde{d}_E'$. As a consequence, $X= G( \vartheta)$ for some $\vartheta \in \Theta^1$ and so $X_T \in \mathcal{G}^1$. 
 \end{thm}
 \noindent \textbf{How does that imply Theorem \ref{T46}}? We need $h_0 \in \mathcal{G}^1$.\\
 \\
@@ -2517,7 +2517,7 @@ Hence we must have $\langle \hat{N} \rangle \equiv 0$, hence $\hat{N} \equiv \ha
 \begin{align*}
 \{v_0 \in \mathbb{R}: H-v_0 \in \mathcal{G}_\text{adm}-L_+^0 \} = \{ v_0 \in \mathbb{R}: H \leq v_0 \} \neq \emptyset,
 \end{align*}
-iff $H$ is bounded from above. This needs new ideas. 
+iff $H$ is bounded from above. This needs new ideas. We will discuss that in the next chapter.
 \end{itemize}
 \newpage
 \begin{rem} Can use optional decomposition or hedging duality to characterize payoffs which are "attainable". For that, call $H \in L_+^0( \mathcal{F}_T)$ \textbf{attainable} if $H= H_0 + G_T( \vartheta)$ for some $(H_0 , \vartheta) \in R \times \Theta_\text{adm}$ with the extra property that $G_\cdot ( \vartheta)$ is true $P^*$-martingale for some $P^* \in \PP_{e, \sigma}$. 
@@ -2636,7 +2636,7 @@ $\mathcal{C}_w^\infty \subset L^\infty$ is convex cone, so can use the same crit
 \\
 $|f_n| \leq 1$ for all $n \in \mathbb{N}$ implies that $|f| \leq 1$, so $f \in L^\infty$. Each $f_n \in \mathcal{C}_w^\infty = \frac{1}{w}( \mathcal{G}_w-L_+^0)$ admits some $g_n \in \mathcal{G}_w$ with $g_n \geq wf_n \geq -w$ as $|f_n| \leq 1$. Write $g_n = G_T( \vartheta^n)$ with $\vartheta \in \Theta_w$. Use part 4) of Lemma \ref{L81} with $\widetilde{w}=w$, to conclude that $\vartheta^n$ is even $(1,w)$-admissible so that $g_n \in \mathcal{G}_w^1$ and $wf_n \in \mathcal{G}_w^1-L_+^0$. \\
 \\
-But now $wf_n \to wf$ a.s. and hence in $L^0$, and thus $wf \in \mathcal{G}_w^1-L_+^1$ by Theorem \ref{T82}. Put differently,  $f \in L^\infty$ and 
+But now $wf_n \to wf$ a.s. and hence in $L^0$, and thus $wf \in \mathcal{G}_w^1-L_+^0$ by Theorem \ref{T82}. Put differently,  $f \in L^\infty$ and 
 \begin{align*}
 f \in \frac{1}{w}( \mathcal{G}_w^1- L_+^0) \subset \frac{1}{w}( \mathcal{G}_w-L_+^0)
 \end{align*}
@@ -2674,7 +2674,7 @@ f \in \mathcal{G}_w-L_+^0 \iff \EE_Q(f) \leq 0, \text{ for all } Q \in \PP_{e, \
 \begin{align*}
 \EE_Q\left( w \frac{f \wedge n}{w} \right) \leq \EE_Q(f) \leq 0, \text{ for all } Q \in \PP_{e, \sigma}^w
 \end{align*}
-which implies by Theorem \ref{T84}, (\ref{82}) that $\frac{f \wedge n}{w} \subset \mathcal{C}_w^\infty \subset \frac{1}{w}( \mathcal{G}_w - L_+^0)$ or $f \wedge n \in \mathcal{G}_w - L_+^0$, for all $n \in \mathbb{N}$. So we get sequence $(g_n)_{n \in \mathbb{N}} \subset \mathcal{G}_w$ with $g_n \geq w f_n = f \wedge n \geq -w$. Now use part 4) of Lemma \ref{L81} to conclude that $g_n = G_T( \vartheta^n)$ with $\vartheta^n$ even $(1,w)$-admissible, so $(g_n)_{n \in \mathbb{N}} \subset \mathcal{G}_w^1$ and then even $f \wedge n \in \mathcal{G}_w^1 - L_+^0$. 
+which implies by Theorem \ref{T84}, (\ref{82}) that $\frac{f \wedge n}{w} \in \mathcal{C}_w^\infty \subset \frac{1}{w}( \mathcal{G}_w - L_+^0)$ or $f \wedge n \in \mathcal{G}_w - L_+^0$, for all $n \in \mathbb{N}$. So we get sequence $(g_n)_{n \in \mathbb{N}} \subset \mathcal{G}_w$ with $g_n \geq w f_n = f \wedge n \geq -w$. Now use part 4) of Lemma \ref{L81} to conclude that $g_n = G_T( \vartheta^n)$ with $\vartheta^n$ even $(1,w)$-admissible, so $(g_n)_{n \in \mathbb{N}} \subset \mathcal{G}_w^1$ and then even $f \wedge n \in \mathcal{G}_w^1 - L_+^0$. 
 \\\\
 Because $f \wedge n \to f$ a.s. and also $\mathcal{G}_w^1- L_+^0$ is closed in $L^0$ by Theorem \ref{T82}, we get $f \in \mathcal{G}_w^1-L_+^0 \subset \mathcal{G}_w- L_+^0$ as desired. 
 \end{proof}
@@ -3107,7 +3107,7 @@ Uniqueness is clear  from strict convexity of $J$. For existence, take $(h_n)_{n
 \\
 But $\mathcal{D}(z)$ is convex, so $(\widetilde{h}_n)_{n \in \mathbb{N}} \subset \mathcal{D}(z)$, and closed in $L^0$ (by Proposition \ref{P112}) so that also $h \in \mathcal{D}(z)$. By Lemma \ref{L111}, $J$ is convex, so
 \begin{align*}
-F( \widetilde{h}_n) = \EE(J( \widetilde{h}_n)) \leq \sup_{k \geq n} \EE(J(h_n)) = \sup_{k \geq n } F(h_k) = F(h_n),
+F( \widetilde{h}_n) = \EE(J( \widetilde{h}_n)) \leq \sup_{k \geq n} \EE(J(h_k)) = \sup_{k \geq n } F(h_k) = F(h_n),
 \end{align*}
 as $n \mapsto F(h_n)$ is decreasing. So $\widetilde{h}_n \in \mathcal{D}(z)$ gives 
 \begin{align*}
@@ -3280,12 +3280,12 @@ a) via duality; b) directly. \\
 Using Lemma \ref{L102}, we obtain $f_x^* \in \mathcal{C}(x)$ if it is $\mathcal{F}_T$-measurable. This holds if $\mathcal{F}= \mathcal{F}_T$ (Better way to resolve this: define a priori $\mathcal{D}(z)$ as subset of $L^0( \mathcal{F}_T)$, so automatically, without $\mathcal{F}= \mathcal{F}_T$, $f$ is $\mathcal{F}_T$-measurable). 
 \end{enumerate}
 In summary we get main result:
-\begin{thm} \label{T131} Suppose $\mathcal{F}_0$ is trivial, $\mathcal{F}= \mathcal{F}_T$, $\PP_{e, \sigma} \neq \emptyset$, $U$ is a utility function on $(0, \infty)$ (includes Inada conditions), $u(x_0) < \infty$ for some $x_0 >0$ and AE$_{+ \infty}(U) <1$. For every $x>0$, primal problem of maximising expected utility from final wealth has a unique solution $f_x^* \in \mathcal{C}(x)$, given by $f_x^*=I(h_{z_x}^*)$, where $h_{z_x}^*$ is unique solution to dual problem for $z_x>0$ which is defined by $-j'(z_x)=x$. 
+\begin{thm} \label{T131} Suppose $\mathcal{F}_0$ is trivial, $\mathcal{F}= \mathcal{F}_T$, $\PP_{e, \sigma} \neq \emptyset$, $U$ is a utility function on $(0, \infty)$ (includes Inada conditions), $u(x_0) < \infty$ for some $x_0 >0$ and AE$_{+ \infty}(U) <1$. For every $x>0$, primal problem of maximising expected utility from final wealth has a unique solution $f_x^* \in \mathcal{C}(x)$, given by $f_x^*=I(h_{z_x}^*)$, where $h_{z_x}^*$ is the unique solution to dual problem for $z_x>0$ which is defined by $-j'(z_x)=x$. 
 \end{thm}
 \begin{proof}
 By preceding  discussion, construction is feasible and produces candidate $f_x^* \in \mathcal{C}(x)$. Uniqueness of solution is direct from strict concavity. Only need to argue optimality of $f_x^*$: 
 \begin{align*}
-u(x) \geq \EE[U(f_x^*)] \overset{2)}= \EE[U(I(h_{z_x}^*)] = \EE[J(h_{z_x}^*) + h_{z_x}^*I(h_{z_x}^*)] \overset{2),3)}= j(z_x) + xz_x \\ \geq \inf_{z >0} (j(z) + xz) \overset{\text{Sect. 11}}\geq u(x) = \sup_{f \in \mathcal{C}(x)} \EE[U(f)].
+u(x) \overset{4)}\geq \EE[U(f_x^*)] \overset{2)}= \EE[U(I(h_{z_x}^*))] = \EE[J(h_{z_x}^*) + h_{z_x}^*I(h_{z_x}^*)] \overset{2),3)}= j(z_x) + xz_x \\ \geq \inf_{z >0} (j(z) + xz) \overset{\text{Sect. 11}}\geq u(x) = \sup_{f \in \mathcal{C}(x)} \EE[U(f)].
 \end{align*}
 This proves optimality of $f_x^*$. \textit{(Notice that we've already seen the same arguments as in proof above in Section 12, just this time we know that our ideas are mathematically sound)}
 \end{proof}
@@ -3327,7 +3327,7 @@ This is enough.
 \begin{prop} \label{P133} Suppose $\mathcal{F}_0$ is trivial,  $u(x_0) < \infty$ for some $x_0 >0$ and either $U( \infty) < \infty$ and $\PP_{e, \sigma} \neq \emptyset$, or that $U$ satisfies $(U+)$ and there exists an E$\sigma$MM $\widetilde{Q}$ s.t. $(d \widetilde{Q} / d \PP)^{-1}$ has moments of all orders. For any $x>0$, there exists then unique solution $f_x^* \in \mathcal{C}(x)$ to primal problem. 
 \end{prop}
 \begin{proof}
-Uniqueness is clear from \textbf{strict} concavity of $U$. Moreover, $u(x) <0$ for all $x>0$ follows from $U$ being concave and increasing (see exercise sheet $8$). For existence,  take $(f_n)_{n \in \mathbb{N}} \subset \mathcal{C}(x)$ with $\EE[U(f_n)] \nearrow u(x) < \infty$, so this can be done. Now all $f_n \geq 0$; so by Lemma \ref{L44} (Komlós) there exists $\widetilde{f}_n \in \text{conv}(f_n, f_{n+1}, \dots )$ with $\widetilde{f}_n \to f_\infty$ $\PP$-a.s. with $f_\infty$ for some $\mathcal{F}_T$-measurable $f_\infty$ with values in $[0, + \infty]$. But by Lemma \ref{L101}, $\mathcal{C}(x)$ is bounded in $L^1(Q)$ for any $Q \in \PP_{e, \sigma} \neq \emptyset$, hence also bounded in $L^0(Q)$, which is the same space for $\PP$,  i.e. $L^0(Q)= L^0(\PP)$ since $Q \approx \PP$. Again by Lemma \ref{L44}, we thus get $f_\infty < \infty \ \PP$-a.s., hence $f_\infty \in L_+^0( \mathcal{F}_T)$ and hence $\widetilde{f}_n \to f_\infty$ in $L^0$. 
+Uniqueness is clear from \textbf{strict} concavity of $U$. Moreover, $u(x) < \infty$ for all $x>0$ follows from $U$ being concave and increasing (see exercise sheet $8$). For existence,  take $(f_n)_{n \in \mathbb{N}} \subset \mathcal{C}(x)$ with $\EE[U(f_n)] \nearrow u(x) < \infty$, so this can be done. Now all $f_n \geq 0$; so by Lemma \ref{L44} (Komlós) there exists $\widetilde{f}_n \in \text{conv}(f_n, f_{n+1}, \dots )$ with $\widetilde{f}_n \to f_\infty$ $\PP$-a.s. with $f_\infty$ for some $\mathcal{F}_T$-measurable $f_\infty$ with values in $[0, + \infty]$. But by Lemma \ref{L101}, $\mathcal{C}(x)$ is bounded in $L^1(Q)$ for any $Q \in \PP_{e, \sigma} \neq \emptyset$, hence also bounded in $L^0(Q)$, which is the same space for $\PP$,  i.e. $L^0(Q)= L^0(\PP)$ since $Q \approx \PP$. Again by Lemma \ref{L44}, we thus get $f_\infty < \infty \ \PP$-a.s., hence $f_\infty \in L_+^0( \mathcal{F}_T)$ and hence $\widetilde{f}_n \to f_\infty$ in $L^0$. 
 \newpage
 Now $\mathcal{C}(x)$ is convex, so $\widetilde{f}_n \in \mathcal{C}(x)$ for all $n \in \mathbb{N}$, and $\mathcal{C}(x)$ is closed in $L^0$, so that $f_\infty \in \mathcal{C}(x)$. 
 \\\\
