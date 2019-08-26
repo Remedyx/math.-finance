@@ -64,11 +64,11 @@
 \begin{titlepage}
 	\centering
 	
-	{\scshape\LARGE University of Zurich \par}
+	{\scshape \includegraphics[scale=.4]{ETHZ_Logo.pdf} \par}
 
 	\vspace{1cm}
 	{\huge\bfseries Mathematical Finance\par}
-		\vspace{2cm}
+		\vspace{1cm}
 		\begin{mdframed}[backgroundcolor=blue!20, topline=true, linewidth=2.0pt]
 \begin{flushleft}\textbf{Theorem} (Itô's formula): Let $(X_t)_{t \geq 0} = (X_t^1, \dots , X_t^d)_{t \geq 0}$ be an $\mathbb{R}^d$-valued semimartingale and let $F \in C^2 ( \mathbb{R}^d, \mathbb{R})$.  Denote $X_{s-}:= \lim_{u \nearrow s} X_u$, $\Delta X_s^j: = X_s^j-X_{s-}^j$ the associated jump-process and $[ X^j, X^k]^c$ denotes the quadratic variation of the continuous components of $X^j$ and $X^k$. \\ Then $(F(X_t))_{t \geq 0}$ is again a semimartingale and we have
 \end{flushleft}
@@ -89,6 +89,17 @@ F(X_t)-F(X_0)= \sum_{j=1}^d \int_0^t \dfrac{\partial F}{\partial x_j} (X_{s-}) d
 % Bottom of the page
 	{\large \today\par}
 \end{titlepage}
+\newpage
+\textbf{\Huge Preface} \\\\\\\\\\\\\\\\\\\\\\\\\\\
+These are unofficial lectures of the course Mathematical Finance taught at the ETHZ by Prof. Schweizer. These notes have been transcribed during the fall semester of 2018. Please note that the lecturer Prof. Schweizer is in no shape or form responsible for this transcription (nor its correctness). \\
+\\
+Students are encouraged to report any mistakes or typos directly to 
+\begin{align*}
+\textsc{bemarco@student.ethz.ch}
+\end{align*}
+There are still unsolved exercises present in this version of the transcript, if someone is willing to share their model solution to one of said exercises please don't hesitate to forward them also to the e-mail above. 
+\\\\
+If possible, I would like to keep these notes \textit{up to date}, hence I encourage students to report alterations of the lecture as well.
 \newpage
 \tableofcontents
 \newpage
@@ -4267,9 +4278,10 @@ Since $\mathcal{E}(- p \lambda \bigcdot M )$ is a supermartingale started from $
 \end{proof}
 \newpage
 \section{Exam Questions}
-This section provides a list of \textbf{possible} exam questions. They are taken from the script \textit{"Mathematical finance (extended from lectures of Fall 2012 by Martin Schweizer, transcribed by Peter Gracar and Thomas Hille)"} (see page 86 for the complete list). The lecture back then was given by Josef Teichmann. I have only selected the questions which I could bring in agreement with the lecture taught by Prof. Schweizer in 2018. Moreover, I have added in some questions (highlighted as \textit{Schweizer} in the proceeding list) which Professor Schweizer asked during the oral exam HS 2018 session, the full transcript of said oral exam can be found on the VMP website. 
+This section provides a list of \textbf{possible} exam questions. They are taken from the script \textit{"Mathematical finance (extended from lectures of Fall 2012 by Martin Schweizer, transcribed by Peter Gracar and Thomas Hille)"} (see page 86 for the complete list). The lecture back then was given by Josef Teichmann. I have only selected the questions which I could bring in agreement with the lecture taught by Prof. Schweizer in 2018. Moreover, I have added in the questions which Professor Schweizer asked during the oral exam HS 2018/2019 sessions. My exam transcript is also available on the VMP website and might be helpful.
 \begin{enumerate}
-\item What is a semi-martingale (\textit{Schweizer}: Can you give me two examples?) and a good integrator? What does the Bichteler-Dellacherie theorem tell? (\textit{Schweizer}: Can you sketch some ideas in proving one or the other direction?)
+\item What is a semi-martingale Can you give me two different examples of semi-martingales?
+\item What is a good integrator? What does the Bichteler-Dellacherie theorem tell? Can you sketch some ideas in proving one or the other direction?
 \item Describe the Emery topology.
 \item What does the Burkholder-Davis-Gundy inequality assert and how does one proof work? How can we use it to construct the stochastic integral for predictable integrands?
 \item What does the FTAP tell us?
@@ -4277,8 +4289,9 @@ This section provides a list of \textbf{possible} exam questions. They are taken
 \item Explain the utility optimization problem and its meaning following these lecture notes. Give examples of utility functions.
 \item Explain the primal and dual problem and their relationship as outlined in these lecture notes. 
 \item Explain the strategy to solve the primal problem via solving the dual problem. 
-\item \textit{Schweizer}: What is the structure condition?
-\item \textit{Schweizer}: What is the definition of the stochastic exponential?
-\item \textit{Schweizer}: Can you tell me how to solve the utility maximisation problem directly? 
+\item  What is the structure condition?
+\item What is a hedging duality?
+\item  What is the definition of the stochastic exponential?
+\item  How does one solve the utility maximisation problem directly? 
 \end{enumerate} 
 \end{document}
